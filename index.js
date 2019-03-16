@@ -69,9 +69,9 @@ var earningsInterStats = [{
 
 // LOAD INITIAL DATA de GET /takingStats/
 app.get("/api/v1/takingStats/loadInitialData",(req,res) => {
-    if(takingStats.length<=0){ // si está vacío al hacer DELETE, entonces devolvemos los ingresos iniciales
+   // if(takingStats.length<=0){ // si está vacío al hacer DELETE, entonces devolvemos los ingresos iniciales
         res.send(takingStats); //el servidor nos envía todos los ingresos
-    }
+    //}
 });
 
 //GET /takingStats
