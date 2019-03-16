@@ -7,6 +7,8 @@ app.use(bodyParser.json());
 
 var port = process.env.PORT || 8080;
 
+// API DIONI
+
 var takingStats =  [{
     country: "Spain",
     year: "2017",
@@ -40,6 +42,8 @@ var takingStats =  [{
     rank: "13",
     spectator:"373.837"
 }]; 
+
+// API ZOILO
 
 var earningsInterStats = [{
     country: "Spain",
@@ -75,19 +79,19 @@ app.get("/api/v1/takingStats/loadInitialData",(req,res) => {
 });
 
 //GET /takingStats
-app.get("/takingStats",(req,res) => {
+app.get("/api/v1/takingStats/",(req,res) => {
     res.send(takingStats);
 });
 
 //POST /takingStats
-app.post("/takingStats",(req,res) => {
+app.post("/api/v1/takingStats/",(req,res) => {
     var newTaking = req.body;
     takingStats.push(newTaking);
     res.sendStatus(201);
 });
 
 //GET /takingStats/:film
-app.get("/takingStats/:film", (req,res)=>{
+app.get("/api/v1/takingStats/:film", (req,res)=>{
 
     var film = req.params.film;
 
@@ -104,7 +108,7 @@ app.get("/takingStats/:film", (req,res)=>{
 });
 
 //DELETE /takingStats/:film
-app.delete("/takingStats/:film", (req,res)=>{
+app.delete("/api/v1/takingStats/:film", (req,res)=>{
 
     var film = req.params.film;
     var found = false;
@@ -127,7 +131,7 @@ app.delete("/takingStats/:film", (req,res)=>{
 });
 
 //PUT /takingStats/:film
-app.put("/takingStats/:film", (req,res)=>{
+app.put("/api/v1/takingStats/:film", (req,res)=>{
 
     var film = req.params.film;
     var updatedFilm = req.body;
@@ -155,7 +159,7 @@ app.put("/takingStats/:film", (req,res)=>{
 });
 
 //POST /takingStats/:film (debe de dar error)
-app.post("/takingStats/:film",(req,res) => {
+app.post("/api/v1/takingStats/:film",(req,res) => {
     var newTaking = req.body;
     
     if(res.sendStatus(405)){ //Method not allowed
@@ -168,7 +172,7 @@ app.post("/takingStats/:film",(req,res) => {
 });
 
 //PUT /takingStats (debe dar error)
-app.put("/takingStats/", (req,res)=>{
+app.put("/api/v1/takingStats/", (req,res)=>{
    var updatedFilm = req.body;
     
      if(res.sendStatus(405)){
@@ -179,34 +183,62 @@ app.put("/takingStats/", (req,res)=>{
 });
 
 // DELETE /takingStats/
-app.delete("/takingStats",(req,res) => {
+app.delete("/api/v1/takingStats/",(req,res) => {
     takingStats = [];
     res.sendStatus(200);
 });
 
-//--------------------------------------------------------------------------------------------------//
+//------------------------------------------------------------------------------------------------------------------------------------//
+
+// GET /earningsInterStats/loadInitialData
+
+app.get("/api/v1/earningsInterStats/loadInitialData", (req,res)=>{
+   
+    var newFilm1 = {
+        country: "Spain",
+        year: "2017",
+        title: "Neruda",
+        territory: "33",
+        earning: "4.154.241",
+        territoryTotal: "34"    
+    };
+        
+    var newFilm2 = {
+        country: "Spain",
+        year: "2017",
+        title: "Ozzy",
+        territory: "30",
+        earning: "9.616.202",
+        territoryTotal: "35"
+    };
+    
+    earningsInterStats.push(newFilm1);
+    earningsInterStats.push(newFilm2);
+    res.send(earningsInterStats);
+    
+});
 
 // GET /earningsInterStats/
 
-app.get("/earningsInterStats", (req,res)=>{
+app.get("/api/v1/earningsInterStats", (req,res)=>{
+    
     res.send(earningsInterStats);
 });
 
 
 // POST /earningsInterStats/
 
-app.post("/earningsInterStats", (req,res)=>{
-    
+app.post("/api/v1/earningsInterStats", (req,res)=>{
+
     var newFilm = req.body;
-    
-    earningsInterStats.push(newFilm)
-    
+    earningsInterStats.push(newFilm);
     res.sendStatus(201);
 });
 
 // PUT /earningsInterStats/
 
-app.put("/earningsInterStats", (req,res)=>{
+app.put("/api/v1/earningsInterStats", (req,res)=>{
+   
     res.sendStatus(405);
 });
 
@@ -214,17 +246,16 @@ app.put("/earningsInterStats", (req,res)=>{
 
 // DELETE /earningsInterStats/
 
-app.delete("/earningsInterStats", (req,res)=>{
+app.delete("/api/v1/earningsInterStats", (req,res)=>{
     
     earningsInterStats =  [];
-
     res.sendStatus(200);
 });
 
 
 // GET /earningsInterStats/title
 
-app.get("/earningsInterStats/:title", (req,res)=>{
+app.get("/api/v1/earningsInterStats/:title", (req,res)=>{
 
     var title = req.params.title;
 
@@ -242,14 +273,14 @@ app.get("/earningsInterStats/:title", (req,res)=>{
 
 // POST /earningsInterStats/title
 
-app.post("/earningsInterStats/:title", (req,res)=>{
+app.post("/api/v1/earningsInterStats/:title", (req,res)=>{
     res.sendStatus(405);
 });
 
 
 // PUT /earningsInterStats/title
 
-app.put("/earningsInterStats/:title", (req,res)=>{
+app.put("/api/v1/earningsInterStats/:title", (req,res)=>{
 
     var title = req.params.title;
     var updatedFilm = req.body;
@@ -278,7 +309,7 @@ app.put("/earningsInterStats/:title", (req,res)=>{
 
 // DELETE /earningsInterStats/title
 
-app.delete("/earningsInterStats/:title", (req,res)=>{
+app.delete("/api/v1/earningsInterStats/:title", (req,res)=>{
 
     var title = req.params.title;
     var found = false;
@@ -300,7 +331,7 @@ app.delete("/earningsInterStats/:title", (req,res)=>{
 
 });
 
-// ------------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------------------------------------------------//
 
 app.listen(port,() => {
    console.log("Magic is happening in port " + port); 
