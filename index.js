@@ -32,25 +32,25 @@ var earningsInterStats = [{
 
 // GET /earningsInterStats/
 
-app.get("/earningsInterStats", (req,res)=>{
+app.get("/api/v1/earningsInterStats", (req,res)=>{
     res.send(earningsInterStats);
 });
 
 
 // POST /earningsInterStats/
 
-app.post("/earningsInterStats", (req,res)=>{
+app.post("/api/v1/earningsInterStats", (req,res)=>{
     
     var newFilm = req.body;
     
-    earningsInterStats.push(newFilm)
+    earningsInterStats.push(newFilm);
     
     res.sendStatus(201);
 });
 
 // PUT /earningsInterStats/
 
-app.put("/earningsInterStats", (req,res)=>{
+app.put("/api/v1/earningsInterStats", (req,res)=>{
     res.sendStatus(405);
 });
 
@@ -58,7 +58,7 @@ app.put("/earningsInterStats", (req,res)=>{
 
 // DELETE /earningsInterStats/
 
-app.delete("/earningsInterStats", (req,res)=>{
+app.delete("/api/v1/earningsInterStats", (req,res)=>{
     
     earningsInterStats =  [];
 
@@ -68,7 +68,7 @@ app.delete("/earningsInterStats", (req,res)=>{
 
 // GET /earningsInterStats/title
 
-app.get("/earningsInterStats/:title", (req,res)=>{
+app.get("/api/v1/earningsInterStats/:title", (req,res)=>{
 
     var title = req.params.title;
 
@@ -86,14 +86,14 @@ app.get("/earningsInterStats/:title", (req,res)=>{
 
 // POST /earningsInterStats/title
 
-app.post("/earningsInterStats/:title", (req,res)=>{
+app.post("/api/v1/earningsInterStats/:title", (req,res)=>{
     res.sendStatus(405);
 });
 
 
 // PUT /earningsInterStats/title
 
-app.put("/earningsInterStats/:title", (req,res)=>{
+app.put("/api/v1/earningsInterStats/:title", (req,res)=>{
 
     var title = req.params.title;
     var updatedFilm = req.body;
@@ -122,7 +122,7 @@ app.put("/earningsInterStats/:title", (req,res)=>{
 
 // DELETE /earningsInterStats/title
 
-app.delete("/earningsInterStats/:title", (req,res)=>{
+app.delete("/api/v1/earningsInterStats/:title", (req,res)=>{
 
     var title = req.params.title;
     var found = false;
@@ -142,6 +142,32 @@ app.delete("/earningsInterStats/:title", (req,res)=>{
         res.sendStatus(200);
     }
 
+});
+
+// GET /earningsInterStats/
+
+app.get("/api/v1/earningsInterStats/loadInitialData", (req,res)=>{
+    
+    var newFilm1 = {
+        country: "Spain",
+        year: "2017",
+        title: "Neruda",
+        territory: "33",
+        earning: "4.154.241",
+        territoryTotal: "34"    };
+        
+    var newFilm2 = {
+        country: "Spain",
+        year: "2017",
+        title: "Ozzy",
+        territory: "30",
+        earning: "9.616.202",
+        territoryTotal: "35"
+    };
+
+    earningsInterStats.push(newFilm1);
+    earningsInterStats.push(newFilm2);
+    res.send(earningsInterStats);
 });
 
 // ------------------------------------------------------------------------------------------------------
