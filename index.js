@@ -7,6 +7,8 @@ app.use(bodyParser.json());
 
 var port = process.env.PORT || 8080;
 
+// API DIONI
+
 var takingStats =  [{
     country: "Spain",
     year: "2017",
@@ -40,6 +42,8 @@ var takingStats =  [{
     rank: "13",
     spectator:"373.837"
 }]; 
+
+// API ZOILO
 
 var earningsInterStats = [{
     country: "Spain",
@@ -189,6 +193,7 @@ app.delete("/takingStats",(req,res) => {
 // GET /earningsInterStats/
 
 app.get("/api/v1/earningsInterStats", (req,res)=>{
+    
     res.send(earningsInterStats);
 });
 
@@ -196,17 +201,16 @@ app.get("/api/v1/earningsInterStats", (req,res)=>{
 // POST /earningsInterStats/
 
 app.post("/api/v1/earningsInterStats", (req,res)=>{
-    
+
     var newFilm = req.body;
-    
     earningsInterStats.push(newFilm);
-    
     res.sendStatus(201);
 });
 
 // PUT /earningsInterStats/
 
 app.put("/api/v1/earningsInterStats", (req,res)=>{
+   
     res.sendStatus(405);
 });
 
@@ -217,7 +221,6 @@ app.put("/api/v1/earningsInterStats", (req,res)=>{
 app.delete("/api/v1/earningsInterStats", (req,res)=>{
     
     earningsInterStats =  [];
-
     res.sendStatus(200);
 });
 
@@ -300,30 +303,29 @@ app.delete("/api/v1/earningsInterStats/:title", (req,res)=>{
 
 });
 
-// GET /earningsInterStats/
+// GET /earningsInterStats/loadInitialData
 
 app.get("/api/v1/earningsInterStats/loadInitialData", (req,res)=>{
     
-    var newFilm1 = {
+    var newFilms = [{
         country: "Spain",
         year: "2017",
         title: "Neruda",
         territory: "33",
         earning: "4.154.241",
-        territoryTotal: "34"    };
+        territoryTotal: "34"    },
         
-    var newFilm2 = {
+{
         country: "Spain",
         year: "2017",
         title: "Ozzy",
         territory: "30",
         earning: "9.616.202",
         territoryTotal: "35"
-    };
-
-    earningsInterStats.push(newFilm1);
-    earningsInterStats.push(newFilm2);
-    res.send(earningsInterStats);
+    }];
+    
+    //earningsInterStats.push(newFilms);
+    res.send(newFilms);
 });
 
 // ------------------------------------------------------------------------------------------------------
