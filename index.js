@@ -79,19 +79,19 @@ app.get("/api/v1/takingStats/loadInitialData",(req,res) => {
 });
 
 //GET /takingStats
-app.get("/takingStats",(req,res) => {
+app.get("/api/v1/takingStats/",(req,res) => {
     res.send(takingStats);
 });
 
 //POST /takingStats
-app.post("/takingStats",(req,res) => {
+app.post("/api/v1/takingStats/",(req,res) => {
     var newTaking = req.body;
     takingStats.push(newTaking);
     res.sendStatus(201);
 });
 
 //GET /takingStats/:film
-app.get("/takingStats/:film", (req,res)=>{
+app.get("/api/v1/takingStats/:film", (req,res)=>{
 
     var film = req.params.film;
 
@@ -108,7 +108,7 @@ app.get("/takingStats/:film", (req,res)=>{
 });
 
 //DELETE /takingStats/:film
-app.delete("/takingStats/:film", (req,res)=>{
+app.delete("/api/v1/takingStats/:film", (req,res)=>{
 
     var film = req.params.film;
     var found = false;
@@ -131,7 +131,7 @@ app.delete("/takingStats/:film", (req,res)=>{
 });
 
 //PUT /takingStats/:film
-app.put("/takingStats/:film", (req,res)=>{
+app.put("/api/v1/takingStats/:film", (req,res)=>{
 
     var film = req.params.film;
     var updatedFilm = req.body;
@@ -159,7 +159,7 @@ app.put("/takingStats/:film", (req,res)=>{
 });
 
 //POST /takingStats/:film (debe de dar error)
-app.post("/takingStats/:film",(req,res) => {
+app.post("/api/v1/takingStats/:film",(req,res) => {
     var newTaking = req.body;
     
     if(res.sendStatus(405)){ //Method not allowed
@@ -172,7 +172,7 @@ app.post("/takingStats/:film",(req,res) => {
 });
 
 //PUT /takingStats (debe dar error)
-app.put("/takingStats/", (req,res)=>{
+app.put("/api/v1/takingStats/", (req,res)=>{
    var updatedFilm = req.body;
     
      if(res.sendStatus(405)){
@@ -183,7 +183,7 @@ app.put("/takingStats/", (req,res)=>{
 });
 
 // DELETE /takingStats/
-app.delete("/takingStats",(req,res) => {
+app.delete("/api/v1/takingStats/",(req,res) => {
     takingStats = [];
     res.sendStatus(200);
 });
