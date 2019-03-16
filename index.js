@@ -188,7 +188,35 @@ app.delete("/api/v1/takingStats/",(req,res) => {
     res.sendStatus(200);
 });
 
-//--------------------------------------------------------------------------------------------------//
+//------------------------------------------------------------------------------------------------------------------------------------//
+
+// GET /earningsInterStats/loadInitialData
+
+app.get("/api/v1/earningsInterStats/loadInitialData", (req,res)=>{
+   
+    var newFilm1 = {
+        country: "Spain",
+        year: "2017",
+        title: "Neruda",
+        territory: "33",
+        earning: "4.154.241",
+        territoryTotal: "34"    
+    };
+        
+    var newFilm2 = {
+        country: "Spain",
+        year: "2017",
+        title: "Ozzy",
+        territory: "30",
+        earning: "9.616.202",
+        territoryTotal: "35"
+    };
+    
+    earningsInterStats.push(newFilm1);
+    earningsInterStats.push(newFilm2);
+    res.send(earningsInterStats);
+    
+});
 
 // GET /earningsInterStats/
 
@@ -303,32 +331,7 @@ app.delete("/api/v1/earningsInterStats/:title", (req,res)=>{
 
 });
 
-// GET /earningsInterStats/loadInitialData
-
-app.get("/api/v1/earningsInterStats/loadInitialData", (req,res)=>{
-    
-    var newFilms = [{
-        country: "Spain",
-        year: "2017",
-        title: "Neruda",
-        territory: "33",
-        earning: "4.154.241",
-        territoryTotal: "34"    },
-        
-{
-        country: "Spain",
-        year: "2017",
-        title: "Ozzy",
-        territory: "30",
-        earning: "9.616.202",
-        territoryTotal: "35"
-    }];
-    
-    //earningsInterStats.push(newFilms);
-    res.send(newFilms);
-});
-
-// ------------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------------------------------------------------//
 
 app.listen(port,() => {
    console.log("Magic is happening in port " + port); 
