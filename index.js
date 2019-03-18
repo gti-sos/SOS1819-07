@@ -236,6 +236,8 @@ app.delete("/api/v1/takingStats/",(req,res) => {
 
 //------------------------------------------------------------------------------------------------------------------------------------//
 
+// MÉTODOS API ZOILO
+
 // GET /earningsInterStats/loadInitialData
 
 app.get("/api/v1/earningsInterStats/loadInitialData", (req,res)=>{
@@ -260,7 +262,7 @@ app.get("/api/v1/earningsInterStats/loadInitialData", (req,res)=>{
     
     earningsInterStats.push(newFilm1);
     earningsInterStats.push(newFilm2);
-    res.send(earningsInterStats);
+    res.sendStatus(201);
     
 });
 
