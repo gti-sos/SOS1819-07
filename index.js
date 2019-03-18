@@ -68,6 +68,30 @@ var earningsInterStats = [{
     territoryTotal: "1"
 }];
 
+// API MANUEL
+
+var subsidiesStats = [{
+    country: "Spain",
+    year: "2017",
+    film: "TadeoJones2",
+    subsidyReceibed: "1.260.000",
+    subsidyBudgetProject: "4.500.000",
+    subsidyPercentage: "28"
+}, {
+    country: "Spain",
+    year: "2017",
+    film: "PerfectosDesconocidos",
+    subsidyReceibed: "800.000",
+    subsidyBudgetProject: "3.502.329",
+    subsidyPercentage: "22,84"
+}, {
+    country: "Spain",
+    year: "2017",
+    film: "LaLlamada",
+    subsidyReceibed: "723.109,46",
+    subsidyBudgetProject: "1.807.773,66",
+    subsidyPercentage: "40"
+}];
 
 //API REST diogalcam
 
@@ -351,6 +375,149 @@ app.delete("/api/v1/earningsInterStats/:title", (req,res)=>{
         res.sendStatus(200);
     }
 
+});
+
+// ------------------------------------------------------------------------------------------------------------------------------------------//
+
+//API REST Manuel
+
+// LOAD INITIAL DATA de GET /subsidiesStats/
+app.get("/api/v1/subsidiesStats/loadInitialData",(req,res) => {
+    var film1 = {
+    country: "Spain",
+    year: "2017",
+    film: "TadeoJones2",
+    subsidyReceibed: "1.260.000",
+    subsidyBudgetProject: "4.500.000",
+    subsidyPercentage: "28"
+}; 
+
+var film2 ={
+    country: "Spain",
+    year: "2017",
+    film: "PerfectosDesconocidos",
+    subsidyReceibed: "800.000",
+    subsidyBudgetProject: "3.502.329",
+    subsidyPercentage: "22,84"
+};
+var film3 = {
+    country: "Spain",
+    year: "2017",
+    film: "LaLlamada",
+    subsidyReceibed: "723.109,46",
+    subsidyBudgetProject: "1.807.773,66",
+    subsidyPercentage: "40"
+};
+
+
+      
+        subsidiesStats.push(film1);
+        subsidiesStats.push(film2);
+        subsidiesStats.push(film3);
+        res.sendStatus(200);
+});
+
+
+//a) GET /subsidiesStats
+app.get("/api/v1/subsidiesStats/",(req,res) => {
+    res.send(subsidiesStats);
+});
+
+//b) POST /subsidiesStats
+app.post("/api/v1/subsidiesStats/",(req,res) => {
+    var newSubsidy = req.body;
+    subsidiesStats.push(newSubsidy);
+    res.sendStatus(201);
+});
+
+//c) GET /subsidiesStats/:film
+app.get("/api/v1/subsidiesStats/:film", (req,res)=>{
+
+    var film = req.params.film;
+
+    var filteredFilms = subsidiesStats.filter((t) =>{
+       return t.film == film; 
+    });
+    
+    if (filteredFilms.length >= 1){
+        res.send(filteredFilms[0]);
+    }else{
+        res.sendStatus(404);
+    }
+
+});
+
+//d) DELETE /subsidiesStats/:film
+app.delete("/api/v1/subsidiesStats/:film", (req,res)=>{
+
+    var film = req.params.film;
+    var found = false;
+
+    var updatedFilms = subsidiesStats.filter((t) =>{
+        
+            if(t.film == film)  
+                found = true;
+        
+            return t.film != film;
+    });
+    
+    if (found == false){
+        res.sendStatus(404);
+    }else{
+        takingStats = updatedFilms;
+        res.sendStatus(200);
+    }
+
+});
+
+//e) PUT /subsidiesStats/:film
+app.put("/api/v1/subsidiesStats/:film", (req,res)=>{
+
+    var film = req.params.film;
+    var updatedFilm = req.body;
+    var found = false;
+
+    var updatedFilms = subsidiesStats.map((f) =>{
+    
+        if(f.film == film){
+            
+            found = true;
+            return updatedFilm;
+        }else{
+            return f;            
+        }
+ 
+    });
+    
+    
+    
+    if (found == false){
+        res.sendStatus(404);
+    }else{
+        subsidiesStats = updatedFilms;
+        res.sendStatus(200);
+    }
+
+});
+
+//f) POST /subsidiesStats/:film (debe de dar error)
+app.post("/api/v1/subsidiesStats/:film",(req,res) => {
+    
+    res.sendStatus(405);
+
+});
+
+//g) PUT /subsidiesStats (debe dar error)
+app.put("/api/v1/subsidiesStats/", (req,res)=>{
+  
+  res.sendStatus(405);
+
+});
+
+//h) DELETE /subsidiesStats/
+app.delete("/api/v1/subsidiesStats/",(req,res) => {
+    subsidiesStats = [];
+    res.sendStatus(200);
 });
 
 // ------------------------------------------------------------------------------------------------------------------------------------------//
