@@ -115,13 +115,13 @@ app.get("/api/v1/takingStats/loadInitialData",(req,res) => {
         spectator:"2.256.917"
 }];
     
-    if(takingStats.length<=0){ // si está vacío al hacer DELETE, entonces devolvemos los ingresos iniciales
+ //   if(takingStats.length<=0){ // si está vacío al hacer DELETE, entonces devolvemos los ingresos iniciales
         var i;
         for(i=0;i<=newTakingStats.length;i++){
             takingStats.push(newTakingStats[i]);
         }
-        res.send(takingStats); //el servidor nos envía todos los ingresos
-   }
+        res.send(200); //el servidor nos envía todos los ingresos
+ //  }
 });
 
 //GET /takingStats
