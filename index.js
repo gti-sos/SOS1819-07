@@ -132,6 +132,8 @@ app.get("/api/v1/takingStats/loadInitialData",(req,res) => {
     rank: "13",
     spectator:"373.837"
 }]; 
+
+
 //   if(takingStats.length<=0){ // si está vacío al hacer DELETE, entonces devolvemos los ingresos iniciales
         var i;
         for(i=0;i<newTakingStats.length;i++){
