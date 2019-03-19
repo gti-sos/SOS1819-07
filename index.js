@@ -70,7 +70,7 @@ var earningsInterStats = [{
     territoryTotal: "1"
 }];
 
-// API MANUEL
+// API MANUELL
 
 var subsidiesStats = [{
     country: "Spain",
