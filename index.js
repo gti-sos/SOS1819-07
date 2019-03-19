@@ -100,22 +100,38 @@ var subsidiesStats = [{
 // LOAD INITIAL DATA de GET /takingStats/
 app.get("/api/v1/takingStats/loadInitialData",(req,res) => {
     var newTakingStats =[{
-        country: "Spain",
-        year: "2017",
-        film: "TadeoJones2",
-        distributor: "PPI",
-        money: "17.917.439 ",
-        rank: "1",
-        spectator:"3.227.410"
-    }, {
-        country: "Spain",
-        year: "2017",
-        film: "PerfectosDesconocidos",
-        distributor: "UPI",
-        money: "14.373.417 ",
-        rank: "2",
-        spectator:"2.256.917"
-}];
+    country: "Spain",
+    year: "2017",
+    film: "TadeoJones2",
+    distributor: "PPI",
+    money: "17.917.439 ",
+    rank: "1",
+    spectator:"3.227.410"
+}, {
+    country: "Spain",
+    year: "2017",
+    film: "PerfectosDesconocidos",
+    distributor: "UPI",
+    money: "14.373.417 ",
+    rank: "2",
+    spectator:"2.256.917"
+},{
+    country: "Spain",
+    year: "2017",
+    film: "LaLlamada",
+    distributor: "DEAPLANETA",
+    money: "2.705.357",
+    rank: "12",
+    spectator:"483.238"
+},{
+    country: "Spain",
+    year: "2017",
+    film: "LaLibreria",
+    distributor: "ACONTRA",
+    money: "2.366.547",
+    rank: "13",
+    spectator:"373.837"
+}]; 
     
  //   if(takingStats.length<=0){ // si está vacío al hacer DELETE, entonces devolvemos los ingresos iniciales
         var i;
