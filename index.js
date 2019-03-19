@@ -137,7 +137,7 @@ app.get("/api/v1/takingStats/loadInitialData",(req,res) => {
        // var i;
      //   for(i=0;i<=newTakingStats.length;i++){
    //         takingStats.push(newTakingStats[i]);
- //       }
+ //       }//corregir para que no salga null al final
         takingStats.push(newTakingStats[0]);
         takingStats.push(newTakingStats[1]);
         takingStats.push(newTakingStats[2]);
