@@ -400,7 +400,7 @@ var port = process.env.PORT || 8080;
 
 //DOCUMENTACIÓN
 
-app.get("/api/v1/subsidiesStats/docs", (req, res) => {
+app.get("/api/v1/subsidies-stats/docs", (req, res) => {
 
     res.status(301).redirect("https://documenter.getpostman.com/view/6918407/S17tRo3T");
 
