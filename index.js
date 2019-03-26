@@ -198,7 +198,7 @@ app.put("/api/v1/subsidiesStats/:film", (req,res)=>{
             
         }else if (req.body.hasOwnProperty("country") == false || req.body.hasOwnProperty("year") == false || req.body.hasOwnProperty("subsidyReceibed") == false
     || req.body.hasOwnProperty("subsidyBudgetProject") == false || req.body.hasOwnProperty("subsidyPercentage") == false 
-    || req.body.length != 6 
+    || Object.keys(UpdatedFilm).length != 6 
     || req.body.film != film){
             
             res.sendStatus(400);
