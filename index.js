@@ -16,19 +16,21 @@ var port = process.env.PORT || 8080;
 //POSTMAN DIONI
 app.get("/api/v1/takingstats/docs", (req, res) => {
 
-    res.status(301).redirect("https://www.google.com");
+    res.status(301).redirect("https://documenter.getpostman.com/view/3895452/S17tS8NX");
 
 });
+
+
 
 //API DIONI----------------------------------------------------------------------------
 const MongoClientDioni = require("mongodb").MongoClient;
 const uriDioni = "mongodb+srv://test:test@sos-lriv2.mongodb.net/sos?retryWrites=true";
-const clientDioni = new MongoClient(uri, { useNewUrlParser: true });
+const clientDioni = new MongoClientDioni(uriDioni, { useNewUrlParser: true });
 
 var takingstats;
 
 clientDioni.connect(err => {
-    takingstats = client.db("sos1819").collection("takingstats");
+    takingstats = clientDioni.db("sos1819").collection("takingstats");
     console.log("Connected!");
 });
 
@@ -204,7 +206,7 @@ app.delete("/api/v1/takingstats/:film", (req, res) => {
             res.sendStatus(400);
         }
 
-    });
+    });});
 	
 	//PUT /takingstats/:film
 app.put("/api/v1/takingstats/:film/", (req, res) => {
@@ -333,7 +335,7 @@ app.get('/api/v1/secure/takingstats', (req, res) => {
         });
         return;
     }
-	
+});
 
 //-----------------------------------------------------------------------------------//
 //API MANUEL
@@ -398,7 +400,7 @@ var port = process.env.PORT || 8080;
 
 //DOCUMENTACIÓN
 
-app.get("/api/v1/subsidiesStats/docs", (req, res) => {
+app.get("/api/v1/subsidies-stats/docs", (req, res) => {
 
     res.status(301).redirect("https://documenter.getpostman.com/view/6918407/S17tRo3T");
 
