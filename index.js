@@ -489,7 +489,7 @@ app.delete("/api/v1/subsidiesStats/:film", (req,res)=>{
     if (found == false){
         res.sendStatus(404);
     }else{
-        takingStats = updatedFilms;
+        subsidiesStats = updatedFilms;
         res.sendStatus(200);
     }
 
