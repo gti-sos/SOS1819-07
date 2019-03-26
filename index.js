@@ -21,13 +21,13 @@ app.get("/api/v1/takingstats/docs", (req, res) => {
 });
 
 //API DIONI----------------------------------------------------------------------------
-const MongoClient = require("mongodb").MongoClient;
-const uri = "mongodb+srv://test:test@sos-lriv2.mongodb.net/sos?retryWrites=true";
-const client = new MongoClient(uri, { useNewUrlParser: true });
+const MongoClientDioni = require("mongodb").MongoClient;
+const uriDioni = "mongodb+srv://test:test@sos-lriv2.mongodb.net/sos?retryWrites=true";
+const clientDioni = new MongoClient(uri, { useNewUrlParser: true });
 
 var takingstats;
 
-client.connect(err => {
+clientDioni.connect(err => {
     takingstats = client.db("sos1819").collection("takingstats");
     console.log("Connected!");
 });
