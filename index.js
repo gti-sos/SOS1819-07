@@ -53,6 +53,20 @@ var port = process.env.PORT || 8080;
     subsidyReceibed: "723.109,46",
     subsidyBudgetProject: "1.807.773,66",
     subsidyPercentage: "40"
+}, {
+    country: "Spain",
+    year: "2017",
+    film: "Abracadabra",
+    subsidyReceibed: "1.400.000,00",
+    subsidyBudgetProject: "5.200.000,00",
+    subsidyPercentage: "26,92"
+}, {
+    country: "Spain",
+    year: "2017",
+    film: "TocToc",
+    subsidyReceibed: "1.120.000,00",
+    subsidyBudgetProject: "3.550.000,00",
+    subsidyPercentage: "31,55"
 }];
 
 
@@ -79,6 +93,13 @@ app.get("/api/v1/subsidiesStats/loadInitialData", (req, res) => {
     
 });
 
+//DOCUMENTACIÓN
+
+app.get("/api/v1/subsidiesStats/docs", (req, res) => {
+
+    res.status(301).redirect("https://documenter.getpostman.com/view/6918407/S17tRo3T");
+
+});
 
 //GET /subsidiesStats
 
