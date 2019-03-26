@@ -23,7 +23,7 @@ app.get("/api/v1/takingstats/docs", (req, res) => {
 //API DIONI----------------------------------------------------------------------------
 const MongoClientDioni = require("mongodb").MongoClient;
 const uriDioni = "mongodb+srv://test:test@sos-lriv2.mongodb.net/sos?retryWrites=true";
-const clientDioni = new MongoClient(uri, { useNewUrlParser: true });
+const clientDioni = new MongoClientDioni(uriDioni, { useNewUrlParser: true });
 
 var takingstats;
 
