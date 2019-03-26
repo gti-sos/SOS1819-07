@@ -264,14 +264,18 @@ app.put("/api/v1/subsidiesStats/", (req,res)=>{
 
 //---------------------------------------API ZOILO---------------------------------------------------------------------------
 
+
 const MongoClientZoilo = require("mongodb").MongoClient;
 const uriZoilo = "mongodb+srv://test:test@sos1819-qyoud.mongodb.net/sos1819?retryWrites=true";
 const clientZoilo = new MongoClientZoilo(uriZoilo, { useNewUrlParser: true });
 
+
 var earningsInterStats;
+
 
 clientZoilo.connect(err => {
   earningsInterStats = clientZoilo.db("sos1819").collection("earningsInterStats");
+
   console.log("Connected!");
 });
 
