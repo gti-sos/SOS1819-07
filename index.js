@@ -69,7 +69,13 @@ var port = process.env.PORT || 8080;
     subsidyPercentage: "31,55"
 }];
 
+//DOCUMENTACIÓN
 
+app.get("/api/v1/subsidiesStats/docs", (req, res) => {
+
+    res.status(301).redirect("https://documenter.getpostman.com/view/6918407/S17tRo3T");
+
+});
 
 //LOAD INITIAL DATA /subsidiesStats
 
@@ -93,13 +99,6 @@ app.get("/api/v1/subsidiesStats/loadInitialData", (req, res) => {
     
 });
 
-//DOCUMENTACIÓN
-
-app.get("/api/v1/subsidiesStats/docs", (req, res) => {
-
-    res.status(301).redirect("https://documenter.getpostman.com/view/6918407/S17tRo3T");
-
-});
 
 //GET /subsidiesStats
 
@@ -219,7 +218,7 @@ app.put("/api/v1/subsidiesStats/:film", (req,res)=>{
             
         }else if (req.body.hasOwnProperty("country") == false || req.body.hasOwnProperty("year") == false || req.body.hasOwnProperty("subsidyReceibed") == false
     || req.body.hasOwnProperty("subsidyBudgetProject") == false || req.body.hasOwnProperty("subsidyPercentage") == false 
-    || Object.keys(UpdatedFilm).length != 6  
+    || Object.keys(UpdatedFilm).length != 6 
     || req.body.film != film){
             
             res.sendStatus(400);
@@ -261,3 +260,214 @@ app.put("/api/v1/subsidiesStats/", (req,res)=>{
 
 
 //------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
+
+//---------------------------------------API ZOILO---------------------------------------------------------------------------
+
+
+const MongoClientZoilo = require("mongodb").MongoClient;
+const uriZoilo = "mongodb+srv://test:test@sos1819-qyoud.mongodb.net/sos1819?retryWrites=true";
+const clientZoilo = new MongoClientZoilo(uriZoilo, { useNewUrlParser: true });
+
+
+var earningsInterStats;
+
+
+clientZoilo.connect(err => {
+  earningsInterStats = clientZoilo.db("sos1819").collection("earningsInterStats");
+
+  console.log("Connected!");
+});
+
+var newEarningsInterStats = [{
+    
+    country: "Spain",
+    year: 2017,
+    title: "LaCordillera",
+    territory: 4,
+    earning: 3295221,
+    territoryTotal: 7
+}, {
+    country: "Spain",
+    year: 2017,
+    title: "Neruda",
+    territory: 33,
+    earning: 4154241,
+    territoryTotal: 34    
+}, {
+    country: "Spain",
+    year: 2017,
+    title: "Ozzy",
+    territory: 30,
+    earning: 9616202,
+    territoryTotal: 35
+    }, {
+    country: "Spain",
+    year: 2017,
+    title: "LaPromesa",
+    territory: 27,
+    earning: 10347672,
+    territoryTotal: 27    
+}, {
+    country: "Spain",
+    year: 2017,
+    title: "PerfectosDesconocidos",
+    territory: 1,
+    earning: 141.867,
+    territoryTotal: 1
+    }];
+
+// GET /earningsInterStats/loadInitialData
+
+app.get("/api/v1/earnings-inter-stats/loadInitialData", (req,res)=>{
+   
+     earningsInterStats.find({}).toArray((err,earningsInterStatsArray) => {
+         if(err){
+             console.log("Error: " + err);
+         }else{
+            if(earningsInterStatsArray.length==0) {
+                earningsInterStats.insertMany(newEarningsInterStats);
+                res.sendStatus(200);
+                console.log("Base de datos inicializada");
+            }else{
+                console.log("La base de datos tiene: " + earningsInterStatsArray.length + " recursos");
+        }
+         }
+         
+       
+     });
+});
+
+// GET /earningsInterStats/
+
+app.get("/api/v1/earnings-inter-stats", (req,res)=>{
+    
+    earningsInterStats.find({}).toArray((err,earningsInterStatsArray) => {
+        if(err)
+            console.log("Error: " + err);
+        
+        res.send(earningsInterStatsArray);
+    });
+});
+
+
+// POST /earningsInterStats/
+
+app.post("/api/v1/earnings-inter-stats", (req,res)=>{
+    
+    var newEarningInterStat = req.body;
+    var title = req.body.title;
+    
+    if (newEarningInterStat.length > 6 || !newEarningInterStat.country || !newEarningInterStat.year || !newEarningInterStat.title ||
+        !newEarningInterStat.territory || !newEarningInterStat.earning || !newEarningInterStat.territoryTotal) {
+
+        res.sendStatus(400);
+        return;
+    }
+    
+    earningsInterStats.find({title:title}).toArray((err,earningsInterStatsArray) => {
+        if(err)
+            console.log("Error: " + err);
+        if(earningsInterStatsArray.length != 0) {
+             res.sendStatus(409);
+        }else{
+            earningsInterStats.insertOne(newEarningInterStat);
+            res.sendStatus(201);
+           
+        }
+        
+    });
+    
+});
+
+// PUT /earningsInterStats/
+
+app.put("/api/v1/earnings-inter-stats", (req,res)=>{
+   
+    res.sendStatus(405);
+});
+
+
+
+// DELETE /earningsInterStats/
+
+app.delete("/api/v1/earnings-inter-stats", (req,res)=>{
+    
+    earningsInterStats.deleteMany();
+    res.sendStatus(200);
+});
+
+
+// GET /earningsInterStats/title
+
+app.get("/api/v1/earnings-inter-stats/:title", (req,res)=>{
+
+    var title = req.params.title;
+    
+    earningsInterStats.find({title:title}).toArray((err,earningsInterStatsArray) => {
+        if(err){
+            console.log(err);
+        }
+        if(earningsInterStatsArray.length==0) {
+            res.sendStatus(404);
+        }else{
+            res.send(earningsInterStatsArray);
+        }
+     });
+});
+
+// POST /earningsInterStats/title
+
+app.post("/api/v1/earnings-inter-stats/:title", (req,res)=>{
+    res.sendStatus(405);
+});
+
+
+// PUT /earningsInterStats/title
+
+app.put("/api/v1/earnings-inter-stats/:title", (req,res)=>{
+
+    var title = req.params.title;
+    var updatedFilm = req.body;
+    var newEarningInterStat = req.body;
+
+    
+    if (newEarningInterStat.length > 6 || !newEarningInterStat.country || !newEarningInterStat.year || !newEarningInterStat.title ||
+        !newEarningInterStat.territory || !newEarningInterStat.earning || !newEarningInterStat.territoryTotal || req.body.title != title) {
+
+        res.sendStatus(400);
+        return;
+    }
+
+     earningsInterStats.find({title:title}).toArray((err,earningsInterStatsArray) => {
+        if(err){
+            console.log(err);
+        }
+        if(earningsInterStatsArray.length==0) {
+            res.sendStatus(404);
+        }else{
+            earningsInterStats.updateOne({title:title}, {$set:updatedFilm});
+            res.sendStatus(200);
+        }
+     });
+});
+
+
+// DELETE /earningsInterStats/title
+
+app.delete("/api/v1/earnings-inter-stats/:title", (req,res)=>{
+
+    var title = req.params.title;
+    
+    earningsInterStats.find({title:title}).toArray((err,earningsInterStatsArray) => {
+        if(err){
+            console.log(err);
+        }
+        if(earningsInterStatsArray.length==0) {
+            res.sendStatus(404);
+        }else{
+            earningsInterStats.deleteOne(earningsInterStatsArray[0]);
+            res.sendStatus(200);
+        }
+     });
+});
