@@ -71,7 +71,7 @@ var port = process.env.PORT || 8080;
 
 //DOCUMENTACIÓN
 
-app.get("/api/v1/subsidiesStats/docs", (req, res) => {
+app.get("/api/v1/subsidies-stats/docs", (req, res) => {
 
     res.status(301).redirect("https://documenter.getpostman.com/view/6918407/S17tRo3T");
 
@@ -79,7 +79,7 @@ app.get("/api/v1/subsidiesStats/docs", (req, res) => {
 
 //LOAD INITIAL DATA /subsidiesStats
 
-app.get("/api/v1/subsidiesStats/loadInitialData", (req, res) => {
+app.get("/api/v1/subsidies-stats/loadInitialData", (req, res) => {
     
     subsidiesStats.find({}, {projection: {_id: 0} }).toArray((err, subsidiesStatsArray) =>{
         
@@ -102,7 +102,7 @@ app.get("/api/v1/subsidiesStats/loadInitialData", (req, res) => {
 
 //GET /subsidiesStats
 
-app.get("/api/v1/subsidiesStats", (req,res)=>{
+app.get("/api/v1/subsidies-stats", (req,res)=>{
     
     subsidiesStats.find({}).toArray((err,subsidiesStatsArray)=>{
         
@@ -117,7 +117,7 @@ app.get("/api/v1/subsidiesStats", (req,res)=>{
 
 // POST /subsidiesStats
 
-app.post("/api/v1/subsidiesStats", (req,res)=>{
+app.post("/api/v1/subsidies-stats", (req,res)=>{
     
     var newFilm = req.body;
     var film = req.body.film;
@@ -155,7 +155,7 @@ app.listen(port, () => {
 
 
 //c) GET /subsidiesStats/:film
-app.get("/api/v1/subsidiesStats/:film", (req,res)=>{
+app.get("/api/v1/subsidies-stats/:film", (req,res)=>{
 
     var film = req.params.film;
     
@@ -177,7 +177,7 @@ app.get("/api/v1/subsidiesStats/:film", (req,res)=>{
 });
 
 //d) DELETE /subsidiesStats/:film
-app.delete("/api/v1/subsidiesStats/:film", (req,res)=>{
+app.delete("/api/v1/subsidies-stats/:film", (req,res)=>{
 
     var film = req.params.film;
     
@@ -202,7 +202,7 @@ app.delete("/api/v1/subsidiesStats/:film", (req,res)=>{
 
 //PUT a /subsidiesStats/:film
 
-app.put("/api/v1/subsidiesStats/:film", (req,res)=>{
+app.put("/api/v1/subsidies-stats/:film", (req,res)=>{
 
     var film = req.params.film;
     var UpdatedFilm = req.body;
@@ -234,7 +234,7 @@ app.put("/api/v1/subsidiesStats/:film", (req,res)=>{
 
 //DELETE ALL
 
-app.delete("/api/v1/subsidiesStats", (req,res)=>{
+app.delete("/api/v1/subsidies-stats", (req,res)=>{
     
     subsidiesStats.remove({});
 
@@ -244,7 +244,7 @@ app.delete("/api/v1/subsidiesStats", (req,res)=>{
 
 //POST no permitido
 
-app.post("/api/v1/subsidiesStats/:film", (req,res)=>{
+app.post("/api/v1/subsidies-stats/:film", (req,res)=>{
     
     res.sendStatus(405);
     
@@ -252,7 +252,7 @@ app.post("/api/v1/subsidiesStats/:film", (req,res)=>{
 
 //PUT no permitido
 
-app.put("/api/v1/subsidiesStats/", (req,res)=>{
+app.put("/api/v1/subsidies-stats/", (req,res)=>{
 
     res.sendStatus(405);
     
