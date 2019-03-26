@@ -16,7 +16,7 @@ var port = process.env.PORT || 8080;
 //POSTMAN DIONI
 app.get("/api/v1/takingstats/docs", (req, res) => {
 
-    res.status(301).redirect("https://www.google.com");
+    res.status(301).redirect("https://documenter.getpostman.com/view/3895452/S17tS8NX");
 
 });
 
