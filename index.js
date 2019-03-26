@@ -644,6 +644,13 @@ var newEarningsInterStats = [{
     territoryTotal: 1
     }];
 
+// GET redirect postman
+
+app.get("/api/v1/earnings-inter-stats/docs", (req,res)=>{
+
+    res.status(301).redirect("https://documenter.getpostman.com/view/6889093/S17tRoM9");
+});
+
 // GET /earningsInterStats/loadInitialData
 
 app.get("/api/v1/earnings-inter-stats/loadInitialData", (req,res)=>{
