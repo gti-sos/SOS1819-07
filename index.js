@@ -8,6 +8,10 @@ var app = express();
 app.use("/",express.static(__dirname+"/public"));
 
 
+
+//API MANUEL
+
+
 const MongoClient = require("mongodb").MongoClient;
 const uri = "mongodb+srv://test:test@sos-25vks.mongodb.net/sos?retryWrites=true";
 const client = new MongoClient(uri, { useNewUrlParser: true });
@@ -27,7 +31,6 @@ app.use(bodyParser.json());
 
 var port = process.env.PORT || 8080;
 
-// API MANUELL
 
  var newSubsidiesStats = [{
     country: "Spain",
@@ -234,3 +237,6 @@ app.put("/api/v1/subsidiesStats/", (req,res)=>{
     res.sendStatus(405);
     
 });
+
+
+//------------------------------------------------------------------------------------------------------------------
