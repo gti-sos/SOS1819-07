@@ -297,10 +297,12 @@ app.get('/api/v1/takingstats/', function(req, res) {
 
 });
 
+//AUTENTICACION
+
 
 
 //AUTENTICACION DIONI CON TOKENS
-
+/*
 app.post('/api/v1/login/takingstats', (req, res) => {
     var username = req.body.user;
     var password = req.body.password;
@@ -336,7 +338,7 @@ app.get('/api/v1/secure/takingstats', (req, res) => {
         return;
     }
 });
-
+*/
 //-----------------------------------------------------------------------------------//
 //API MANUEL
 
