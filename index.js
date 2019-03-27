@@ -154,7 +154,7 @@ app.post("/api/v1/takingstats", (req, res) => {
 app.get("/api/v1/takingstats/:film", (req, res) => {
     var film = req.params.film;
     var ok = false;
-    takingstats.find({}).toArray((err, takingArray) => {
+    takingstats.find({},{projection:{_id:0}}).toArray((err, takingArray) => {
 
         if (err) {
             console.log(err);
@@ -284,7 +284,7 @@ app.get('/api/v1/takingstats/', function(req, res) {
         }
     }
     else {
-        takingstats.find({}).toArray((err, takingsArray) => {
+        takingstats.find({},{projection:{_id:0}}).toArray((err, takingsArray) => {
             if (err) {
                 console.log("Error: " + err);
             }
@@ -302,7 +302,7 @@ app.get('/api/v1/takingstats/', function(req, res) {
 
 
 //AUTENTICACION DIONI CON TOKENS
-/*
+
 app.post('/api/v1/login/takingstats', (req, res) => {
     var username = req.body.user;
     var password = req.body.password;
@@ -338,7 +338,7 @@ app.get('/api/v1/secure/takingstats', (req, res) => {
         return;
     }
 });
-*/
+
 //-----------------------------------------------------------------------------------//
 //API MANUEL
 

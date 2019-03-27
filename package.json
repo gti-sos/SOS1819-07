@@ -1,10 +1,17 @@
 {
-  "name": "sos1819-07",
+  "name": "sos1819",
   "version": "1.0.0",
-  "description": "",
+  "description": "- **Team**   - [Manuel Salas Ortiz](https://github.com/manolitor)   - [Dionisio Gálvez Camacho](https://github.com/diogalcam)   - [Zoilo Gómez Gordón](https://github.com/zoilo95) - **Project description**: Analyze the relationship between the subsidies received and the national collection and international collection of some spanish films. - **Repository**: [gti-sos/SOS1819-07](https://github.com/gti-sos/SOS1819-07) - **URL**: https://sos1819-07.herokuapp.com/ -  **APIs**:     - [https://sos1819-07.herokuapp.com/api/v1/subsidies-stats/docs](https://sos1819-07.herokuapp.com/api/v1/subsidies-stats/docs) (developed by [Manuel Salas Ortiz](https://github.com/manolitor))     - [https://sos1819-07.herokuapp.com/api/v1/takingstats/docs](https://sos1819-07.herokuapp.com/api/v1/takingstats/docs) (developed by [Dionisio Gálvez Camacho](https://github.com/diogalcam))     - [https://sos1819-07.herokuapp.com/api/v1/earnings-inter-stats/docs](https://sos1819-07.herokuapp.com/api/v1/earnings-inter-stats/docs) (developed by [Zoilo Gómez Gordón](https://github.com/zoilo95))",
   "main": "index.js",
+  "dependencies": {
+    "body-parse": "^0.1.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.2.2"
+  },
+  "devDependencies": {},
   "scripts": {
-    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -16,11 +23,5 @@
   "bugs": {
     "url": "https://github.com/gti-sos/SOS1819-07/issues"
   },
-  "homepage": "https://github.com/gti-sos/SOS1819-07#readme",
-  "dependencies": {
-    "body-parse": "^0.1.0",
-    "body-parser": "^1.18.3",
-    "express": "^4.16.4",
-    "mongodb": "^3.2.2"
-  }
+  "homepage": "https://github.com/gti-sos/SOS1819-07#readme"
 }
