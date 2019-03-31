@@ -79,6 +79,7 @@ clientDioni.connect(err => {
     takingstatsApi.register(app,BASE_PATH,takingstats);
 });
 
+
 //-----------------------------------------------------------------------------------//
 //API MANUEL
 
@@ -339,7 +340,6 @@ app.put("/api/v1/subsidiesStats/", (req, res) => {
 
 //------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------
-
 //---------------------------------------API ZOILO---------------------------------------------------------------------------
 
 
@@ -347,14 +347,18 @@ const MongoClientZoilo = require("mongodb").MongoClient;
 const uriZoilo = "mongodb+srv://test:test@sos1819-qyoud.mongodb.net/sos1819?retryWrites=true";
 const clientZoilo = new MongoClientZoilo(uriZoilo, { useNewUrlParser: true });
 
+var earningsInterStatsApi = require("./earnings-inter-stats-api");
 
 var earningsInterStats;
 
 
 clientZoilo.connect(err => {
+    if(err)
+        console.log("Error: " + err);
     earningsInterStats = clientZoilo.db("sos1819").collection("earningsInterStats");
-
     console.log("Connected!");
+    earningsInterStatsApi.register(app, earningsInterStats);
+
 });
 
 var newEarningsInterStats = [{
