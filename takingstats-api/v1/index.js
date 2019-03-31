@@ -1,4 +1,4 @@
-console.log("Registering contacts-API........");
+
 var path = "";
 
 function isString(x) {
