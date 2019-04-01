@@ -84,23 +84,6 @@ clientDioni.connect(err => {
 //API MANUEL
 
 
-const MongoClient = require("mongodb").MongoClient;
-const uri = "mongodb+srv://test:test@sos-25vks.mongodb.net/sos?retryWrites=true";
-const client = new MongoClient(uri, { useNewUrlParser: true });
-
-var subsidiesstatsApi = require("./subsidies-stats-api");
-
-var subsidiesStats;
-
-client.connect(err => {
-    subsidiesStats = client.db("sos").collection("subsidiesStats");
-    console.log("manuel database connected");
-    //client.close();
-    subsidiesstatsApi.register(app,BASE_PATH,subsidiesStats);
-});
-
-
-
 
 
 
