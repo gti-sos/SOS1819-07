@@ -27,15 +27,5 @@
   "bugs": {
     "url": "https://github.com/gti-sos/SOS1819-07/issues"
   },
-<<<<<<< HEAD
-  "homepage": "https://github.com/gti-sos/SOS1819-07#readme",
-  "dependencies": {
-    "body-parser": "^1.18.3",
-    "express": "^4.16.4",
-    "jsonwebtoken": "^8.5.1",
-    "mongodb": "^3.2.2"
-  }
-=======
   "homepage": "https://github.com/gti-sos/SOS1819-07#readme"
->>>>>>> 18075e1c38fe3bab3094ddbf36a5b860e73c4f8f
 }
