@@ -94,7 +94,7 @@ var subsidiesStats;
 
 client.connect(err => {
     subsidiesStats = client.db("sos").collection("subsidiesStats");
-    console.log("connected");
+    console.log("manuel database connected");
     //client.close();
     subsidiesstatsApi.register(app,BASE_PATH,subsidiesStats);
 });
