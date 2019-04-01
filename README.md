@@ -1,1 +1,12 @@
-# SOS1819-07
+
+- **Team**
+  - [Manuel Salas Ortiz](https://github.com/manolitor)
+  - [Dionisio Gálvez Camacho](https://github.com/diogalcam)
+  - [Zoilo Gómez Gordón](https://github.com/zoilo95)
+- **Project description**: Analyze the relationship between the subsidies received and the national collection and international collection of some spanish films.
+- **Repository**: [gti-sos/SOS1819-07](https://github.com/gti-sos/SOS1819-07)
+- **URL**: https://sos1819-07.herokuapp.com/
+-  **APIs**:
+    - [https://sos1819-07.herokuapp.com/api/v1/subsidies-stats/docs](https://sos1819-07.herokuapp.com/api/v1/subsidies-stats/docs) (developed by [Manuel Salas Ortiz](https://github.com/manolitor))
+    - [https://sos1819-07.herokuapp.com/api/v1/takingstats/docs](https://sos1819-07.herokuapp.com/api/v1/takingstats/docs) (developed by [Dionisio Gálvez Camacho](https://github.com/diogalcam))
+    - [https://sos1819-07.herokuapp.com/api/v1/earnings-inter-stats/docs](https://sos1819-07.herokuapp.com/api/v1/earnings-inter-stats/docs) (developed by [Zoilo Gómez Gordón](https://github.com/zoilo95))
