@@ -13,12 +13,13 @@ module.exports = function(app, BASE_PATH, takingstats) {
     res.status(301).redirect("https://documenter.getpostman.com/view/3895452/S17tS8NX");
 
 });
-
+    
     path = BASE_PATH + "/takingstats";
     app.get(path, function(req, res) {
         var rankAux = parseInt(req.query.rank);
         var spectatorAux = parseInt(req.query.spectator);
         var moneyAux = parseInt(req.query.money);
+        var yearAux = parseInt(req.query.year);
         var distributorAux = req.query.distributor;
         var countryAux = req.query.country;
 
@@ -60,6 +61,12 @@ module.exports = function(app, BASE_PATH, takingstats) {
                 return (takingArray.length == 1) ? res.send(takingArray[0]) : res.send(takingArray);
             });
         }
+         else if (Number.isInteger(yearAux)) {
+            takingstats.find({ year:  yearAux  }, { projection: { _id: 0 } }).sort({ rank: 1 }).toArray((err, takingArray) => {
+                return (takingArray.length == 1) ? res.send(takingArray[0]) : res.send(takingArray);
+            });
+        }
+         
         else if (isString(distributorAux)) {
             takingstats.find({ distributor: distributorAux }, { projection: { _id: 0 } }).sort({ rank: -1 }).toArray((err, takingArray) => {
                 return (takingArray.length == 1) ? res.send(takingArray[0]) : res.send(takingArray);

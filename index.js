@@ -17,47 +17,6 @@ app.use(bodyParser.json());
 
 const BASE_PATH = "/api";
 
-var takingStats = [{
-    country: "Spain",
-    year: 2017,
-    film: "TadeoJones2",
-    distributor: "PPI",
-    money: 17917439,
-    rank: 1,
-    spectator: 3227410
-}, {
-    country: "Spain",
-    year: 2017,
-    film: "PerfectosDesconocidos",
-    distributor: "UPI",
-    money: 14373417,
-    rank: 2,
-    spectator: 2256917
-}, {
-    country: "Spain",
-    year: 2017,
-    film: "LaLlamada",
-    distributor: "DEAPLANETA",
-    money: 2705357,
-    rank: 12,
-    spectator: 483238
-}, {
-    country: "Spain",
-    year: 2017,
-    film: "LaLibreria",
-    distributor: "ACONTRA",
-    money: 2366547,
-    rank: 13,
-    spectator: 373837
-}, {
-    country: "Spain",
-    year: 2017,
-    film: "Abracadabra",
-    distributor: "SONY",
-    money: 1692429,
-    rank: 14,
-    spectator: 286093
-}];
 
 
 //API DIONI----------------------------------------------------------------------------
@@ -136,3 +95,46 @@ clientZoilo.connect(err => {
     earningsInterStatsApi.register(app, earningsInterStats);
 
 });
+
+//-----------------
+var takingStats = [{
+    country: "Spain",
+    year: 2017,
+    film: "TadeoJones2",
+    distributor: "PPI",
+    money: 17917439,
+    rank: 1,
+    spectator: 3227410
+}, {
+    country: "Spain",
+    year: 2017,
+    film: "PerfectosDesconocidos",
+    distributor: "UPI",
+    money: 14373417,
+    rank: 2,
+    spectator: 2256917
+}, {
+    country: "Spain",
+    year: 2017,
+    film: "LaLlamada",
+    distributor: "DEAPLANETA",
+    money: 2705357,
+    rank: 12,
+    spectator: 483238
+}, {
+    country: "Spain",
+    year: 2017,
+    film: "LaLibreria",
+    distributor: "ACONTRA",
+    money: 2366547,
+    rank: 13,
+    spectator: 373837
+}, {
+    country: "Spain",
+    year: 2017,
+    film: "Abracadabra",
+    distributor: "SONY",
+    money: 1692429,
+    rank: 14,
+    spectator: 286093
+}];
