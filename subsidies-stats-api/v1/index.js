@@ -124,7 +124,7 @@ app.get(path, (req, res) => {
         if (err)
             console.log("Error: " + err);
 
-        res.send(subsidiesStatsArray);
+        res.send(subsidiesStatsArray[0]);
     });
     }else if(subsidyReceibed){
     
