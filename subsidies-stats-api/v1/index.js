@@ -74,10 +74,7 @@ app.get(path, (req, res) => {
 });
 
 
-//GET /subsidiesStats
-
-
-
+//GET /subsidiesStats (con búsqueda y paginación)
 
 path = BASE_PATH + "/subsidies-stats";
 app.get(path, (req, res) => {
@@ -92,7 +89,7 @@ app.get(path, (req, res) => {
     var from = req.query.from;
     
     
-    
+    //búsqueda
     if(subsidyPercentage){
     
     subsidiesStats.find({"subsidyPercentage":parseFloat(subsidyPercentage, 10)}, {fields : {_id : 0}}).toArray((err, subsidiesStatsArray) => {
@@ -147,6 +144,7 @@ app.get(path, (req, res) => {
 
         res.send(subsidiesStatsArray);
     });
+    //paginación
     }else if(limit){
         
         subsidiesStats.find({},{fields : {_id : 0}}).limit(parseInt(limit, 10)).skip(parseInt(req.query.offset, 10)).toArray((err, subsidiesStatsArray)=>{
@@ -155,7 +153,7 @@ app.get(path, (req, res) => {
                     
                     res.send(subsidiesStatsArray);
                 });
-        
+    //búsqueda de esto a aquello    
     }else if(from){
                 
                 subsidiesStats.find({ "subsidyPercentage" : { $gte : parseFloat(from, 10), $lte : parseFloat(req.query.to, 10) }},{fields : {_id : 0}}).toArray((err, subsidiesStatsArray)=>{
@@ -235,7 +233,7 @@ app.get(path, (req, res) => {
         }
         else {
 
-            res.send(subsidiesStatsArray);
+            res.send(subsidiesStatsArray[0]);
         }
     });
 
