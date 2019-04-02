@@ -14,9 +14,10 @@
   "devDependencies": {},
   "scripts": {
     "start": "node index.js",
-    "test": "newman run https://www.getpostman.com/collections/69c2a2d0bde5030d45e7; newman run https://www.getpostman.com/collections/42de04216c03f4cb50a9",
+    "test": "newman run https://www.getpostman.com/collections/69c2a2d0bde5030d45e7; newman run https://www.getpostman.com/collections/42de04216c03f4cb50a9; newman run https://www.getpostman.com/collections/5190cc52d9ac16f8ed3e",
     "test-takingstats": "newman run https://www.getpostman.com/collections/69c2a2d0bde5030d45e7",
-    "test-earningsinterstats": "newman run https://www.getpostman.com/collections/42de04216c03f4cb50a9"
+    "test-earningsinterstats": "newman run https://www.getpostman.com/collections/42de04216c03f4cb50a9",
+    "test-subsidies-stats": "newman run https://www.getpostman.com/collections/5190cc52d9ac16f8ed3e"
   },
   "repository": {
     "type": "git",
