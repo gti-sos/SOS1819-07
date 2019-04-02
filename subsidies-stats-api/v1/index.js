@@ -233,7 +233,7 @@ app.get(path, (req, res) => {
         }
         else {
 
-            res.send(subsidiesStatsArray);
+            res.send(subsidiesStatsArray[0]);
         }
     });
 
