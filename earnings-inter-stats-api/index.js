@@ -81,44 +81,65 @@ earningsInterStatsApi.register = function(app, earningsInterStats) {
             earningsInterStats.find({"country":country}).toArray((err, earningsInterStatsArray)=>{
                 if(err)
                 console.log("Error: " + err);
-                res.send(earningsInterStatsArray);
+                res.send(earningsInterStatsArray.map((c) => {
+                        delete c._id;
+                        return c;
+                }));
             });
             }else if(year){
                 earningsInterStats.find({"year":year}).toArray((err, earningsInterStatsArray)=>{
                     if(err)
                         console.log("Error: " + err);
-                 res.send(earningsInterStatsArray);
+                res.send(earningsInterStatsArray.map((c) => {
+                        delete c._id;
+                        return c;
+                }));
             });
             }else if(title){
                 earningsInterStats.find({"title":title}).toArray((err, earningsInterStatsArray)=>{
                     if(err)
                         console.log("Error: " + err);
-                    res.send(earningsInterStatsArray);
+                    res.send(earningsInterStatsArray.map((c) => {
+                        delete c._id;
+                        return c;
+                    }));
             });
             }else if(territory){
                 earningsInterStats.find({"territory":{$gte:territory}}).toArray((err, earningsInterStatsArray)=>{
                     if(err)
                         console.log("Error: " + err);
-                    res.send(earningsInterStatsArray);
+                    res.send(earningsInterStatsArray.map((c) => {
+                        delete c._id;
+                        return c;
+                    }));
             });
             }else if(earning){
                 earningsInterStats.find({"earning":{$gte:earning}}).toArray((err, earningsInterStatsArray)=>{
                     if(err)
                         console.log("Error: " + err);
-                    res.send(earningsInterStatsArray);
+                    res.send(earningsInterStatsArray.map((c) => {
+                        delete c._id;
+                        return c;
+                    }));
             });
             }else if(territoryTotal){
                 earningsInterStats.find({"territoryTotal":{$gte:territoryTotal}}).toArray((err, earningsInterStatsArray)=>{
                     if(err)
                         console.log("Error: " + err);
-                    res.send(earningsInterStatsArray);
+                    res.send(earningsInterStatsArray.map((c) => {
+                        delete c._id;
+                        return c;
+                    }));
             });
             }else if(limit){
                 earningsInterStats.find({}).limit(limit).skip(offset).toArray((err, earningsInterStatsArray)=>{
                     if(err)
                         console.log("Error: " + err);
-                    res.send(earningsInterStatsArray);
-            });
+                    res.send(earningsInterStatsArray.map((c) => {
+                        delete c._id;
+                        return c;
+                    }));
+                });
         }
         else{
             earningsInterStats.find({}).toArray((err,earningsInterStatsArray) => {
