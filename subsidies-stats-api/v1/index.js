@@ -5,39 +5,39 @@ module.exports = function(app, BASE_PATH, subsidiesStats) {
 
 var newSubsidiesStats = [{
     country: "Spain",
-    year: "2017",
+    year: 2017,
     film: "TadeoJones2",
-    subsidyReceibed: "1.260.000",
-    subsidyBudgetProject: "4.500.000",
-    subsidyPercentage: "28"
+    subsidyReceibed: 1260000,
+    subsidyBudgetProject: 4500000,
+    subsidyPercentage: 28
 }, {
     country: "Spain",
-    year: "2017",
+    year: 2017,
     film: "PerfectosDesconocidos",
-    subsidyReceibed: "800.000",
-    subsidyBudgetProject: "3.502.329",
-    subsidyPercentage: "22,84"
+    subsidyReceibed: 800000,
+    subsidyBudgetProject: 3502329,
+    subsidyPercentage: 22.84
 }, {
     country: "Spain",
-    year: "2017",
+    year: 2017,
     film: "LaLlamada",
-    subsidyReceibed: "723.109,46",
-    subsidyBudgetProject: "1.807.773,66",
-    subsidyPercentage: "40"
+    subsidyReceibed: 723109.46,
+    subsidyBudgetProject: 1807773.66,
+    subsidyPercentage: 40
 }, {
     country: "Spain",
-    year: "2017",
+    year: 2017,
     film: "Abracadabra",
-    subsidyReceibed: "1.400.000,00",
-    subsidyBudgetProject: "5.200.000,00",
-    subsidyPercentage: "26,92"
+    subsidyReceibed: 1400000,
+    subsidyBudgetProject: 5200000,
+    subsidyPercentage: 26.92
 }, {
     country: "Spain",
-    year: "2017",
+    year: 2017,
     film: "TocToc",
-    subsidyReceibed: "1.120.000,00",
-    subsidyBudgetProject: "3.550.000,00",
-    subsidyPercentage: "31,55"
+    subsidyReceibed: 1120000,
+    subsidyBudgetProject: 3550000,
+    subsidyPercentage: 31.55
 }];
 
 //DOCUMENTACIÓN
