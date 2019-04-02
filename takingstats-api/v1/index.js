@@ -48,34 +48,34 @@ module.exports = function(app, BASE_PATH, takingstats) {
         }
         else if (Number.isInteger(spectatorAux)) {
             takingstats.find({ spectator: { $gt: spectatorAux } }, { projection: { _id: 0 } }).sort({ rank: -1 }).toArray((err, takingArray) => {
-                return (takingArray.length == 1) ? res.send(takingArray[0]) : res.send(takingArray);
+                return res.send(takingArray);
             });
         }
         else if (Number.isInteger(moneyAux)) {
             takingstats.find({ money: { $gt: moneyAux } }, { projection: { _id: 0 } }).sort({ rank: -1 }).toArray((err, takingArray) => {
-                return (takingArray.length == 1) ? res.send(takingArray[0]) : res.send(takingArray);
+                return res.send(takingArray);
             });
         }
         else if (Number.isInteger(rankAux)) {
             takingstats.find({ rank: { $gt: rankAux } }, { projection: { _id: 0 } }).sort({ rank: -1 }).toArray((err, takingArray) => {
-                return (takingArray.length == 1) ? res.send(takingArray[0]) : res.send(takingArray);
+                return res.send(takingArray);
             });
         }
          else if (Number.isInteger(yearAux)) {
             takingstats.find({ year:  yearAux  }, { projection: { _id: 0 } }).sort({ rank: 1 }).toArray((err, takingArray) => {
-                return (takingArray.length == 1) ? res.send(takingArray[0]) : res.send(takingArray);
+                return res.send(takingArray);
             });
         }
          
         else if (isString(distributorAux)) {
             takingstats.find({ distributor: distributorAux }, { projection: { _id: 0 } }).sort({ rank: -1 }).toArray((err, takingArray) => {
-                return (takingArray.length == 1) ? res.send(takingArray[0]) : res.send(takingArray);
+                return res.send(takingArray);
             });
         }
 
         else if (isString(countryAux) && Number.isInteger(rankAux)) {
             takingstats.find({ country: countryAux, rank: { $gt: rankAux } }, { projection: { _id: 0 } }).sort({ rank: -1 }).toArray((err, takingArray) => {
-                return (takingArray.length == 1) ? res.send(takingArray[0]) : res.send(takingArray);
+                return res.send(takingArray);
             });
 
         }
