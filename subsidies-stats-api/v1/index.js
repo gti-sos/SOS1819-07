@@ -5,39 +5,39 @@ module.exports = function(app, BASE_PATH, subsidiesStats) {
 
 var newSubsidiesStats = [{
     country: "Spain",
-    year: "2017",
+    year: 2017,
     film: "TadeoJones2",
-    subsidyReceibed: "1.260.000",
-    subsidyBudgetProject: "4.500.000",
-    subsidyPercentage: "28"
+    subsidyReceibed: 1260000,
+    subsidyBudgetProject: 4500000,
+    subsidyPercentage: 28
 }, {
     country: "Spain",
-    year: "2017",
+    year: 2017,
     film: "PerfectosDesconocidos",
-    subsidyReceibed: "800.000",
-    subsidyBudgetProject: "3.502.329",
-    subsidyPercentage: "22,84"
+    subsidyReceibed: 800000,
+    subsidyBudgetProject: 3502329,
+    subsidyPercentage: 22.84
 }, {
     country: "Spain",
-    year: "2017",
+    year: 2017,
     film: "LaLlamada",
-    subsidyReceibed: "723.109,46",
-    subsidyBudgetProject: "1.807.773,66",
-    subsidyPercentage: "40"
+    subsidyReceibed: 723109.46,
+    subsidyBudgetProject: 1807773.66,
+    subsidyPercentage: 40
 }, {
     country: "Spain",
-    year: "2017",
+    year: 2017,
     film: "Abracadabra",
-    subsidyReceibed: "1.400.000,00",
-    subsidyBudgetProject: "5.200.000,00",
-    subsidyPercentage: "26,92"
+    subsidyReceibed: 1400000,
+    subsidyBudgetProject: 5200000,
+    subsidyPercentage: 26.92
 }, {
     country: "Spain",
-    year: "2017",
+    year: 2017,
     film: "TocToc",
-    subsidyReceibed: "1.120.000,00",
-    subsidyBudgetProject: "3.550.000,00",
-    subsidyPercentage: "31,55"
+    subsidyReceibed: 1120000,
+    subsidyBudgetProject: 3550000,
+    subsidyPercentage: 31.55
 }];
 
 //DOCUMENTACIÓN
@@ -76,17 +76,107 @@ app.get(path, (req, res) => {
 
 //GET /subsidiesStats
 
+
+
+
 path = BASE_PATH + "/subsidies-stats";
 app.get(path, (req, res) => {
-
-    subsidiesStats.find({}).toArray((err, subsidiesStatsArray) => {
-
+    
+    var country = req.query.country;
+    var year = req.query.year;
+    var film = req.query.film;
+    var subsidyReceibed = req.query.subsidyReceibed;
+    var subsidyBudgetProject = req.query.subsidyBudgetProject;
+    var subsidyPercentage = req.query.subsidyPercentage;
+    var limit = req.query.limit;
+    var from = req.query.from;
+    
+    
+    
+    if(subsidyPercentage){
+    
+    subsidiesStats.find({"subsidyPercentage":parseFloat(subsidyPercentage, 10)}, {fields : {_id : 0}}).toArray((err, subsidiesStatsArray) => {
+    
         if (err)
             console.log("Error: " + err);
 
         res.send(subsidiesStatsArray);
     });
+    }else if(country){
+    
+    subsidiesStats.find({"country":country}, {fields : {_id : 0}}).toArray((err, subsidiesStatsArray) => {
+    
+        if (err)
+            console.log("Error: " + err);
 
+        res.send(subsidiesStatsArray);
+    });
+    }else if(year){
+    
+    subsidiesStats.find({"year":parseInt(year, 10)}, {fields : {_id : 0}}).toArray((err, subsidiesStatsArray) => {
+    
+        if (err)
+            console.log("Error: " + err);
+
+        res.send(subsidiesStatsArray);
+    });
+    }else if(film){
+    
+    subsidiesStats.find({"film":film}, {fields : {_id : 0}}).toArray((err, subsidiesStatsArray) => {
+    
+        if (err)
+            console.log("Error: " + err);
+
+        res.send(subsidiesStatsArray);
+    });
+    }else if(subsidyReceibed){
+    
+    subsidiesStats.find({"subsidyReceibed":parseFloat(subsidyReceibed, 10)}, {fields : {_id : 0}}).toArray((err, subsidiesStatsArray) => {
+    
+        if (err)
+            console.log("Error: " + err);
+
+        res.send(subsidiesStatsArray);
+    });
+    }else if(subsidyBudgetProject){
+    
+    subsidiesStats.find({"subsidyBudgetProject":parseFloat(subsidyBudgetProject, 10)}, {fields : {_id : 0}}).toArray((err, subsidiesStatsArray) => {
+    
+        if (err)
+            console.log("Error: " + err);
+
+        res.send(subsidiesStatsArray);
+    });
+    }else if(limit){
+        
+        subsidiesStats.find({},{fields : {_id : 0}}).limit(parseInt(limit, 10)).skip(parseInt(req.query.offset, 10)).toArray((err, subsidiesStatsArray)=>{
+                    if(err)
+                        console.log("Error: "+err);
+                    
+                    res.send(subsidiesStatsArray);
+                });
+        
+    }else if(from){
+                
+                subsidiesStats.find({ "subsidyPercentage" : { $gte : parseFloat(from, 10), $lte : parseFloat(req.query.to, 10) }},{fields : {_id : 0}}).toArray((err, subsidiesStatsArray)=>{
+                    if(err)
+                        console.log("Error: "+err);
+                        
+                    res.send(subsidiesStatsArray);
+                 });    
+            
+           
+            }else{
+                
+                subsidiesStats.find({}, {fields : {_id : 0}}).toArray((err, subsidiesStatsArray) => {
+    
+        if (err)
+            console.log("Error: " + err);
+
+        res.send(subsidiesStatsArray);
+    });
+                
+            }
 });
 
 
@@ -134,7 +224,7 @@ app.get(path, (req, res) => {
 
     var film = req.params.film;
 
-    subsidiesStats.find({ film: film }).toArray((err, subsidiesStatsArray) => {
+    subsidiesStats.find({ film: film }, {fields : {_id : 0}}).toArray((err, subsidiesStatsArray) => {
 
         if (err)
             console.log("Error: " + err);
