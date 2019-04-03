@@ -41,39 +41,68 @@ module.exports = function(app, BASE_PATH, takingstats) {
         }
        else if (Number.isInteger(spectatorAux)) {
             takingstats.find({ spectator:  spectatorAux  }, { projection: { _id: 0 } }).sort({ rank: -1 }).toArray((err, takingArray) => {
-                return res.send(takingArray[0]);
+                if(takingArray.length==1){
+                   return res.send(takingArray[0]); 
+                }else{
+                    return res.sendStatus(404);
+                }
+                
             });
         }
         else if (Number.isInteger(moneyAux)) {
             takingstats.find({ money:  moneyAux  }, { projection: { _id: 0 } }).sort({ rank: -1 }).toArray((err, takingArray) => {
-                return res.send(takingArray[0]);
+                if(takingArray.length==1){
+                   return res.send(takingArray[0]); 
+                }else{
+                    return res.sendStatus(404);
+                }
             });
         }
         else if (Number.isInteger(rankAux)) {
             takingstats.find({ rank:rankAux  }, { projection: { _id: 0 } }).sort({ rank: -1 }).toArray((err, takingArray) => {
-                return res.send(takingArray[0]);
+                if(takingArray.length==1){
+                   return res.send(takingArray[0]); 
+                }else{
+                    return res.sendStatus(404);
+                }
             });
         }
          else if (Number.isInteger(yearAux)) {
             takingstats.find({ year:  yearAux  }, { projection: { _id: 0 } }).sort({ rank: 1 }).toArray((err, takingArray) => {
-                return res.send(takingArray);
+                if(takingArray.length>=1){
+                   return res.send(takingArray); 
+                }else{
+                    return res.sendStatus(404);
+                }
             });
         }
          
         else if (isString(distributorAux)) {
             takingstats.find({ distributor: distributorAux }, { projection: { _id: 0 } }).sort({ rank: -1 }).toArray((err, takingArray) => {
-                return res.send(takingArray);
+                if(takingArray.length>=1){
+                   return res.send(takingArray); 
+                }else{
+                    return res.sendStatus(404);
+                }
             });
         } 
         else if (isString(filmAux)) {
             takingstats.find({ film: filmAux }, { projection: { _id: 0 } }).sort({ rank: -1 }).toArray((err, takingArray) => {
-                return res.send(takingArray[0]);
+                if(takingArray.length==1){
+                   return res.send(takingArray[0]); 
+                }else{
+                    return res.sendStatus(404);
+                }
             });
         }
         
         else if (isString(countryAux) && Number.isInteger(rankAux)) {
             takingstats.find({ country: countryAux, rank: rankAux  }, { projection: { _id: 0 } }).sort({ rank: -1 }).toArray((err, takingArray) => {
-                return res.send(takingArray[0]);
+                if(takingArray.length==1){
+                   return res.send(takingArray[0]); 
+                }else{
+                    return res.sendStatus(404);
+                }
             });
 
         }
