@@ -22,7 +22,7 @@ module.exports = function(app, BASE_PATH, takingstats) {
         var yearAux = parseInt(req.query.year);
         var distributorAux = req.query.distributor;
         var countryAux = req.query.country;
-
+        var filmAux = req.query.film;
         //variables auxiliares para paginación
         var limitAux = parseInt(req.query.limit);
         var offSetAux = parseInt(req.query.offset);
@@ -71,8 +71,13 @@ module.exports = function(app, BASE_PATH, takingstats) {
             takingstats.find({ distributor: distributorAux }, { projection: { _id: 0 } }).sort({ rank: -1 }).toArray((err, takingArray) => {
                 return res.send(takingArray);
             });
+        } 
+        else if (isString(filmAux)) {
+            takingstats.find({ film: filmAux }, { projection: { _id: 0 } }).sort({ rank: -1 }).toArray((err, takingArray) => {
+                return res.send(takingArray);
+            });
         }
-
+        
         else if (isString(countryAux) && Number.isInteger(rankAux)) {
             takingstats.find({ country: countryAux, rank: { $gt: rankAux } }, { projection: { _id: 0 } }).sort({ rank: -1 }).toArray((err, takingArray) => {
                 return res.send(takingArray);
