@@ -58,7 +58,7 @@ module.exports = function(app, BASE_PATH, takingstats) {
         }
         else if (Number.isInteger(rankAux)) {
             takingstats.find({ rank:rankAux  }, { projection: { _id: 0 } }).sort({ rank: -1 }).toArray((err, takingArray) => {
-                return res.send(takingArray);
+                return res.send(takingArray[0]);
             });
         }
          else if (Number.isInteger(yearAux)) {
