@@ -39,14 +39,7 @@ module.exports = function(app, BASE_PATH, takingstats) {
 
             });
         }
-        else if (Number.isInteger(rankAux) && Number.isInteger(spectatorAux)) {
-            //búsqueda
-            takingstats.find({ rank: rankAux , spectator:spectatorAux  }, { projection: { _id: 0 } }).sort({ film: 1 }).toArray((err, takingArray) => {
-
-                res.send(takingArray);
-            });
-        }
-        else if (Number.isInteger(spectatorAux)) {
+       else if (Number.isInteger(spectatorAux)) {
             takingstats.find({ spectator:  spectatorAux  }, { projection: { _id: 0 } }).sort({ rank: -1 }).toArray((err, takingArray) => {
                 return res.send(takingArray[0]);
             });
