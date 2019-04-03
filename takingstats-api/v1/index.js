@@ -41,23 +41,23 @@ module.exports = function(app, BASE_PATH, takingstats) {
         }
         else if (Number.isInteger(rankAux) && Number.isInteger(spectatorAux)) {
             //búsqueda
-            takingstats.find({ rank: { $ne: rankAux }, spectator: { $lt: spectatorAux } }, { projection: { _id: 0 } }).sort({ film: 1 }).toArray((err, takingArray) => {
+            takingstats.find({ rank: rankAux , spectator:spectatorAux  }, { projection: { _id: 0 } }).sort({ film: 1 }).toArray((err, takingArray) => {
 
                 res.send(takingArray);
             });
         }
         else if (Number.isInteger(spectatorAux)) {
-            takingstats.find({ spectator: { $gt: spectatorAux } }, { projection: { _id: 0 } }).sort({ rank: -1 }).toArray((err, takingArray) => {
+            takingstats.find({ spectator:  spectatorAux  }, { projection: { _id: 0 } }).sort({ rank: -1 }).toArray((err, takingArray) => {
                 return res.send(takingArray);
             });
         }
         else if (Number.isInteger(moneyAux)) {
-            takingstats.find({ money: { $gt: moneyAux } }, { projection: { _id: 0 } }).sort({ rank: -1 }).toArray((err, takingArray) => {
+            takingstats.find({ money:  moneyAux  }, { projection: { _id: 0 } }).sort({ rank: -1 }).toArray((err, takingArray) => {
                 return res.send(takingArray);
             });
         }
         else if (Number.isInteger(rankAux)) {
-            takingstats.find({ rank: { $gt: rankAux } }, { projection: { _id: 0 } }).sort({ rank: -1 }).toArray((err, takingArray) => {
+            takingstats.find({ rank:rankAux  }, { projection: { _id: 0 } }).sort({ rank: -1 }).toArray((err, takingArray) => {
                  if(takingstats.length==1){
                      res.send(takingArray[0]);
                  }else{
@@ -83,7 +83,7 @@ module.exports = function(app, BASE_PATH, takingstats) {
         }
         
         else if (isString(countryAux) && Number.isInteger(rankAux)) {
-            takingstats.find({ country: countryAux, rank: { $gt: rankAux } }, { projection: { _id: 0 } }).sort({ rank: -1 }).toArray((err, takingArray) => {
+            takingstats.find({ country: countryAux, rank: rankAux  }, { projection: { _id: 0 } }).sort({ rank: -1 }).toArray((err, takingArray) => {
                 return res.send(takingArray);
             });
 
