@@ -48,12 +48,12 @@ module.exports = function(app, BASE_PATH, takingstats) {
         }
         else if (Number.isInteger(spectatorAux)) {
             takingstats.find({ spectator:  spectatorAux  }, { projection: { _id: 0 } }).sort({ rank: -1 }).toArray((err, takingArray) => {
-                return res.send(takingArray);
+                return res.send(takingArray[0]);
             });
         }
         else if (Number.isInteger(moneyAux)) {
             takingstats.find({ money:  moneyAux  }, { projection: { _id: 0 } }).sort({ rank: -1 }).toArray((err, takingArray) => {
-                return res.send(takingArray);
+                return res.send(takingArray[0]);
             });
         }
         else if (Number.isInteger(rankAux)) {
@@ -74,13 +74,13 @@ module.exports = function(app, BASE_PATH, takingstats) {
         } 
         else if (isString(filmAux)) {
             takingstats.find({ film: filmAux }, { projection: { _id: 0 } }).sort({ rank: -1 }).toArray((err, takingArray) => {
-                return res.send(takingArray);
+                return res.send(takingArray[0]);
             });
         }
         
         else if (isString(countryAux) && Number.isInteger(rankAux)) {
             takingstats.find({ country: countryAux, rank: rankAux  }, { projection: { _id: 0 } }).sort({ rank: -1 }).toArray((err, takingArray) => {
-                return res.send(takingArray);
+                return res.send(takingArray[0]);
             });
 
         }
