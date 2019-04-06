@@ -100,9 +100,10 @@ earningsInterStatsApi.register = function(app, earningsInterStats) {
                 earningsInterStats.find({"title":title}).toArray((err, earningsInterStatsArray)=>{
                     if(err)
                         console.log("Error: " + err);
-                    var film = earningsInterStatsArray[0];
-                    delete film._id;
-                    res.send(film);
+                    res.send(earningsInterStatsArray.map((c) => {
+                        delete c._id;
+                        return c;
+                    }));
             });
             }else if(territory){
                 earningsInterStats.find({"territory":{$gte:territory}}).toArray((err, earningsInterStatsArray)=>{
