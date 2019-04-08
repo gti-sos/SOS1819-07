@@ -5,6 +5,15 @@ app.controller("MainCtrl", ["$scope", "$http", function ($scope,$http){
                 console.log("Modular MainCtrl initialized");
                 $scope.url = "https://sos1819-07.herokuapp.com/api/v1/earnings-inter-stats/";
 
+                $scope.loadInitialData = function (){
+                        $http.get($scope.url + "loadInitialData").then(function (response){
+                            $scope.data = JSON.stringify(response.data,null,2);
+                            $scope.statusInfo = JSON.stringify(response.status, null, 2);
+                        }).catch(function (response) {
+			            	$scope.statusInfo = JSON.stringify(response.status, null, 2);
+			            });
+                };
+                
                 $scope.get = function(){
                     $http.get($scope.url).then(function(response){
                         $scope.status = response.status;
