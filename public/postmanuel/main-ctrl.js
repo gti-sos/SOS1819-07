@@ -38,13 +38,11 @@ app.controller("MainCtrl", ["$scope", "$http", function ($scope, $http){
                         try{
                         $http.get($scope.url + "loadInitialData").then(function (response){
                         
-                        $scope.statusInfo = JSON.stringify(response.status, null, 2);
-                        $scope.data = JSON.stringify(response.data, null, 2);
+                        $scope.statusInfo = JSON.stringify(response.status, null, 2) + JSON.stringify(response.data, null, 2);
                         
                     }).catch(function (response) {
                         
-			        	$scope.statusInfo = JSON.stringify(response.status, null, 2);
-			        	$scope.data = JSON.stringify(response.data, null, 2);
+			        	$scope.statusInfo = JSON.stringify(response.status, null, 2) + JSON.stringify(response.data, null, 2);
 			        });
                         }catch(e){
                         
@@ -57,7 +55,8 @@ app.controller("MainCtrl", ["$scope", "$http", function ($scope, $http){
                         
                         if($scope.name == ''){
                             
-                            
+                            $scope.data = "the field 'Film' is empty!!!!!!!!";
+                            $scope.statusInfo = '';
                             
                         }else{
                         
@@ -68,8 +67,8 @@ app.controller("MainCtrl", ["$scope", "$http", function ($scope, $http){
                         
                     }).catch(function (response) {
                         
-			        	$scope.statusInfo = JSON.stringify(response.status, null, 2);
-			        	$scope.data = JSON.stringify(response.data, null, 2);
+                        $scope.data = '';
+			        	$scope.statusInfo = JSON.stringify(response.status, null, 2) + JSON.stringify(response.data, null, 2);
 			        });
                         }
                     };
@@ -79,13 +78,11 @@ app.controller("MainCtrl", ["$scope", "$http", function ($scope, $http){
                         
                         $http.delete($scope.url).then(function (response){
                         
-                        $scope.data = JSON.stringify(response.data, null, 2);
-                        $scope.statusInfo = JSON.stringify(response.status, null, 2);
+                        $scope.statusInfo = JSON.stringify(response.status, null, 2) + JSON.stringify(response.data, null, 2);
                         
                     }).catch(function (response) {
                         
-			        	$scope.statusInfo = JSON.stringify(response.status, null, 2);
-			        	$scope.data = JSON.stringify(response.data, null, 2);
+			        	$scope.statusInfo = JSON.stringify(response.status, null, 2) + JSON.stringify(response.data, null, 2);
 			        });
                         
                     };
@@ -95,19 +92,20 @@ app.controller("MainCtrl", ["$scope", "$http", function ($scope, $http){
                         
                         if($scope.name == ''){
                             
-                            
+                            $scope.data = "the field 'Film' is empty!!!!!!!!";
+                            $scope.statusInfo = '';
                             
                         }else{
                         
                         $http.delete($scope.url + $scope.name).then(function (response){
                         
-                        $scope.data = JSON.stringify(response.data, null, 2);
-                        $scope.statusInfo = JSON.stringify(response.status, null, 2);
+                        $scope.statusInfo = JSON.stringify(response.status, null, 2) + JSON.stringify(response.data, null, 2);
                     
                             
                         }).catch(function (response) {
-                        $scope.data = JSON.stringify(response.data, null, 2);
-			        	$scope.statusInfo = JSON.stringify(response.status, null, 2);
+                            
+                            $scope.data = '';
+                        $scope.statusInfo = JSON.stringify(response.status, null, 2) + JSON.stringify(response.data, null, 2);
 			        });
                         }   
                     };
@@ -121,18 +119,19 @@ app.controller("MainCtrl", ["$scope", "$http", function ($scope, $http){
                         
                         $http.post($scope.url + $scope.name, data).then(function (response){
                         
-                        $scope.data = JSON.stringify(response.data, null, 2);
-                        $scope.statusInfo = JSON.stringify(response.status, null, 2);
+                        //$scope.data = 
+                        $scope.statusInfo = JSON.stringify(response.status, null, 2) + JSON.stringify(response.data, null, 2);
                         
                     }).catch(function (response) {
                         
-			        	$scope.statusInfo = JSON.stringify(response.status, null, 2);
-			        	$scope.statusInfo = JSON.stringify(response.status, null, 2);
+			        //	$scope.statusInfo = JSON.stringify(response.status, null, 2);
+			        	$scope.statusInfo = JSON.stringify(response.status, null, 2) + JSON.stringify(response.data, null, 2);
 			        });
                         
                        }catch(e){
                         
-                        alert(e);
+                        $scope.statusInfo = '';
+                        $scope.data = "there is nothing here to post...";
                     }
                         
                     };
@@ -147,18 +146,17 @@ app.controller("MainCtrl", ["$scope", "$http", function ($scope, $http){
                         
                         $http.put($scope.url + $scope.name, data).then(function (response){
                         
-                        $scope.data = JSON.stringify(response.data, null, 2);
-                        $scope.statusInfo = JSON.stringify(response.status, null, 2);
+                        $scope.statusInfo = JSON.stringify(response.status, null, 2) + JSON.stringify(response.data, null, 2);
                         
                     }).catch(function (response) {
                         
-			        	$scope.statusInfo = JSON.stringify(response.status, null, 2);
-			        	$scope.data = JSON.stringify(response.data, null, 2);
+			        	$scope.statusInfo = JSON.stringify(response.status, null, 2) + JSON.stringify(response.data, null, 2);
 			        	
 			        });
                        }catch(e){
                         
-                        alert(e);
+                        $scope.statusInfo = '';
+                        $scope.data = "there is nothing here to put...";
                     }
                     };
                     
