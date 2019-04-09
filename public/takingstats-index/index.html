@@ -24,15 +24,23 @@
   
 
     </div>
-    
+    <script type="text/javascript">
+        function clearIt() {
+         document.getElementById("texti").value = "";
+        }
+    </script>
      <div>
-        <textarea class="form-control" rows="10" ng-model="data"></textarea>
+        <textarea id="texti" class="form-control" rows="10" ng-model="data"></textarea>
+        <button class="btn btn-primary" onclick="clearIt()">Limpiar</button></br>
     </div>
+    
    <div>
+       </br>
        <input type="text" ng-model="estado"/>
    </div>
     <div>
-<p>Crear Película</p>
+        </br>
+<p class="h3">Añadir película</p>
 <label>Country:<input class="form-control text-center" ng-model="country"/></label></br>
 <label>Year:<input type="number" class="form-control text-center" ng-model="year"/></label></br>
 <label>Film:<input class="form-control text-center" ng-model="film"/></label></br>
