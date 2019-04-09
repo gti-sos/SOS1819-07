@@ -98,7 +98,7 @@ app.controller("MainCtrl", ["$scope", "$http", function ($scope, $http){
                         }else{
                         
                         $http.delete($scope.url + $scope.name).then(function (response){
-                        
+                        $scope.data = '';
                         $scope.statusInfo = JSON.stringify(response.status, null, 2) + JSON.stringify(response.data, null, 2);
                     
                             
