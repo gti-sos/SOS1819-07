@@ -1,0 +1,56 @@
+<html ng-app="postmanuel">
+    
+    <head>
+        
+        <title>Mini Postman</title>
+    
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="bower_components/angular/angular.min.js"></script>
+        <script src="postmanuel-app.js"></script>
+        <script src="main-ctrl.js"></script>
+    
+    </head>
+    
+    <body ng-controller = "MainCtrl">
+        
+        <h1>My minipostman</h1>
+        
+        <div>
+            
+            <label> Film: <input class="form-control text-center" ng-model="name"/></label>
+            <button class ="btn btn-primary" ng-click="get()">Get</button>
+            <button class ="btn btn-danger" ng-click="delete()">Delete</button>
+            <button class ="btn btn-primary" ng-click="getAll()">Get all</button>
+            <button class ="btn btn-primary" ng-click="lid()">Load initial data</button>
+            <button class ="btn btn-danger" ng-click="deleteAll()">Delete all</button>
+            
+            
+            
+        </div>
+        
+        <div>
+            
+            
+          <input class ="btn btn-primary" type="submit" id="submit" value="Post" ng-click="post()"/>
+            <input class ="btn btn-warning" type="submit" id="submit" value="Put" ng-click="put()"/>  
+        </div>
+        
+        <div class="align-left">
+            
+            <textarea class="form-control align-left" ng-model="statusInfo"></textarea>
+            
+        </div>
+        
+        <div class="align-right" id="dataId">
+            
+            <textarea class="form-control align-right" rows="20" ng-model="data"></textarea>
+            <button onclick="document.getElementById('dataId').value = ''">Clear input field</button>
+            
+        </div>
+        
+        
+        
+    </body>
+    
+</html>
