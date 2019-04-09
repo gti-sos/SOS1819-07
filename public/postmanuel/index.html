@@ -2,7 +2,7 @@
     
     <head>
         
-        <title>Mini Postman</title>
+        <title>Postmanuel</title>
     
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
         <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -11,20 +11,22 @@
         <script src="main-ctrl.js"></script>
     
     </head>
+    <style>
+   
     
-    <body ng-controller = "MainCtrl">
+    </style>
+    <body ng-controller = "MainCtrl" >
         
-        <h1>My minipostman</h1>
-        
+        <h1>Postmanuel</h1>
         <div>
             
             <label> Film: <input class="form-control text-center" ng-model="name"/></label>
-            <button class ="btn btn-primary" ng-click="get()">Get</button>
-            <button class ="btn btn-danger" ng-click="delete()">Delete</button>
-            <button class ="btn btn-primary" ng-click="getAll()">Get all</button>
-            <button class ="btn btn-primary" ng-click="lid()">Load initial data</button>
-            <button class ="btn btn-danger" ng-click="deleteAll()">Delete all</button>
-            
+            <button class ="btn btn-primary" ng-click="get(); reset() ">Get</button>
+            <button class ="btn btn-danger" ng-click="delete(); reset()">Delete</button>
+            <button class ="btn btn-primary" ng-click="getAll(); reset()">Get all</button>
+            <button class ="btn btn-primary" ng-click="lid(); reset()">Load initial data</button>
+            <button class ="btn btn-danger" ng-click="deleteAll(); reset()">Delete all</button>
+            <button id='btn' ng-click="reset()" class="btn btn-secondary">Reset</button>
             
             
         </div>
@@ -45,7 +47,8 @@
         <div class="align-right" id="dataId">
             
             <textarea class="form-control align-right" rows="20" ng-model="data"></textarea>
-            <button onclick="document.getElementById('dataId').value = ''">Clear input field</button>
+            
+            
             
         </div>
         

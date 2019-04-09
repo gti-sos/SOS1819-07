@@ -4,9 +4,21 @@ var app = angular.module("postmanuel");
 
 app.controller("MainCtrl", ["$scope", "$http", function ($scope, $http){
                 
+                
+                
+                
                     console.log("Modular MainCtrl initialized!");
                     
                     $scope.url = "https://sos1819-07.herokuapp.com/api/v1/subsidies-stats/";
+                    $scope.name ="LaLlamada";
+                    $scope.data = '';
+                    $scope.statusInfo = '';
+                
+                    
+                    $scope.reset = function() {
+                    $scope.data = '';
+                    $scope.statusInfo = '';
+                    };
                     
                     //get all
                     $scope.getAll = function (){
@@ -23,29 +35,43 @@ app.controller("MainCtrl", ["$scope", "$http", function ($scope, $http){
                     //loadInitialData
                     $scope.lid = function (){
                         
+                        try{
                         $http.get($scope.url + "loadInitialData").then(function (response){
                         
                         $scope.statusInfo = JSON.stringify(response.status, null, 2);
-                        
-                    }).catch(function (response) {
-                        
-			        	$scope.statusInfo = JSON.stringify(response.status, null, 2);
-			        });
-                        
-                    };
-                    
-                    //get 
-                    $scope.get = function (){
-                        
-                        $http.get($scope.url + $scope.name).then(function (response){
-                        
                         $scope.data = JSON.stringify(response.data, null, 2);
                         
                     }).catch(function (response) {
                         
 			        	$scope.statusInfo = JSON.stringify(response.status, null, 2);
+			        	$scope.data = JSON.stringify(response.data, null, 2);
 			        });
+                        }catch(e){
                         
+                        alert(e);
+                    }
+                    };
+                    
+                    //get 
+                    $scope.get = function (){
+                        
+                        if($scope.name == ''){
+                            
+                            
+                            
+                        }else{
+                        
+                        $http.get($scope.url + $scope.name).then(function (response){
+                        
+                        $scope.statusInfo = JSON.stringify(response.status, null, 2);
+                        $scope.data = JSON.stringify(response.data, null, 2);
+                        
+                    }).catch(function (response) {
+                        
+			        	$scope.statusInfo = JSON.stringify(response.status, null, 2);
+			        	$scope.data = JSON.stringify(response.data, null, 2);
+			        });
+                        }
                     };
                     
                     //delete all
@@ -53,12 +79,13 @@ app.controller("MainCtrl", ["$scope", "$http", function ($scope, $http){
                         
                         $http.delete($scope.url).then(function (response){
                         
-                        $scope.statusInfo = JSON.stringify(response.data, null, 2);
-                        
+                        $scope.data = JSON.stringify(response.data, null, 2);
+                        $scope.statusInfo = JSON.stringify(response.status, null, 2);
                         
                     }).catch(function (response) {
                         
 			        	$scope.statusInfo = JSON.stringify(response.status, null, 2);
+			        	$scope.data = JSON.stringify(response.data, null, 2);
 			        });
                         
                     };
@@ -66,15 +93,23 @@ app.controller("MainCtrl", ["$scope", "$http", function ($scope, $http){
                     //delete 
                     $scope.delete = function (){
                         
+                        if($scope.name == ''){
+                            
+                            
+                            
+                        }else{
+                        
                         $http.delete($scope.url + $scope.name).then(function (response){
                         
+                        $scope.data = JSON.stringify(response.data, null, 2);
                         $scope.statusInfo = JSON.stringify(response.status, null, 2);
-                        
-                    }).catch(function (response) {
-                        
+                    
+                            
+                        }).catch(function (response) {
+                        $scope.data = JSON.stringify(response.data, null, 2);
 			        	$scope.statusInfo = JSON.stringify(response.status, null, 2);
 			        });
-                        
+                        }   
                     };
                     
                     //post
@@ -87,9 +122,11 @@ app.controller("MainCtrl", ["$scope", "$http", function ($scope, $http){
                         $http.post($scope.url + $scope.name, data).then(function (response){
                         
                         $scope.data = JSON.stringify(response.data, null, 2);
+                        $scope.statusInfo = JSON.stringify(response.status, null, 2);
                         
                     }).catch(function (response) {
                         
+			        	$scope.statusInfo = JSON.stringify(response.status, null, 2);
 			        	$scope.statusInfo = JSON.stringify(response.status, null, 2);
 			        });
                         
@@ -104,19 +141,25 @@ app.controller("MainCtrl", ["$scope", "$http", function ($scope, $http){
                     //put
                     $scope.put = function (){
                         
-                        
+                       try{ 
                         var data = JSON.parse($scope.data);
                         
                         
                         $http.put($scope.url + $scope.name, data).then(function (response){
                         
                         $scope.data = JSON.stringify(response.data, null, 2);
+                        $scope.statusInfo = JSON.stringify(response.status, null, 2);
                         
                     }).catch(function (response) {
                         
 			        	$scope.statusInfo = JSON.stringify(response.status, null, 2);
+			        	$scope.data = JSON.stringify(response.data, null, 2);
+			        	
 			        });
+                       }catch(e){
                         
+                        alert(e);
+                    }
                     };
                     
                 
