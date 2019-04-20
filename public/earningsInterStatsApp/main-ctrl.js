@@ -34,7 +34,6 @@ app.controller("MainCtrl", ["$scope", "$http", function ($scope,$http){
                     });
                 };
                 
-                //put
                 $scope.put = function(){
                     $http.put($scope.url,$scope.data).then(function(response){
                         $scope.status = response.status;
