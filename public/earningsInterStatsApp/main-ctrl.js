@@ -33,7 +33,7 @@ app.controller("MainCtrl", ["$scope", "$http", function ($scope,$http){
                         $scope.data = "";
                     });
                 };
-                
+                //put
                 $scope.put = function(){
                     $http.put($scope.url,$scope.data).then(function(response){
                         $scope.status = response.status;
