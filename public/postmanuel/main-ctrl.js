@@ -114,6 +114,28 @@ app.controller("MainCtrl", ["$scope", "$http", function ($scope, $http){
                            
                        });
                          
+
+                    $scope.delete = function (){
+                        
+                        if($scope.name == ''){
+                            
+                            $scope.data = "the field 'Film' is empty!!!!!!!!";
+                            $scope.statusInfo = '';
+                            
+                        }else{
+                        
+                        $http.delete($scope.url + $scope.name).then(function (response){
+                        
+                        $scope.statusInfo = JSON.stringify(response.status, null, 2) + JSON.stringify(response.data, null, 2);
+                    
+                            
+                        }).catch(function (response) {
+                            
+                            $scope.data = '';
+                        $scope.statusInfo = JSON.stringify(response.status, null, 2) + JSON.stringify(response.data, null, 2);
+			        });
+                        }   
+
                     };
                     
                     
@@ -180,5 +202,5 @@ app.controller("MainCtrl", ["$scope", "$http", function ($scope, $http){
                     }
                     };
                     
-                
+                    };
             }] );
