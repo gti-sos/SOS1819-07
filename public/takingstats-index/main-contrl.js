@@ -88,7 +88,7 @@
                 $scope.estado = response.status;
           }).catch(function (response) { //recoje el error en caso de que haya
 			        $scope.estado = response.status;
-			        })
+			        });
       };
 
   }]);
