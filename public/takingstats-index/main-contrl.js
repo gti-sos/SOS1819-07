@@ -97,10 +97,9 @@
                 refresh();
           }).catch(function (response) { //recoje el error en caso de que haya
 			        $scope.estado = response.status;
-<<<<<<< HEAD
+
 			        refresh();
-=======
->>>>>>> eccc7067010d6239725cb10a9f1405f14b36cd06
+
 			        });
       };
       
