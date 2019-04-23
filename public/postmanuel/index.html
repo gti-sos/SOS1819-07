@@ -18,7 +18,16 @@
     <body ng-controller = "MainCtrl" >
         
         <h1>Postmanuel</h1>
-        
+        <div>
+        <buttom class="btn btn-primary" ng-click="loadAll()">Cargar datos</buttom>
+        <buttom class="btn btn-danger" ng-click="deleteAll()">Borrar datos</buttom>
+                <tr>
+                    
+                    <td><burrom class="btn btn-primary" ng-click="previous()">Página anterior</burrom></td>
+                    <td><burrom class="btn btn-primary" ng-click="next()">Página siguiente</burrom></td>
+                    
+                </tr>
+        </div>
         <table class="table">
             
             <thead>
@@ -38,6 +47,7 @@
                 
             </thead>
             <tbody>
+                
                 <tr ng-repeat="film in films">
                      
                     <td>{{ film.country }}</td>
@@ -50,11 +60,12 @@
                     
                 </tr>
                 
+                
                 <tr>
                     
                     <td>
                         
-                        <input class ="form-control" value="" ng-model="newFilm.country"/>
+                        <input class ="form-control" value="" text="Spain" ng-model="newFilm.country"/>
                         
                     </td>
                     <td>
@@ -87,34 +98,40 @@
                         <burrom class="btn btn-primary" ng-click="post()">Añadir</burrom>
                         
                     </td>
+                    <td>
+                        
+                        <burrom class="btn btn-primary" ng-click="put()">Modificar</burrom>
+                        
+                    </td>
                 
                 
                 </tr>
+               
                 <tr>
                     
                     <td>
                         
-                        <input class ="form-control" value="" ng-model="s.country"/>
+                        <input class ="form-control" value="" ng-model="country" disabled="disabled"/>
                         
                     </td>
                     <td>
                         
-                        <input class ="form-control" value="" ng-model="s.year"/>
+                        <input class ="form-control" value="" ng-model="year" disabled="disabled"/>
                         
                     </td>
                     <td>
                         
-                        <input class ="form-control" value="" ng-model="s.film"/>
+                        <input class ="form-control" value="" ng-model="film"/>
                         
                     </td>
                     <td>
                         
-                        <input class ="form-control" value="" ng-model="s.subsidyReceibed"/>
+                        <input class ="form-control" value="" ng-model="subsidyReceibed"/>
                         
                     </td>
                     <td>
                         
-                        <input class ="form-control" value="" ng-model="s.subsidyBudgetProject"/>
+                        <input class ="form-control" value="" ng-model="subsidyBudgetProject"/>
                         
                     </td>
                     <td>
@@ -124,13 +141,12 @@
                     </td>
                     <td>
                         
-                        <burrom class="btn btn-primary" ng-click="search1()">Buscar</burrom>
+                        <burrom class="btn btn-primary" ng-click="search()">Buscar</burrom>
                         
                     </td>
                 
                 
                 </tr>
-                
                 
             </tbody>
             
@@ -144,6 +160,7 @@
                     <th>Buscar por porcentaje</th>
                 </tr>
             </thead>
+            
             <tbody>
             
             <td>
@@ -160,36 +177,6 @@
         </table>          
         
         
-<<<<<<< HEAD
-        <div class="align-left" >
-            <label>Status info:</label>
-            <input readonly class="form-control align-left" ng-model="statusInfo" ></input>
-            
-        </div>
-        
-        <div class="align-right" id="dataId">
-            <label>Data info:</label>
-            <textarea class="form-control align-right" rows="10" ng-model="data"></textarea>
-            
-            
-            
-        </div>
-        <div class="btn-group align-right" role="group" aria-label="Basic example">
-            
-<<<<<<< HEAD
-            <textarea class="form-control align-right" rows="20" ng-model="data"></textarea>
-            
-            
-=======
->>>>>>> 1cc6243ee8d117aa26589cb13b1f79b00809b230
-            
-          <input class ="btn btn-primary" type="submit" id="submit" value="Post" ng-click="post()"/>
-            <input class ="btn btn-warning" type="submit" id="submit" value="Put" ng-click="put()"/>  
-        </div>
-       
-        <button id='btn' ng-click="reset()" class="btn btn-secondary" style="float:right">Reset</button>
-=======
->>>>>>> eccc7067010d6239725cb10a9f1405f14b36cd06
         
     </body>
     

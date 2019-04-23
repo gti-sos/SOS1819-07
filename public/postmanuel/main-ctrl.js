@@ -8,14 +8,14 @@ app.controller("MainCtrl", ["$scope", "$http", function ($scope, $http){
                 
                 
                     console.log("Modular MainCtrl initialized!");
-                    var API = "https://sos1819-07.herokuapp.com/api/v1/subsidies-stats";
-                    
+                    var API = "https://sos1819-07.herokuapp.com/api/v2/subsidies-stats";
+                    var offset = 0;
                     console.log("Requesting films to <"+API+">...");
                     refresh();
                     
                     function refresh(){
                        
-                    $http.get(API).then(function (response){
+                    $http.get(API+"?limit=10&offset="+offset).then(function (response){
                         
                         $scope.films = response.data;
                         console.log("Data received: "+ JSON.stringify(response.data, null, 2));
@@ -23,7 +23,7 @@ app.controller("MainCtrl", ["$scope", "$http", function ($scope, $http){
                     });
                     }
                     
-                    $scope.url = "https://sos1819-07.herokuapp.com/api/v1/subsidies-stats/";
+                    $scope.url = "https://sos1819-07.herokuapp.com/api/v2/subsidies-stats/";
                     $scope.name ="LaLlamada";
                     $scope.data = '';
                     $scope.statusInfo = '';
@@ -34,71 +34,33 @@ app.controller("MainCtrl", ["$scope", "$http", function ($scope, $http){
                     $scope.statusInfo = '';
                     };
                     
-                    //get all
-                    $scope.getAll = function (){
+                    
+                    $scope.next = function(){
                         
-                        $http.get($scope.url).then(function (response){
+                        if($scope.films.length == 10){
+                        offset += 10;
+                        }
+                        $http.get(API+"?limit=10&offset="+offset).then(function (response){
                         
-                        
-                        $scope.data = JSON.stringify(response.data, null, 2);
-                        $scope.statusInfo = JSON.stringify(response.status, null, 2);
+                        $scope.films = response.data;
+                        console.log("Data received: "+ JSON.stringify(response.data, null, 2));
                         
                     });
                         
                     };
                     
-                    //loadInitialData
-                    $scope.lid = function (){
+                    $scope.previous = function(){
                         
-                        try{
-                        $http.get($scope.url + "loadInitialData").then(function (response){
-                        
-                        $scope.statusInfo = JSON.stringify(response.status, null, 2) + JSON.stringify(response.data, null, 2);
-                        
-                    }).catch(function (response) {
-                        
-			        	$scope.statusInfo = JSON.stringify(response.status, null, 2) + JSON.stringify(response.data, null, 2);
-			        });
-                        }catch(e){
-                        
-                        alert(e);
-                    }
-                    };
-                    
-                    //get 
-                    $scope.get = function (){
-                        
-                        if($scope.name == ''){
-                            
-                            $scope.data = "the field 'Film' is empty!!!!!!!!";
-                            $scope.statusInfo = '';
-                            
-                        }else{
-                        
-                        $http.get($scope.url + $scope.name).then(function (response){
-                        
-                        $scope.statusInfo = JSON.stringify(response.status, null, 2);
-                        $scope.data = JSON.stringify(response.data, null, 2);
-                        
-                    }).catch(function (response) {
-                        
-                        $scope.data = '';
-			        	$scope.statusInfo = JSON.stringify(response.status, null, 2) + JSON.stringify(response.data, null, 2);
-			        });
+                        if(!(offset < 10)){
+                        offset -= 10;
                         }
-                    };
-                    
-                    //delete all
-                    $scope.deleteAll = function (){
                         
-                        $http.delete($scope.url).then(function (response){
+                        $http.get(API+"?limit=10&offset="+offset).then(function (response){
                         
-                        $scope.statusInfo = JSON.stringify(response.status, null, 2) + JSON.stringify(response.data, null, 2);
+                        $scope.films = response.data;
+                        console.log("Data received: "+ JSON.stringify(response.data, null, 2));
                         
-                    }).catch(function (response) {
-                        
-			        	$scope.statusInfo = JSON.stringify(response.status, null, 2) + JSON.stringify(response.data, null, 2);
-			        });
+                    });
                         
                     };
                     
@@ -111,33 +73,81 @@ app.controller("MainCtrl", ["$scope", "$http", function ($scope, $http){
                            
                            $scope.films = response.data;
                            refresh();
-                           
+                           alert("Película eliminada");
                        });
                          
-
-                    $scope.delete = function (){
+                    };
+                   
+                   //delete all
+                    $scope.deleteAll = function (){
                         
-                        if($scope.name == ''){
-                            
-                            $scope.data = "the field 'Film' is empty!!!!!!!!";
-                            $scope.statusInfo = '';
-                            
-                        }else{
-                        
-                        $http.delete($scope.url + $scope.name).then(function (response){
-                        
-                        $scope.statusInfo = JSON.stringify(response.status, null, 2) + JSON.stringify(response.data, null, 2);
-                    
-                            
-                        }).catch(function (response) {
-                            
-                            $scope.data = '';
-                        $scope.statusInfo = JSON.stringify(response.status, null, 2) + JSON.stringify(response.data, null, 2);
-			        });
-                        }   
-
+                       
+                       
+                       $http.delete(API).then(function(response){
+                           
+                           $scope.films = response.data;
+                           
+                           refresh();
+                           alert("Se han borrado todos los datos");
+                       });
+                         
                     };
                     
+                    //put
+                    $scope.put = function (){
+                        
+                       try{ 
+                        var newFilm = $scope.newFilm;
+                        
+                        $http.put(API + "/"+newFilm.film, newFilm).then(function (response){
+                            alert("Película modificada con exito");
+                        refresh();
+                        console.log(JSON.stringify(response.status, null, 2) + JSON.stringify(response.data, null, 2));
+                        
+                    }).catch(function (response) {
+                        
+                        if(response.status == 404){
+                            
+                            alert("La película que intenta modificar no existe");
+                            
+                        }
+                        
+                        if(response.status == 400){
+                            
+                            alert("Para modificar una película rellene todo los campos");
+                            
+                        }
+                        
+                        
+			        	console.log(JSON.stringify(response.status, null, 2) + JSON.stringify(response.data, null, 2));
+			        	
+			        });
+                       }catch(e){
+                        
+                        $scope.statusInfo = '';
+                        $scope.data = "there is nothing here to put...";
+                    }
+                    };
+                    
+                    //load all
+                    $scope.loadAll = function (){
+                        
+                        try{
+                        $http.get(API + "/loadInitialData").then(function (response){
+                        
+                        $scope.statusInfo = JSON.stringify(response.status, null, 2) + JSON.stringify(response.data, null, 2);
+                        refresh();
+                        alert("Se han cargado los datos iniciales");
+                        
+                    }).catch(function (response) {
+                        
+			        	window.confirm("Ya hay datos cargados");
+			        });
+                        }catch(e){
+                        
+                        window.alert("ERROR:"+ e);
+                    }
+                    };
                     
                     //search
                     $scope.search = function (){
@@ -163,56 +173,92 @@ app.controller("MainCtrl", ["$scope", "$http", function ($scope, $http){
                         
                     });
                     };
-                         
-                    $scope.search1 = function (){
+                    
+                    $scope.search = function (){
                         
+                        var search = "?";
+                        
+                        if($scope.film){
+                            
+                            search += "&film=" + $scope.film;
+                            $http.get(API+search).then(function (response){
+                        var filmArray = [response.data];
+                        
+                        $scope.films = filmArray;
+                        console.log("Data received: "+ JSON.stringify(response.data, null, 2));
+                        console.log(response.data);
+                        
+                    });
+                        }else{
+                        
+                        
+                       if($scope.subsidyPercentage){
+                           
+                           search += "&subsidyPercentage=" + $scope.subsidyPercentage;
+                           
+                       }
+                       if($scope.subsidyReceibed){
+                           
+                           search += "&subsidyReceibed=" + $scope.subsidyReceibed;
+                           
+                       }
+                       if($scope.country){
+                           
+                           search += "&country=" + $scope.country;
+                           
+                       }
+                       if($scope.year){
+                           
+                           search += "&year=" + $scope.year;
+                           
+                       }
                        
+                       if($scope.subsidyBudgetProject){
+                           
+                           search += "&subsidyBudgetProject=" + $scope.subsidyBudgetProject;
+                           
+                       }
                        
-                       $http.get(API+"?subsidyPercentage="+28).then(function (response){
+                       $http.get(API+search).then(function (response){
+                        
                         
                         $scope.films = response.data;
                         console.log("Data received: "+ JSON.stringify(response.data, null, 2));
+                        console.log(response.data);
                         
                     });
-                    };
+                    }};
                     
                     
                     //post
                     $scope.post = function (){
-                       
-                       var newFilm = $scope.newFilm;
-                       $http.post(API, newFilm).then(function(response){
-                           
-                           $scope.films = response.data;
-                           refresh();
-                           
-                       });
                         
-                    };
-                    
-                    
-                    //put
-                    $scope.put = function (){
+                        try{
+                            var newFilm = $scope.newFilm;
+                        $http.post(API, newFilm).then(function (response){
                         
-                       try{ 
-                        var data = JSON.parse($scope.data);
-                        
-                        
-                        $http.put($scope.url + $scope.name, data).then(function (response){
-                        
-                        $scope.statusInfo = JSON.stringify(response.status, null, 2) + JSON.stringify(response.data, null, 2);
+                        $scope.films = response.data;
+                        refresh();
+                        alert("Nueva película añadida con exito");
                         
                     }).catch(function (response) {
                         
-			        	$scope.statusInfo = JSON.stringify(response.status, null, 2) + JSON.stringify(response.data, null, 2);
-			        	
+                        if(response.status==400){
+			        	alert("revise que ha relleneado todos los campos correctamente");
+                        }
+                        if(response.status==409){
+                            
+                            alert("La pelicula que intenta añadir ya existe");
+                        }
 			        });
-                       }catch(e){
+                        }catch(e){
                         
-                        $scope.statusInfo = '';
-                        $scope.data = "there is nothing here to put...";
+                        window.alert("ERROR:"+ e);
                     }
                     };
                     
-                    };
+                    
+                    
+                    
+                  
             }] );
