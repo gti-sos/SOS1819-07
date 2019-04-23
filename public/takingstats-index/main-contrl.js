@@ -2,67 +2,71 @@
 
   app.controller("MainCtrl", ["$scope", "$http", function($scope, $http) {
       console.log("MainCtrl initicialized!");
-      $scope.url = "https://sos1819-07.herokuapp.com/api/v1/takingStats";
+      var API= "https://sos1819-07.herokuapp.com/api/v1/takingStats";
+      refresh();
+           
+        function refresh(){
+        $http.get(API)
+            .then(function(response) {
+                console.log("Data received " + JSON.stringify(response.data, null, 2));
+                $scope.takingstats = response.data;
+        });
+}
 
       //get
       
       $scope.send = function() {
-          $http.get($scope.url).then(function(response) {
-              $scope.data = JSON.stringify(response.data, null, 2);
-              $scope.estado=response.status;
-          }).catch(function (response) { //recoje el error en caso de que haya
+          $http
+                .get(API)
+                .then(function(response) {
+                    $scope.data = JSON.stringify(response.data, null, 2);
+                    alert("Ha obtenido todas las películas");
+                    $scope.estado=response.status;
+              refresh();
+          })
+                .catch(function (response) { //recoje el error en caso de que haya
+			       if(response.status==404){
+                    alert("Esta película no existe");
+                }
 			        $scope.estado = response.status;
-			        });;
+			        refresh();
+			        });
+			        
       };
-  
+      
 
       //post
-      $scope.country = null;
-      $scope.year = null;
-      $scope.film = null;
-      $scope.distributor = null;
-      $scope.money = null;
-      $scope.rank = null;
-      $scope.spectator = null;
-      //post textarea
-      $scope.postdata = function(country, year, film, distributor, money, rank, spectator) {
-          $http.post($scope.url, JSON.parse($scope.data)).then(function(response) {
-             $scope.estado = response.status;
-          }).catch(function (response) { //recoje el error en caso de que haya
-			        $scope.estado = response.status;
-			        });
-      };
+          $scope.addData = function() {
+            var newTaking = $scope.newTaking;
+            console.log("Adding contact: " + JSON.stringify(newTaking, null, 2));
+            $http.post(API, newTaking).then(function(response) {
+                
+                console.log("POST Response: " + response.status + response.statusText);
+                alert("Usted ha añadido una nueva película");
+                refresh();
+            }).catch(function(response){
+                if(response.status==409){
+                    alert("Esta película ya existe");
+                };
+                if(response.status==400){
+                    alert("Asegurese de poner bien los datos");
+                }
+                $scope.estado = response.status;
+                refresh();
+            });
+        };
+     
+         $scope.deleteFilm = function(film) {
+            console.log("Delete taking: " + film);
+        
+             $http.delete(API+"/"+film).then(function(response) {
+                console.log("DELETE Response: " + response.status + response.statusText);
+                alert("Usted ha borrado la película" + film);
+                refresh();
+            });
+        };
       
-      //post inputs
-      $scope.postdataform = function(country,year,film,distributor,money,rank,spectator){
-       var dato = {
-              country: country,
-              year: year,
-              film: film,
-              distributor: distributor,
-              money: money,
-              rank: rank,
-              spectator: spectator
-
-          };  
-          $http.post($scope.url, JSON.stringify(dato)).then(function(response) {
-            $scope.estado = response.status;
-          }).catch(function (response) { //recoje el error en caso de que haya
-			        $scope.estado = response.status;
-			        });
-      };
       
-      //put
-       $scope.putdataform = function(country, year, film, distributor, money, rank, spectator) {
-         
-          $http.put($scope.url, JSON.parse($scope.data)).then(function(response) {
-              $scope.estado = response.status;
-          }).catch(function (response) { //recoje el error en caso de que haya
-			        $scope.estado = response.status;
-			        });
-      };
-      
-      //delete
       $scope.deletedata = function(country, year, film, distributor, money, rank, spectator) {
           var dato = {
               country: country,
@@ -74,22 +78,38 @@
               spectator: spectator
 
           };
-          $http.delete($scope.url, JSON.stringify(dato)).then(function(response) {
+          $http.delete(API, JSON.stringify(dato)).then(function(response) {
                 $scope.estado = response.status;
+                refresh();
+                alert("Ha borrado todas las películas");
           }).catch(function (response) { //recoje el error en caso de que haya
 			        $scope.estado = response.status;
+			        refresh();
 			        });
+			        
       };
       
       //loadInitialData
       $scope.loadData = function() {
           
-          $http.get($scope.url, JSON.stringify($scope.data)).then(function(response) {
+          $http.get(API+"/loadInitialData", JSON.stringify($scope.data)).then(function(response) {
                 $scope.estado = response.status;
+                refresh();
           }).catch(function (response) { //recoje el error en caso de que haya
 			        $scope.estado = response.status;
-			        })
+			        refresh();
+			        });
       };
+      
+      $scope.search = function (){
+                       $http.get(API+"?rank="+$scope.ranking+"").then(function (response){
+                        
+                        $scope.takingstats = response.data;
+                        console.log("Data received: "+ JSON.stringify(response.data, null, 2));
+                        
+                    });
+                    };
+      
 
   }]);
   
