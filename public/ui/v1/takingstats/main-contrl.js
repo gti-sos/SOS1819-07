@@ -35,12 +35,13 @@
 
       };
       
-       $scope.getUna = function() {
+      $scope.getUna = function() {
           $http
-              .get(API+"/"+$scope.takingstats.film)
+              .get(API+"/"+$scope.film)
               .then(function(response) {
                   $scope.data = JSON.stringify(response.data, null, 2);
-                  alert("Ha obtenido la película");
+                  $scope.takingstats = response.data;
+                  alert("Ha una película");
                   $scope.estado = response.status;
                  
               })
@@ -49,11 +50,11 @@
                       alert("Esta película no existe");
                   }
                   $scope.estado = response.status;
-                  
+                 
               });
 
       };
-
+     
 
       //post
       $scope.addData = function() {
@@ -156,18 +157,11 @@
           });
       };
 
-    
-    
-  }]);
-  
-  
-  
-  
-                /*$scope.paginacion = function() {
-                    console.log($scope.url + "?limit=" + $scope.limit + "&offset=" + $scope.offset);
-                    $http.get($scope.url + "?limit=" + $scope.limit + "&offset=" + $scope.offset).then(function(response) {
+            $scope.paginacion = function() {
+                    console.log(API + "?limit=" + $scope.limit + "&offset=" + $scope.offset);
+                    $http.get(API + "?limit=" + $scope.limit + "&offset=" + $scope.offset).then(function(response) {
                         $scope.status = "Paginación realizada correctamente.";
-                        $scope.earningsInterStats = response.data;
+                        $scope.takingstats = response.data;
                         $scope.error = "";
                         console.log("Paginación Response: " + response.status + " " + JSON.stringify(response.data,null,2));
                     });
@@ -175,19 +169,27 @@
                 
                 $scope.paginaAnterior = function() {
                     $scope.offset = $scope.offset - $scope.limit;
-                    $http.get($scope.url + "?limit=" + $scope.limit + "&offset=" + $scope.offset).then(function(response) {
+                    $http.get(API + "?limit=" + $scope.limit + "&offset=" + $scope.offset).then(function(response) {
                         $scope.status = "Paginación realizada correctamente.";
-                        $scope.earningsInterStats = response.data;
+                        $scope.takingstats = response.data;
                         $scope.error = "";
                     });
                 };
         
                 $scope.paginaSiguiente = function() {
                     $scope.offset = $scope.offset + $scope.limit;
-                    $http.get($scope.url + "?limit=" + $scope.limit + "&offset=" + $scope.offset).then(function(response) {
+                    $http.get(API + "?limit=" + $scope.limit + "&offset=" + $scope.offset).then(function(response) {
                         $scope.status = "Paginación realizada correctamente.";
-                        $scope.earningsInterStats = response.data;
+                        $scope.takingstats = response.data;
                         $scope.error = "";
                     });
-                };*/
+                };
+    
+    
+  }]);
+  
+  
+  
+  
+            
   

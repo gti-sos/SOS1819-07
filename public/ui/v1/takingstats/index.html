@@ -66,25 +66,37 @@
                          <button class="btn btn-primary" ng-click="putdataform()">Modificar</button>
                     </td>
                 </tr>
+                <tr>
+                    <td><input name="limit" class="form-control" type="number" min="0" max="10" ng-model="limit" ng-init="limit=0"/></td>
+                    <td><input name="offset" class="form-control" type="number" min="0" max="10" ng-model="offset" ng-init="offset=0"/></td>
+                    <td><button class="btn btn-primary" ng-click="paginacion()">Paginar</button></td>
+                    <td><button class="btn btn-primary" ng-click="paginaAnterior()">Anterior</button></td>
+                    <td><button class="btn btn-primary" ng-click="paginaSiguiente()">Siguiente</button></td>
+                </tr>
                 
             </tbody>
         </table>
    </div>
     <div>
-        <label>URL:<input value="borrar" class="form-control text-center" ng-model="url"/></label>
+        <label>URL:<input value="borrar" class="form-control text-center" ng-model="film"/></label>
         <button class="btn btn-primary" ng-click="send()">Obtener películas</button>
-        <button class="btn btn-primary" ng-click="getUna()">Buscar una película</button>
+        <button class="btn btn-primary" ng-click="getUna()">Buscar una película></button>
         <button class="btn btn-danger" ng-click="deletedata(country, year, film, distributor, money, rank, spectator)">Borrar todo</button>
          <button class="btn btn-primary" ng-click="loadData()">Cargar películas</button>
   
 
     </div>
+    <div
     <p>Ranking mayores que:</p>
     <input class ="form-control" value="" ng-model="ranking"/>
             </td>
             <td>
             <button class="btn btn-primary" ng-click="search()">Buscar</buttom>
             </td>
+    </div>
+    <div>
+        
+    </div>
     
     </body>
   
