@@ -1,0 +1,101 @@
+<html ng-app="MiniPostmanApp">
+
+<head>
+    <title>Mini Postman</title>
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/bower_components/angular/angular.min.js"></script>
+    <script src="minipostman.js"></script>
+    <script src="main-contrl.js"></script>
+    
+</head>
+
+</head>
+
+<body ng-controller="MainCtrl">
+    <h1>My minipostman</h1>
+    <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th>Country</th>
+                    <th>Year</th>
+                    <th>Film</th>
+                    <th>Distributor</th>
+                    <th>Money</th>
+                    <th>Rank</th>
+                    <th>Spectator</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="taking in takingstats">
+                    <td>{{ taking.country }}</td>
+                    <td>{{ taking.year }}</td>
+                    <td>{{ taking.film }}</td>
+                    <td>{{ taking.distributor }}</td>
+                    <td>{{ taking.money }}</td>
+                    <td>{{ taking.rank }}</td>
+                    <td>{{ taking.spectator }}</td>
+                    <td>
+                        <button  class="btn btn-danger" ng-click=deleteFilm(taking.film)>Borrar</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input class="form-control" value="new country" ng-model="newTaking.country"/>
+                    </td>
+                     <td>
+                        <input type="number" class="form-control" value="new year" ng-model="newTaking.year"/>
+                    </td>
+                    <td>
+                        <input class="form-control" value="new film" ng-model="newTaking.film"/>
+                    </td>
+                    <td>
+                        <input class="form-control" value="new distributor" ng-model="newTaking.distributor"/>
+                    </td>
+                    <td>
+                        <input type="number" class="form-control" value="new money" ng-model="newTaking.money"/>
+                    </td>
+                    <td>
+                        <input type="number" class="form-control" value="new rank" ng-model="newTaking.rank"/>
+                    </td>
+                    <td>
+                        <input type="number" class="form-control" value="new spectator" ng-model="newTaking.spectator"/>
+                    </td>
+                    <td>
+                         <button class="btn btn-primary" ng-click="addData()">Añadir</button>
+                         <button class="btn btn-success" ng-click="putdataform()">Modificar</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input name="limit" class="form-control" type="number" min="0" max="10" ng-model="limit" ng-init="limit=0"/></td>
+                    <td><input name="offset" class="form-control" type="number" min="0" max="10" ng-model="offset" ng-init="offset=0"/></td>
+                    <td><button class="btn btn-primary" ng-click="paginacion()">Paginar</button></td>
+                    <td><button class="btn btn-primary" ng-click="paginaAnterior()">Anterior</button></td>
+                    <td><button class="btn btn-primary" ng-click="paginaSiguiente()">Siguiente</button></td>
+                </tr>
+                
+            </tbody>
+        </table>
+   </div>
+    <div>
+        <label>URL:<input value="borrar" class="form-control text-center" ng-model="url"/></label>
+        <button class="btn btn-primary" ng-click="send()">Obtener películas</button>
+        <button class="btn btn-danger" ng-click="deletedata(country, year, film, distributor, money, rank, spectator)">Borrar todo</button>
+         <button class="btn btn-primary" ng-click="loadData()">Cargar películas</button>
+  
+
+    </div>
+    <div
+    <p>Ranking mayores que:</p>
+    <input class ="form-control" value="" ng-model="ranking"/>
+            </td>
+            <td>
+            <button class="btn btn-primary" ng-click="search()">Buscar</buttom>
+            </td>
+    </div>
+    <div>
+        
+    </div>
+    
+    </body>
+  

@@ -156,8 +156,20 @@ app.controller("MainCtrl", ["$scope", "$http", function ($scope, $http){
                        
                        $http.get(API+"?from="+$scope.subsidyPercentage1+"&to="+$scope.subsidyPercentage2+"").then(function (response){
                         
+<<<<<<< HEAD
+                        $scope.data = JSON.stringify(response.data, null, 2);
+                        $scope.statusInfo = JSON.stringify(response.status, null, 2);
+                        
+                    }).catch(function (response) {
+                        
+			        	$scope.statusInfo = JSON.stringify(response.status, null, 2);
+			        	$scope.statusInfo = JSON.stringify(response.status, null, 2);
+                        //$scope.data = 
+                        $scope.statusInfo = JSON.stringify(response.status, null, 2) + JSON.stringify(response.data, null, 2);
+=======
                         $scope.films = response.data;
                         console.log("Data received: "+ JSON.stringify(response.data, null, 2));
+>>>>>>> eccc7067010d6239725cb10a9f1405f14b36cd06
                         
                     });
                     };
