@@ -160,3 +160,34 @@
     
   }]);
   
+  
+  
+  
+                /*$scope.paginacion = function() {
+                    console.log($scope.url + "?limit=" + $scope.limit + "&offset=" + $scope.offset);
+                    $http.get($scope.url + "?limit=" + $scope.limit + "&offset=" + $scope.offset).then(function(response) {
+                        $scope.status = "Paginación realizada correctamente.";
+                        $scope.earningsInterStats = response.data;
+                        $scope.error = "";
+                        console.log("Paginación Response: " + response.status + " " + JSON.stringify(response.data,null,2));
+                    });
+                };
+                
+                $scope.paginaAnterior = function() {
+                    $scope.offset = $scope.offset - $scope.limit;
+                    $http.get($scope.url + "?limit=" + $scope.limit + "&offset=" + $scope.offset).then(function(response) {
+                        $scope.status = "Paginación realizada correctamente.";
+                        $scope.earningsInterStats = response.data;
+                        $scope.error = "";
+                    });
+                };
+        
+                $scope.paginaSiguiente = function() {
+                    $scope.offset = $scope.offset + $scope.limit;
+                    $http.get($scope.url + "?limit=" + $scope.limit + "&offset=" + $scope.offset).then(function(response) {
+                        $scope.status = "Paginación realizada correctamente.";
+                        $scope.earningsInterStats = response.data;
+                        $scope.error = "";
+                    });
+                };*/
+  
