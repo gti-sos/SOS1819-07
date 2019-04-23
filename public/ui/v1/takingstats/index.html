@@ -44,7 +44,7 @@
                         <input class="form-control" value="new country" ng-model="newTaking.country"/>
                     </td>
                      <td>
-                        <input class="form-control" value="new year" ng-model="newTaking.year"/>
+                        <input type="number" class="form-control" value="new year" ng-model="newTaking.year"/>
                     </td>
                     <td>
                         <input class="form-control" value="new film" ng-model="newTaking.film"/>
@@ -53,13 +53,13 @@
                         <input class="form-control" value="new distributor" ng-model="newTaking.distributor"/>
                     </td>
                     <td>
-                        <input class="form-control" value="new money" ng-model="newTaking.money"/>
+                        <input type="number" class="form-control" value="new money" ng-model="newTaking.money"/>
                     </td>
                     <td>
-                        <input class="form-control" value="new rank" ng-model="newTaking.rank"/>
+                        <input type="number" class="form-control" value="new rank" ng-model="newTaking.rank"/>
                     </td>
                     <td>
-                        <input class="form-control" value="new spectator" ng-model="newTaking.spectator"/>
+                        <input type="number" class="form-control" value="new spectator" ng-model="newTaking.spectator"/>
                     </td>
                     <td>
                          <button class="btn btn-primary" ng-click="addData()">Añadir</button>
@@ -73,7 +73,7 @@
     <div>
         <label>URL:<input value="borrar" class="form-control text-center" ng-model="url"/></label>
         <button class="btn btn-primary" ng-click="send()">Obtener películas</button>
-        
+        <button class="btn btn-primary" ng-click="getUna()">Buscar una película</button>
         <button class="btn btn-danger" ng-click="deletedata(country, year, film, distributor, money, rank, spectator)">Borrar todo</button>
          <button class="btn btn-primary" ng-click="loadData()">Cargar películas</button>
   
@@ -85,5 +85,6 @@
             <td>
             <button class="btn btn-primary" ng-click="search()">Buscar</buttom>
             </td>
+    
     </body>
   
