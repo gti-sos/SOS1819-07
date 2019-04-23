@@ -59,7 +59,7 @@ module.exports = function(app, BASE_PATH, takingstats) {
             });
         }
         else if (Number.isInteger(rankAux)) {
-            takingstats.find({ rank:rankAux  }, { projection: { _id: 0 } }).sort({ rank: -1 }).toArray((err, takingArray) => {
+            takingstats.find({ rank:{$gt:rankAux}  }, { projection: { _id: 0 } }).sort({ rank: -1 }).toArray((err, takingArray) => {
                 if(takingArray.length!=1){
                    return res.send(takingArray); 
                 }else{
