@@ -92,7 +92,7 @@ app.get(path, (req, res) => {
     //búsqueda
     if(subsidyPercentage){
     
-    subsidiesStats.find({"subsidyPercentage":parseFloat(subsidyPercentage, 10)}, {fields : {_id : 0}}).toArray((err, subsidiesStatsArray) => {
+    subsidiesStats.find({"subsidyPercentage" : { $gte :parseFloat(subsidyPercentage, 10)}}, {fields : {_id : 0}}).toArray((err, subsidiesStatsArray) => {
     
         if (err)
             console.log("Error: " + err);
@@ -128,7 +128,7 @@ app.get(path, (req, res) => {
     });
     }else if(subsidyReceibed){
     
-    subsidiesStats.find({ "subsidyReceibed": parseFloat(subsidyReceibed, 10)}, {fields : {_id : 0}}).toArray((err, subsidiesStatsArray) => {
+    subsidiesStats.find({ "subsidyReceibed" :{ $gte :parseFloat(subsidyReceibed, 10)}}, {fields : {_id : 0}}).toArray((err, subsidiesStatsArray) => {
     
         if (err)
             console.log("Error: " + err);
@@ -137,7 +137,7 @@ app.get(path, (req, res) => {
     });
     }else if(subsidyBudgetProject){
     
-    subsidiesStats.find({"subsidyBudgetProject":parseFloat(subsidyBudgetProject, 10)}, {fields : {_id : 0}}).toArray((err, subsidiesStatsArray) => {
+    subsidiesStats.find({"subsidyBudgetProject": { $gte :parseFloat(subsidyBudgetProject, 10)}}, {fields : {_id : 0}}).toArray((err, subsidiesStatsArray) => {
     
         if (err)
             console.log("Error: " + err);

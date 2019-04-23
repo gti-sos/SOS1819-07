@@ -8,6 +8,20 @@ app.controller("MainCtrl", ["$scope", "$http", function ($scope, $http){
                 
                 
                     console.log("Modular MainCtrl initialized!");
+                    var API = "https://sos1819-07.herokuapp.com/api/v1/subsidies-stats";
+                    
+                    console.log("Requesting films to <"+API+">...");
+                    refresh();
+                    
+                    function refresh(){
+                       
+                    $http.get(API).then(function (response){
+                        
+                        $scope.films = response.data;
+                        console.log("Data received: "+ JSON.stringify(response.data, null, 2));
+                        
+                    });
+                    }
                     
                     $scope.url = "https://sos1819-07.herokuapp.com/api/v1/subsidies-stats/";
                     $scope.name ="LaLlamada";
@@ -24,6 +38,7 @@ app.controller("MainCtrl", ["$scope", "$http", function ($scope, $http){
                     $scope.getAll = function (){
                         
                         $http.get($scope.url).then(function (response){
+                        
                         
                         $scope.data = JSON.stringify(response.data, null, 2);
                         $scope.statusInfo = JSON.stringify(response.status, null, 2);
@@ -88,6 +103,18 @@ app.controller("MainCtrl", ["$scope", "$http", function ($scope, $http){
                     };
                     
                     //delete 
+                    $scope.delete = function (film){
+                        
+                       
+                       
+                       $http.delete(API+"/"+film).then(function(response){
+                           
+                           $scope.films = response.data;
+                           refresh();
+                           
+                       });
+                         
+
                     $scope.delete = function (){
                         
                         if($scope.name == ''){
@@ -108,17 +135,18 @@ app.controller("MainCtrl", ["$scope", "$http", function ($scope, $http){
                         $scope.statusInfo = JSON.stringify(response.status, null, 2) + JSON.stringify(response.data, null, 2);
 			        });
                         }   
+
                     };
                     
-                    //post
-                    $scope.post = function (){
-                       try{ 
+                    
+                    //search
+                    $scope.search = function (){
                         
-                        var data = JSON.parse($scope.data);
+                       
+                       
+                       $http.get(API+"?from="+$scope.subsidyPercentage1+"&to="+$scope.subsidyPercentage2+"").then(function (response){
                         
-                        
-                        $http.post($scope.url + $scope.name, data).then(function (response){
-                        
+<<<<<<< HEAD
                         $scope.data = JSON.stringify(response.data, null, 2);
                         $scope.statusInfo = JSON.stringify(response.status, null, 2);
                         
@@ -128,18 +156,37 @@ app.controller("MainCtrl", ["$scope", "$http", function ($scope, $http){
 			        	$scope.statusInfo = JSON.stringify(response.status, null, 2);
                         //$scope.data = 
                         $scope.statusInfo = JSON.stringify(response.status, null, 2) + JSON.stringify(response.data, null, 2);
+=======
+                        $scope.films = response.data;
+                        console.log("Data received: "+ JSON.stringify(response.data, null, 2));
+>>>>>>> eccc7067010d6239725cb10a9f1405f14b36cd06
                         
-                    }).catch(function (response) {
+                    });
+                    };
+                         
+                    $scope.search1 = function (){
                         
-			        //	$scope.statusInfo = JSON.stringify(response.status, null, 2);
-			        	$scope.statusInfo = JSON.stringify(response.status, null, 2) + JSON.stringify(response.data, null, 2);
-			        });
+                       
+                       
+                       $http.get(API+"?subsidyPercentage="+28).then(function (response){
                         
-                       }catch(e){
+                        $scope.films = response.data;
+                        console.log("Data received: "+ JSON.stringify(response.data, null, 2));
                         
-                        $scope.statusInfo = '';
-                        $scope.data = "there is nothing here to post...";
-                    }
+                    });
+                    };
+                    
+                    
+                    //post
+                    $scope.post = function (){
+                       
+                       var newFilm = $scope.newFilm;
+                       $http.post(API, newFilm).then(function(response){
+                           
+                           $scope.films = response.data;
+                           refresh();
+                           
+                       });
                         
                     };
                     
@@ -167,5 +214,5 @@ app.controller("MainCtrl", ["$scope", "$http", function ($scope, $http){
                     }
                     };
                     
-                
+                    };
             }] );
