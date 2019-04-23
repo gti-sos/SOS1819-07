@@ -111,6 +111,28 @@
                         
                     });
                     };
+                    
+                      //put
+      
+         $scope.putdataform = function() {
+            var newTaking = $scope.newTaking;
+            console.log("Updating contact: " + JSON.stringify(newTaking, null, 2));
+            $http.put(API+"/"+newTaking.film, newTaking).then(function(response) {
+                
+                console.log("POST Response: " + response.status + response.statusText);
+                alert("Usted ha actualizado una nueva película");
+                refresh();
+            }).catch(function(response){
+                if(response.status==405){
+                    alert("Método no permitido");
+                };
+                if(response.status==400){
+                    alert("Asegurese de poner bien los datos");
+                }
+                $scope.estado = response.status;
+                refresh();
+            });
+        };
       
 
   }]);
