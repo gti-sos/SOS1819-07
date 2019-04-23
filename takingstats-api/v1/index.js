@@ -63,7 +63,7 @@ module.exports = function(app, BASE_PATH, takingstats) {
                 if(takingArray.length!=1){
                    return res.send(takingArray); 
                 }else{
-                    return res.send(takingArray[0]);
+                    return res.send(takingArray)[0];
                 }
             });
         }
