@@ -162,7 +162,7 @@ app.controller("MainCtrl", ["$scope", "$http", function ($scope, $http){
                     });
                     };
                     
-                    $scope.search = function (){
+                    $scope.search1 = function (){
                         
                         var search = "?";
                         
