@@ -1,0 +1,184 @@
+<html ng-app="postmanuel">
+    
+    <head>
+        
+        <title>Postmanuel</title>
+    
+        <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="/bower_components/angular/angular.min.js"></script>
+        <script src="postmanuel-app.js"></script>
+        <script src="main-ctrl.js"></script>
+    
+    </head>
+    <style>
+   
+    
+    </style>
+    <body ng-controller = "MainCtrl" >
+        
+        <h1>Postmanuel</h1>
+        <div>
+        <buttom class="btn btn-primary" ng-click="loadAll()">Cargar datos</buttom>
+        <buttom class="btn btn-danger" ng-click="deleteAll()">Borrar datos</buttom>
+                <tr>
+                    
+                    <td><burrom class="btn btn-primary" ng-click="previous()">Página anterior</burrom></td>
+                    <td><burrom class="btn btn-primary" ng-click="next()">Página siguiente</burrom></td>
+                    
+                </tr>
+        </div>
+        <table class="table">
+            
+            <thead>
+                
+                <tr>
+                    
+                    <th>País</th>
+                    <th>Año</th>
+                    <th>Película</th>
+                    <th>Subvención recibida</th>
+                    <th>Presupuesto</th>
+                    <th>Subveción (%)</th>
+                    <th>Acciones</th>
+                    
+                </tr>
+                
+                
+            </thead>
+            <tbody>
+                
+                <tr ng-repeat="film in films">
+                     
+                    <td>{{ film.country }}</td>
+                    <td>{{ film.year }}</td>
+                    <td>{{ film.film }}</td>
+                    <td>{{ film.subsidyReceibed }}</td>
+                    <td>{{ film.subsidyBudgetProject }}</td>
+                    <td>{{ film.subsidyPercentage }}</td>
+                    <td><burrom class="btn btn-danger" ng-click="delete(film.film)">Eliminar</burrom></td>
+                    
+                </tr>
+                
+                
+                <tr>
+                    
+                    <td>
+                        
+                        <input class ="form-control" value="" text="Spain" ng-model="newFilm.country"/>
+                        
+                    </td>
+                    <td>
+                        
+                        <input class ="form-control" value="" ng-model="newFilm.year"/>
+                        
+                    </td>
+                    <td>
+                        
+                        <input class ="form-control" value="" ng-model="newFilm.film"/>
+                        
+                    </td>
+                    <td>
+                        
+                        <input class ="form-control" value="" ng-model="newFilm.subsidyReceibed"/>
+                        
+                    </td>
+                    <td>
+                        
+                        <input class ="form-control" value="" ng-model="newFilm.subsidyBudgetProject"/>
+                        
+                    </td>
+                    <td>
+                        
+                        <input class ="form-control" value="" ng-model="newFilm.subsidyPercentage"/>
+                        
+                    </td>
+                    <td>
+                        
+                        <burrom class="btn btn-primary" ng-click="post()">Añadir</burrom>
+                        
+                    </td>
+                    <td>
+                        
+                        <burrom class="btn btn-primary" ng-click="put()">Modificar</burrom>
+                        
+                    </td>
+                
+                
+                </tr>
+               
+                <tr>
+                    
+                    <td>
+                        
+                        <input class ="form-control" value="" ng-model="country" disabled="disabled"/>
+                        
+                    </td>
+                    <td>
+                        
+                        <input class ="form-control" value="" ng-model="year" disabled="disabled"/>
+                        
+                    </td>
+                    <td>
+                        
+                        <input class ="form-control" value="" ng-model="film"/>
+                        
+                    </td>
+                    <td>
+                        
+                        <input class ="form-control" value="" ng-model="subsidyReceibed"/>
+                        
+                    </td>
+                    <td>
+                        
+                        <input class ="form-control" value="" ng-model="subsidyBudgetProject"/>
+                        
+                    </td>
+                    <td>
+                        
+                        <input class ="form-control" value="" ng-model="subsidyPercentage"/>
+                        
+                    </td>
+                    <td>
+                        
+                        <burrom class="btn btn-primary" ng-click="search1()">Buscar</burrom>
+                        
+                    </td>
+                
+                
+                </tr>
+                
+            </tbody>
+            
+        </table>
+        <table>
+            <thead>
+                <tr>
+                    
+                    <th>desde</th>
+                    <th>hasta</th>
+                    <th>Buscar por porcentaje</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+            
+            <td>
+            <input class ="form-control" value="" ng-model="subsidyPercentage1"/>
+            </td>
+           
+            <td>
+            <input class ="form-control" value="" ng-model="subsidyPercentage2"/>
+            </td>
+            <td>
+            <buttom class="btn btn-primary" ng-click="search()">Buscar</buttom>
+            </td>
+            </tbody>              
+        </table>          
+        
+        
+
+        
+    </body>
+    
+</html>
