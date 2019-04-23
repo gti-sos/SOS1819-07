@@ -35,25 +35,7 @@
 
       };
       
-      $scope.getUna = function() {
-          $http
-              .get(API+"/"+$scope.film)
-              .then(function(response) {
-                  $scope.data = JSON.stringify(response.data, null, 2);
-                  $scope.takingstats = response.data;
-                  alert("Ha una película");
-                  $scope.estado = response.status;
-                 
-              })
-              .catch(function(response) { //recoje el error en caso de que haya
-                  if (response.status == 404) {
-                      alert("Esta película no existe");
-                  }
-                  $scope.estado = response.status;
-                 
-              });
-
-      };
+      
      
 
       //post
