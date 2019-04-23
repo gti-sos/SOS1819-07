@@ -4,6 +4,7 @@
       console.log("MainCtrl initicialized!");
 
       var API = "https://sos1819-07.herokuapp.com/api/v1/takingStats";
+      
       refresh();
 
       function refresh() {
@@ -35,6 +36,7 @@
 
       };
       
+
       
      
 
@@ -112,7 +114,14 @@
               $scope.takingstats = response.data;
               console.log("Data received: " + JSON.stringify(response.data, null, 2));
 
-          });
+          }).catch(function(response) {
+              if (response.status == 404) {
+                  alert("Película no encontradas para dichos rankings");
+              };
+             
+              $scope.estado = response.status;
+              
+          });;
       };
       
       
