@@ -2,7 +2,7 @@
 
   app.controller("MainCtrl", ["$scope", "$http", function($scope, $http) {
       console.log("MainCtrl initicialized!");
-
+       
       var API = "https://sos1819-07.herokuapp.com/api/v1/takingStats";
       
       refresh();
@@ -14,7 +14,26 @@
                   $scope.takingstats = response.data;
               });
       }
-
+      
+     //búsqueda
+    $scope.busqueda = function() {
+          $http.get(API + "?" + $scope.valor + "=" + $scope.valor2).then(function(response) {
+                if(response.data.length>1){
+                   $scope.takingstats = response.data; 
+                   console.log("Data received: " + JSON.stringify(response.data, null, 2));
+                }else{
+                    $scope.takingstats = [response.data];
+                    console.log("Data received: " + JSON.stringify(response.data, null, 2));
+                }
+          }).catch(function(response) {
+              if (response.status == 404) {
+                  alert("Película no encontradas para dichos " + $scope.valor);
+              };
+             
+              $scope.estado = response.status;
+              
+          });;
+      };
       //get
 
       $scope.send = function() {
@@ -36,6 +55,7 @@
 
       };
       
+    
 
       
      
