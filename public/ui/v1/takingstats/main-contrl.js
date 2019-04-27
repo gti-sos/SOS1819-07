@@ -22,7 +22,7 @@
                    $scope.takingstats = response.data; 
                    console.log("Data received: " + JSON.stringify(response.data, null, 2));
                 }else{
-                    $scope.takingstats = [response.data[0]];
+                    $scope.takingstats = [response.data][0];
                     console.log("Data received: " + JSON.stringify(response.data, null, 2));
                 }
           }).catch(function(response) {
