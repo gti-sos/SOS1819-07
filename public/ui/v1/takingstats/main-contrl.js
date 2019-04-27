@@ -22,6 +22,8 @@
                    $scope.takingstats = response.data; 
                    console.log("Data received: " + JSON.stringify(response.data, null, 2));
                 }else{
+                    //Como va a devolver un objeto en la base de datos , lo que hago es pasarlo a array de un elemento
+                    //ya que response.data es una array por defecto
                     $scope.takingstats = [response.data];
                     console.log("Data received: " + JSON.stringify(response.data, null, 2));
                 }
