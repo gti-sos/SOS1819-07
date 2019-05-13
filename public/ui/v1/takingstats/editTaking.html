@@ -1,0 +1,40 @@
+<h1>Edit Taking</h1>
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <th>Película</th>
+            <th>País</th>
+            <th>Año</th>
+            <th>Distribuidora</th>
+            <th>Recaudación</th>
+            <th>Ranking</th>
+            <th>Espectadores</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ taking.film }}</td>
+            <td>
+                <input class="form-control" ng-model="taking.country"/>
+            </td>
+            <td>
+                <input type="number" class="form-control" ng-model="taking.year"/>
+            </td>
+            <td>
+                <input class="form-control" ng-model="taking.distributor"/>
+            </td>
+            <td>
+                <input type="number" class="form-control" ng-model="taking.money"/>
+            </td>
+            <td>
+                <input type="number" class="form-control" ng-model="taking.rank"/>
+            </td>
+            <td>
+                <input type="number" class="form-control" ng-model="taking.spectator"/>
+            <td>
+                <button class="btn btn-primary" ng-click="putdataform(taking.film)">Update</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

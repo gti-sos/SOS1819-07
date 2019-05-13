@@ -5,16 +5,18 @@
   "main": "index.js",
   "dependencies": {
     "body-parse": "^0.1.0",
-    "body-parser": "^1.18.3",
+    "body-parser": "^1.19.0",
     "express": "^4.16.4",
     "jsonwebtoken": "^8.5.1",
-    "mongodb": "^3.2.2",
+    "mongodb": "^3.2.4",
     "newman": "^4.4.1"
   },
   "devDependencies": {},
   "scripts": {
     "start": "node index.js",
-    "test": "newman run https://www.getpostman.com/collections/69c2a2d0bde5030d45e7; newman run https://www.getpostman.com/collections/42de04216c03f4cb50a9; newman run https://www.getpostman.com/collections/5190cc52d9ac16f8ed3e",
+    "pretest":"tests/runPhantom.sh",
+    "test": "newman run tests/backend/api-v1-takingtest.json && protractor tests/tests.js",
+    "posttest":"killall phantomjs",
     "test-takingstats": "newman run https://www.getpostman.com/collections/69c2a2d0bde5030d45e7",
     "test-earningsinterstats": "newman run https://www.getpostman.com/collections/42de04216c03f4cb50a9",
     "test-subsidies-stats": "newman run https://www.getpostman.com/collections/5190cc52d9ac16f8ed3e"

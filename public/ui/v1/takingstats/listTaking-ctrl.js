@@ -1,7 +1,7 @@
-  var app = angular.module("MiniPostmanApp");
+var app = angular.module("TakingsApp");
 
-  app.controller("MainCtrl", ["$scope", "$http", function($scope, $http) {
-      console.log("MainCtrl initicialized!");
+  app.controller("ListCtrl", ["$scope", "$http", function($scope, $http) {
+      console.log("ListCtrl initicialized!");
        
       var API = "https://sos1819-07.herokuapp.com/api/v1/takingStats";
       
@@ -127,47 +127,6 @@
 
               refresh();
 
-          });
-      };
-
-      $scope.search = function() {
-          $http.get(API + "?rank=" + $scope.ranking + "").then(function(response) {
-
-              $scope.takingstats = response.data;
-              console.log("Data received: " + JSON.stringify(response.data, null, 2));
-
-          }).catch(function(response) {
-              if (response.status == 404) {
-                  alert("Película no encontradas para dichos rankings");
-              };
-             
-              $scope.estado = response.status;
-              
-          });;
-      };
-      
-      
-      
-
-      //put
-
-      $scope.putdataform = function() {
-          var newTaking = $scope.newTaking;
-          console.log("Updating contact: " + JSON.stringify(newTaking, null, 2));
-          $http.put(API + "/" + newTaking.film, newTaking).then(function(response) {
-
-              console.log("POST Response: " + response.status + response.statusText);
-              alert("Usted ha actualizado una nueva película");
-              refresh();
-          }).catch(function(response) {
-              if (response.status == 405) {
-                  alert("Método no permitido");
-              };
-              if (response.status == 400) {
-                  alert("Asegurese de poner bien los datos");
-              }
-              $scope.estado = response.status;
-              refresh();
           });
       };
 

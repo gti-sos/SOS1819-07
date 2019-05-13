@@ -1,0 +1,1110 @@
+{
+	"info": {
+		"_postman_id": "8d3d1853-8a38-465b-92b9-9ed1492b2410",
+		"name": "SOS1819-07-takingstatsBD",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "DELETE TODO",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5131ebca-8a38-4255-8fe4-4a687e5a8099",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJpYXQiOjE1NTM2MjY1NzksImV4cCI6MTU1MzcxMjk3OX0.1tkj1fBdPsf1_2xedGyngct63CEa8zj94ex83ZdplaY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://sos1819-07.herokuapp.com/api/v1/takingstats/",
+					"protocol": "https",
+					"host": [
+						"sos1819-07",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"takingstats",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LOAD INITIAL DATA",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "74c9e4de-13eb-4269-9a7d-0db6037d3e07",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJpYXQiOjE1NTM2MjY1NzksImV4cCI6MTU1MzcxMjk3OX0.1tkj1fBdPsf1_2xedGyngct63CEa8zj94ex83ZdplaY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://sos1819-07.herokuapp.com/api/v1/takingstats/loadInitialData",
+					"protocol": "https",
+					"host": [
+						"sos1819-07",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"takingstats",
+						"loadInitialData"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /takingstats",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d1ad930a-d589-4119-b8a8-7e9ff2da677d",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"API returns some data\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.length>0).to.be.true;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJpYXQiOjE1NTM2MjY1NzksImV4cCI6MTU1MzcxMjk3OX0.1tkj1fBdPsf1_2xedGyngct63CEa8zj94ex83ZdplaY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://sos1819-07.herokuapp.com/api/v1/takingstats/",
+					"protocol": "https",
+					"host": [
+						"sos1819-07",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"takingstats",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /takingstats/film",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b3312b0a-9ad1-4801-9b0e-1c904f0339a3",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJpYXQiOjE1NTM2MjY1NzksImV4cCI6MTU1MzcxMjk3OX0.1tkj1fBdPsf1_2xedGyngct63CEa8zj94ex83ZdplaY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://sos1819-07.herokuapp.com/api/v1/takingstats/TadeoJones2",
+					"protocol": "https",
+					"host": [
+						"sos1819-07",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"takingstats",
+						"TadeoJones2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Paginación",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fe8c3afc-f4fa-4e82-8fc1-584be0a764c0",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://sos1819-07.herokuapp.com/api/v1/takingstats?limit=2&offset=1",
+					"protocol": "https",
+					"host": [
+						"sos1819-07",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"takingstats"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "2"
+						},
+						{
+							"key": "offset",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Búsqueda spectator",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "27b2ec38-f2ad-4d31-9886-0f40931b64ce",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://sos1819-07.herokuapp.com/api/v1/takingstats?spectator=2256917",
+					"protocol": "https",
+					"host": [
+						"sos1819-07",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"takingstats"
+					],
+					"query": [
+						{
+							"key": "spectator",
+							"value": "2256917"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Búsqueda money",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b0cfe99e-af9a-49f4-a487-dae2446b3e70",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://sos1819-07.herokuapp.com/api/v1/takingstats?money=17917439",
+					"protocol": "https",
+					"host": [
+						"sos1819-07",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"takingstats"
+					],
+					"query": [
+						{
+							"key": "money",
+							"value": "17917439"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Búsqueda rank",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7790f8fb-9a32-434c-825d-8282c29869f6",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://sos1819-07.herokuapp.com/api/v1/takingstats?rank=1",
+					"protocol": "https",
+					"host": [
+						"sos1819-07",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"takingstats"
+					],
+					"query": [
+						{
+							"key": "rank",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Búsqueda por year",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0496a7f5-d0dd-4686-8aca-6a51646d3e51",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://sos1819-07.herokuapp.com/api/v1/takingstats?year=2017",
+					"protocol": "https",
+					"host": [
+						"sos1819-07",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"takingstats"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "2017"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Búsqueda distribuitor",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c49c8f88-2e60-41de-9e9b-3b5d3db75299",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://sos1819-07.herokuapp.com/api/v1/takingstats?distributor=SONY",
+					"protocol": "https",
+					"host": [
+						"sos1819-07",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"takingstats"
+					],
+					"query": [
+						{
+							"key": "distributor",
+							"value": "SONY"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Búsqueda del country y rank",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8fd9f389-b87b-4ab1-a6a8-572e622b5b2f",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://sos1819-07.herokuapp.com/api/v1/takingstats?country=Spain&rank=2",
+					"protocol": "https",
+					"host": [
+						"sos1819-07",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"takingstats"
+					],
+					"query": [
+						{
+							"key": "country",
+							"value": "Spain"
+						},
+						{
+							"key": "rank",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST normal",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0798ed89-e0a4-4b20-bb72-68989928d5f5",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJpYXQiOjE1NTM2MjY1NzksImV4cCI6MTU1MzcxMjk3OX0.1tkj1fBdPsf1_2xedGyngct63CEa8zj94ex83ZdplaY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"country\": \"Spain\",\n    \"year\": 2017,\n    \"film\": \"PadreDeFamilia\",\n    \"distributor\": \"PPI\",\n    \"money\": 17917439,\n    \"rank\": 1,\n    \"spectator\": 3227410\n}"
+				},
+				"url": {
+					"raw": "https://sos1819-07.herokuapp.com/api/v1/takingstats/",
+					"protocol": "https",
+					"host": [
+						"sos1819-07",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"takingstats",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST error 405",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e3a95e11-e882-4789-aff9-0d6da5971f0a",
+						"exec": [
+							"pm.test(\"Status code is 405\", function () {",
+							"    pm.response.to.have.status(405);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJpYXQiOjE1NTM2MjY1NzksImV4cCI6MTU1MzcxMjk3OX0.1tkj1fBdPsf1_2xedGyngct63CEa8zj94ex83ZdplaY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"country\": \"Spain\",\n    \"year\": 2017,\n    \"film\": \"PadreDeFamilia\",\n    \"distributor\": \"PPI\",\n    \"money\": 17917439,\n    \"rank\": 1,\n    \"spectator\": 3227410\n}"
+				},
+				"url": {
+					"raw": "https://sos1819-07.herokuapp.com/api/v1/takingstats/TadeoJones2",
+					"protocol": "https",
+					"host": [
+						"sos1819-07",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"takingstats",
+						"TadeoJones2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT /takingstats/film",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fb353e2a-759a-4f03-b394-5c6964281ea9",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJpYXQiOjE1NTM2MjY1NzksImV4cCI6MTU1MzcxMjk3OX0.1tkj1fBdPsf1_2xedGyngct63CEa8zj94ex83ZdplaY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"country\": \"Spain\",\n    \"year\": 2017,\n    \"film\": \"PadreDeFamilia\",\n    \"distributor\": \"wwww\",\n    \"money\": 17917439,\n    \"rank\": 1,\n    \"spectator\": 3227410\n}"
+				},
+				"url": {
+					"raw": "https://sos1819-07.herokuapp.com/api/v1/takingstats/PadreDeFamilia",
+					"protocol": "https",
+					"host": [
+						"sos1819-07",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"takingstats",
+						"PadreDeFamilia"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT error 405",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "daeec4df-396b-4c6b-a93e-4c7d2375434c",
+						"exec": [
+							"pm.test(\"Status code is 405\", function () {",
+							"    pm.response.to.have.status(405);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJpYXQiOjE1NTM2MjY1NzksImV4cCI6MTU1MzcxMjk3OX0.1tkj1fBdPsf1_2xedGyngct63CEa8zj94ex83ZdplaY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"country\": \"Spain\",\n    \"year\": 2017,\n    \"film\": \"PadreDeFamilia\",\n    \"distributor\": \"wwww\",\n    \"money\": 17917439,\n    \"rank\": 1,\n    \"spectator\": 3227410\n}"
+				},
+				"url": {
+					"raw": "https://sos1819-07.herokuapp.com/api/v1/takingstats/",
+					"protocol": "https",
+					"host": [
+						"sos1819-07",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"takingstats",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT 400 BAD REQUEST",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1bddfdca-8c7e-4fda-b4c0-a81f042d2ff9",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJpYXQiOjE1NTM2MjY1NzksImV4cCI6MTU1MzcxMjk3OX0.1tkj1fBdPsf1_2xedGyngct63CEa8zj94ex83ZdplaY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"country\": \"Spain\",\n    \"year\": 2017,\n    \"film\": \"PadreDeFamilia\",\n    \"distributor\": \"wwww\",\n    \"money\": 17917439,\n    \"rank\": 1,\n    \"spectator\": 3227410\n}"
+				},
+				"url": {
+					"raw": "https://sos1819-07.herokuapp.com/api/v1/takingstats/PadreDeFamiliaw",
+					"protocol": "https",
+					"host": [
+						"sos1819-07",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"takingstats",
+						"PadreDeFamiliaw"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET 404 NOT FOUND",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9c16dcef-363e-4549-b74b-fa3934b73f57",
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJpYXQiOjE1NTM2MjY1NzksImV4cCI6MTU1MzcxMjk3OX0.1tkj1fBdPsf1_2xedGyngct63CEa8zj94ex83ZdplaY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"country\": \"Spain\",\n    \"year\": 2017,\n    \"film\": \"PadreDeFamilia\",\n    \"distributor\": \"wwww\",\n    \"money\": 17917439,\n    \"rank\": 1,\n    \"spectator\": 3227410\n}"
+				},
+				"url": {
+					"raw": "https://sos1819-07.herokuapp.com/api/v1/takingstats/PadreDeFamiliaw",
+					"protocol": "https",
+					"host": [
+						"sos1819-07",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"takingstats",
+						"PadreDeFamiliaw"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE /takinstats/film",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bf070aa9-1775-4f10-8018-2595f07f0886",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJpYXQiOjE1NTM2MjY1NzksImV4cCI6MTU1MzcxMjk3OX0.1tkj1fBdPsf1_2xedGyngct63CEa8zj94ex83ZdplaY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://sos1819-07.herokuapp.com/api/v1/takingstats/PadreDeFamilia",
+					"protocol": "https",
+					"host": [
+						"sos1819-07",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"takingstats",
+						"PadreDeFamilia"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST 409 CONFLICT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "46bca7de-f3a5-41a5-b0b5-491f7c68c040",
+						"exec": [
+							"pm.test(\"Status code is 409\", function () {",
+							"    pm.response.to.have.status(409);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJpYXQiOjE1NTM2MjY1NzksImV4cCI6MTU1MzcxMjk3OX0.1tkj1fBdPsf1_2xedGyngct63CEa8zj94ex83ZdplaY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"country\": \"Spain\",\n    \"year\": 2017,\n    \"film\": \"TadeoJones2\",\n    \"distributor\": \"PPI\",\n    \"money\": 17917439,\n    \"rank\": 1,\n    \"spectator\": 3227410\n}"
+				},
+				"url": {
+					"raw": "https://sos1819-07.herokuapp.com/api/v1/takingstats/",
+					"protocol": "https",
+					"host": [
+						"sos1819-07",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"takingstats",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST 400 BAD REQUEST",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c6458924-ced7-4951-a8f0-b79e8f8890e3",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJpYXQiOjE1NTM2MjY1NzksImV4cCI6MTU1MzcxMjk3OX0.1tkj1fBdPsf1_2xedGyngct63CEa8zj94ex83ZdplaY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"country\": \"Spain\",\n    \"year\": 2017,\n    \"film\": \"TadeoJones2\",\n    \"distributor\": \"PPI\",\n    \"money\": 17917439,\n    \"rank\": 1\n}"
+				},
+				"url": {
+					"raw": "https://sos1819-07.herokuapp.com/api/v1/takingstats/",
+					"protocol": "https",
+					"host": [
+						"sos1819-07",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"takingstats",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
