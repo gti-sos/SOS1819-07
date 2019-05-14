@@ -1,26 +1,7 @@
-<html ng-app="postmanuel">
-    
-    <head>
-        
-        <title>Postmanuel</title>
-    
-        <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
-        <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-        <script src="/bower_components/angular/angular.min.js"></script>
-        <script src="postmanuel-app.js"></script>
-        <script src="main-ctrl.js"></script>
-    
-    </head>
-    <style>
-   
-    
-    </style>
-    <body ng-controller = "MainCtrl" >
-        
-        <h1>Postmanuel</h1>
+<h1>Postmanuel</h1>
         <div>
         <buttom class="btn btn-primary" ng-click="loadAll()">Cargar datos</buttom>
-        <buttom class="btn btn-danger" ng-click="deleteAll()">Borrar datos</buttom>
+        <buttom class="btn btn-danger" ng-click="deleteAll()" value="deleteAll">Borrar datos</buttom>
                 <tr>
                     
                     <td><burrom class="btn btn-primary" ng-click="previous()">Página anterior</burrom></td>
@@ -52,11 +33,11 @@
                      
                     <td>{{ film.country }}</td>
                     <td>{{ film.year }}</td>
-                    <td>{{ film.film }}</td>
+                    <td><a href="#!/edit/{{film.film}}">{{ film.film }}</a></td>
                     <td>{{ film.subsidyReceibed }}</td>
                     <td>{{ film.subsidyBudgetProject }}</td>
                     <td>{{ film.subsidyPercentage }}</td>
-                    <td><burrom class="btn btn-danger" ng-click="delete(film.film)">Eliminar</burrom></td>
+                    <td><buttom class="btn btn-danger" ng-click="delete(film.film)">Eliminar</buttom></td>
                     
                 </tr>
                 
@@ -95,14 +76,10 @@
                     </td>
                     <td>
                         
-                        <burrom class="btn btn-primary" ng-click="post()">Añadir</burrom>
+                        <buttom class="btn btn-primary" ng-click="post()" value="add">Añadir</buttom>
                         
                     </td>
-                    <td>
-                        
-                        <burrom class="btn btn-primary" ng-click="put()">Modificar</burrom>
-                        
-                    </td>
+                    
                 
                 
                 </tr>
@@ -174,11 +151,4 @@
             <buttom class="btn btn-primary" ng-click="search()">Buscar</buttom>
             </td>
             </tbody>              
-        </table>          
-        
-        
-
-        
-    </body>
-    
-</html>
+        </table> 

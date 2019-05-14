@@ -8,7 +8,7 @@ describe('Test if all is deleted', function() {
                 element.all(by.css('[value="delete"]')).click();
                 element.all(by.repeater("taking in takingstats"))
                     .then(function(finalTakings) {
-                        expect(finalTakings.length).toEqual(finalTakings.length);
+                        expect(finalTakings.length).toEqual(0);
 
 
 

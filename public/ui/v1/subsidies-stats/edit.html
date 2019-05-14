@@ -1,0 +1,51 @@
+<h1>Edit Films</h1>
+        <div>
+        <buttom class="btn btn-primary" ng-click="loadAll()">Cargar datos</buttom>
+        <buttom class="btn btn-danger" ng-click="deleteAll()">Borrar datos</buttom>
+                <tr>
+                    
+                    <td><burrom class="btn btn-primary" ng-click="previous()">Página anterior</burrom></td>
+                    <td><burrom class="btn btn-primary" ng-click="next()">Página siguiente</burrom></td>
+                    
+                </tr>
+        </div>
+        <table class="table">
+            
+            <thead>
+                
+                <tr>
+                    
+                    <th>País</th>
+                    <th>Año</th>
+                    <th>Película</th>
+                    <th>Subvención recibida</th>
+                    <th>Presupuesto</th>
+                    <th>Subveción (%)</th>
+                    <th>Acciones</th>
+                    
+                </tr>
+                
+                
+            </thead>
+            <tbody>
+                
+                <tr>
+                     
+                    <td><input class="form-control" ng-model="film.country"></input></td>
+                    <td><input class="form-control" ng-model="film.year"></input></td>
+                    <td>{{ film.film }}</td>
+                    <td><input class="form-control" ng-model="film.subsidyReceibed"></input></td>
+                    <td><input class="form-control" ng-model="film.subsidyBudgetProject"></input></td>
+                    <td><input class="form-control" ng-model="film.subsidyPercentage"></input></td>
+                    <td><burrom class="btn btn-danger" ng-click="updateFilm(film.film)">Update</burrom></td>
+                    
+                </tr>
+                
+               
+               
+                
+                
+            </tbody>
+            
+        </table>
+         

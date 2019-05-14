@@ -1,13 +1,11 @@
 /* global angular */
 
-var app = angular.module("postmanuel");
-
-app.controller("MainCtrl", ["$scope", "$http", function ($scope, $http){
+angular.module("publicApp").controller("ListCtrl", ["$scope", "$http", function ($scope, $http){
                 
                 
                 
                 
-                    console.log("Modular MainCtrl initialized!");
+                    console.log("Modular ListCtrl initialized!");
                     var API = "https://sos1819-07.herokuapp.com/api/v2/subsidies-stats";
                     var offset = 0;
                     console.log("Requesting films to <"+API+">...");
