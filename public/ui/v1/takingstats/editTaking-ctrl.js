@@ -45,7 +45,7 @@
               $scope.estado = response.status;
               
           });
-          $location.path("/takingstats"); //para volver
+          $location.path("/"); //para volver
           refresh();
       };
 

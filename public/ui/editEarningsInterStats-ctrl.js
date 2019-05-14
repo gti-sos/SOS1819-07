@@ -1,6 +1,6 @@
 /* global angular */
 
-    angular.module("App").controller("EditCtrl2",["$scope","$http", "$routeParams","$location", function ($scope,$http,$routeParams,$location){
+    angular.module("EarningApp").controller("EditCtrl2",["$scope","$http", "$routeParams","$location", function ($scope,$http,$routeParams,$location){
             console.log("Edit Controller initialized.");
             var API = "https://sos1819-07.herokuapp.com/api/v1/earnings-inter-stats";
 

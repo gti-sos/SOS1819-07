@@ -1,5 +1,5 @@
 /* global angular */
-var app = angular.module("App");
+var app = angular.module("EarningApp");
 
 app.controller("ListCtrl2", ["$scope", "$http", function ($scope,$http){
                 console.log("List Controller initialized");
