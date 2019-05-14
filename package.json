@@ -15,7 +15,7 @@
   "scripts": {
     "start": "node index.js",
     "pretest":"tests/runPhantom.sh",
-    "test": "newman run tests/backend/api-v1-takingtest.json && protractor tests/tests.js",
+    "test": "newman run tests/backend/api-v1-takingtest.json && protractor tests/tests.js && newman run https://www.getpostman.com/collections/42de04216c03f4cb50a9 && protractor tests-earnings-inter-stats/tests.js",
     "posttest":"killall phantomjs",
     "test-takingstats": "newman run https://www.getpostman.com/collections/69c2a2d0bde5030d45e7",
     "test-earningsinterstats": "newman run https://www.getpostman.com/collections/42de04216c03f4cb50a9",
