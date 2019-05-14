@@ -2,7 +2,7 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var app = express();
 var takingstatsApi = require("./takingstats-api");
-app.use("/", express.static(__dirname + "/public"));
+app.use("/", express.static(__dirname + "/public/"));
 
 var allowCrossDomain = function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
