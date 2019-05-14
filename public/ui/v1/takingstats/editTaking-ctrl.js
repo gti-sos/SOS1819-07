@@ -46,6 +46,7 @@
               
           });
           $location.path("/ui/v1/takingstats"); //para volver
+          alert("Actualizado correctamente");
           refresh();
       };
 
