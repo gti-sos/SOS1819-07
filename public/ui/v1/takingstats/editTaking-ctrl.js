@@ -1,8 +1,8 @@
 /* global angular */
 
     angular
-        .module("App")
-        .controller("EditCtrl",
+        .module("publicApp")
+        .controller("EditCtrl2",
                         ["$scope",
                         "$http", 
                         "$routeParams",

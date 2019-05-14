@@ -1,6 +1,6 @@
-var app = angular.module("App");
+var app = angular.module("publicApp");
 
-  app.controller("ListCtrl", ["$scope", "$http", function($scope, $http) {
+  app.controller("ListCtrl2", ["$scope", "$http", function($scope, $http) {
       console.log("ListCtrl initicialized!");
        
       var API = "https://sos1819-07.herokuapp.com/api/v1/takingStats";
