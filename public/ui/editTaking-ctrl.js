@@ -1,7 +1,7 @@
 /* global angular */
 
     angular
-        .module("TakingsApp")
+        .module("App")
         .controller("EditCtrl",
                         ["$scope",
                         "$http", 

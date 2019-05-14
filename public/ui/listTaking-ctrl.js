@@ -1,4 +1,4 @@
-var app = angular.module("TakingsApp");
+var app = angular.module("App");
 
   app.controller("ListCtrl", ["$scope", "$http", function($scope, $http) {
       console.log("ListCtrl initicialized!");

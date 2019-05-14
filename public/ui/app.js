@@ -1,9 +1,12 @@
 /*global angular*/
 
 angular
-    .module("TakingsApp",["ngRoute"])
+    .module("App",["ngRoute"])
     .config(function($routeProvider){ 
         $routeProvider
+            .when("/",{
+               templateUrl:"main.html"  
+            })
             .when("/takingstats",{
                controller: "ListCtrl",
                templateUrl:"listTaking.html"   //cargar esta vista(templateUrl) con este controlador
@@ -12,13 +15,13 @@ angular
                 controller:"EditCtrl",
                 templateUrl:"editTaking.html"
             })
-            .when("/earning",{ //zoilo
+            .when("/earningsInterStats",{ //zoilo
                    controller : "ListCtrl2",
-                   templateUrl: "list.html"
+                   templateUrl: "listEarningsInterStats.html"
                 })
             .when("/edita/:title",{ //zoilo
                    controller : "EditCtrl2",
-                   templateUrl: "edit.html"
+                   templateUrl: "editEarningsInterStats.html"
                 });
     });
 
