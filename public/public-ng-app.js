@@ -29,7 +29,7 @@ angular
             .when("/editaa/:title",{
                 controller:"EditCtrl3",
                 templateUrl:"./ui/v1/earnings-inter-stats/editEarningsInterStats.html"
-            });;
+            });
     });
 
 
