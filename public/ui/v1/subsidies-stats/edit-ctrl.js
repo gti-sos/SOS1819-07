@@ -81,7 +81,7 @@ angular.module("publicApp").controller("EditCtrl", ["$scope", "$http", "$routePa
                         
                         $http.put(API + "/"+film, $scope.film).then(function (response){
                             alert("Película modificada con exito");
-                        $location.path("/");
+                        $location.path("/ui/v1/subsidies-stats");
                         console.log(JSON.stringify(response.status, null, 2) + JSON.stringify(response.data, null, 2));
                         
                     }).catch(function (response) {

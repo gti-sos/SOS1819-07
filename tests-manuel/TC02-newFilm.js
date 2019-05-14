@@ -1,6 +1,6 @@
 describe("Check if a new film can be created",function () {
     it("List should grow after the film creation", function (){
-        browser.get("https://gti-sos1819-07-mansalort-sos1819mso.c9users.io/ui/v1/subsidies-stats/");
+        browser.get("https://sos1819-07.herokuapp.com/ui/v1/subsidies-stats/");
         element
             .all(by.repeater("film in films"))
             .then( function (initialFilms) {
