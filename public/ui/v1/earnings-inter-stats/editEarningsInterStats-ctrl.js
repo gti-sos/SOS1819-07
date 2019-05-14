@@ -1,6 +1,6 @@
 /* global angular */
 
-    angular.module("EarningApp").controller("EditCtrl2",["$scope","$http", "$routeParams","$location", function ($scope,$http,$routeParams,$location){
+    angular.module("publicApp").controller("EditCtrl3",["$scope","$http", "$routeParams","$location", function ($scope,$http,$routeParams,$location){
             console.log("Edit Controller initialized.");
             var API = "https://sos1819-07.herokuapp.com/api/v1/earnings-inter-stats";
 
@@ -17,7 +17,7 @@
                 console.log("Updating earning inter stat with title: " + title);
                 $http.put(API+"/"+title,$scope.updatedEarningInterStat).then(function (response){
                         console.log("PUT Response: " + response.status + " " + response.data);
-                        $location.path("/earningsInterStats");
+                        $location.path("/ui/v1/earnings-inter-stats");
                 });
             };
     }]);    

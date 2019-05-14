@@ -1,7 +1,7 @@
 /* global angular */
-var app = angular.module("EarningApp");
+var app = angular.module("publicApp");
 
-app.controller("ListCtrl2", ["$scope", "$http", function ($scope,$http){
+app.controller("ListCtrl3", ["$scope", "$http", function ($scope,$http){
                 console.log("List Controller initialized");
                 var API = "https://sos1819-07.herokuapp.com/api/v1/earnings-inter-stats";
                 
