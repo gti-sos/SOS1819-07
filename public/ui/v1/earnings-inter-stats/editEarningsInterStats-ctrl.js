@@ -16,8 +16,13 @@
             $scope.updateEarningInterStat = function (title){
                 console.log("Updating earning inter stat with title: " + title);
                 $http.put(API+"/"+title,$scope.updatedEarningInterStat).then(function (response){
-                        console.log("PUT Response: " + response.status + " " + response.data);
-                        $location.path("/ui/v1/earnings-inter-stats");
+                    alert("La película se ha modificado correctamente.");
+                    console.log("PUT Response: " + response.status + " " + response.data);
+                    $location.path("/ui/v1/earnings-inter-stats");
+                }, function (error){
+                        if(error.status==400) {
+                            alert("Error: Debe rellenar todos los campos.");
+                        }
                 });
             };
     }]);    
