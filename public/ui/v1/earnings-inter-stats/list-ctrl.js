@@ -1,22 +1,22 @@
 /* global angular */
 var app = angular.module("EarningsInterStatsApp");
 
-app.controller("MainCtrl", ["$scope", "$http", function ($scope,$http){
-                console.log("MainCtrl initialized");
-                $scope.url = "https://sos1819-07.herokuapp.com/api/v1/earnings-inter-stats";
+app.controller("ListCtrl", ["$scope", "$http", function ($scope,$http){
+                console.log("List Controller initialized");
+                var API = "https://sos1819-07.herokuapp.com/api/v1/earnings-inter-stats";
                 
                 refresh();
                 
                 function refresh() {
-                    console.log("Requesting earnings inter stats to <"+$scope.url+">...");
-                    $http.get($scope.url).then(function (response){
+                    console.log("Requesting earnings inter stats to <"+API+">...");
+                    $http.get(API).then(function (response){
                         console.log("Data received: " + JSON.stringify(response.data,null,2));
                         $scope.earningsInterStats = response.data;
                     });
                 }
 
                 $scope.loadInitialData = function (){
-                        $http.get($scope.url + "/" + "loadInitialData").then(function (response){
+                        $http.get(API + "/" + "loadInitialData").then(function (response){
                             alert("Base de datos inicializada.");
                             $scope.data = JSON.stringify(response.data,null,2);
                             $scope.statusInfo = JSON.stringify(response.status, null, 2);
@@ -29,7 +29,7 @@ app.controller("MainCtrl", ["$scope", "$http", function ($scope,$http){
                 $scope.addEarningInterStat = function() {
                     var newEarningInterStat = $scope.newEarningInterStat;
                     console.log("Adding a new earning inter stat: " + JSON.stringify(newEarningInterStat,null,2)); 
-                    $http.post($scope.url,newEarningInterStat).then(function (response){
+                    $http.post(API,newEarningInterStat).then(function (response){
                         alert("La película " + JSON.stringify(newEarningInterStat.title,null,2) + " se ha creado correctamente.");
                         console.log("POST Response: " + response.status + " " + response.data);
                         refresh();
@@ -45,7 +45,7 @@ app.controller("MainCtrl", ["$scope", "$http", function ($scope,$http){
 
                 $scope.deleteEarningInterStat = function(title) {
                     console.log("Deleting earning inter stat with title: " + title); 
-                    $http.delete($scope.url + "/" + title).then(function (response){
+                    $http.delete(API + "/" + title).then(function (response){
                         alert("La película se ha eliminado correctamente.");
                         console.log("DELETE Response: " + response.status + " " + response.data);
                         refresh();
@@ -54,7 +54,7 @@ app.controller("MainCtrl", ["$scope", "$http", function ($scope,$http){
                 
                 $scope.deleteAll = function(){
                     console.log("Deleting all earnings inter stats");
-                    $http.delete($scope.url).then(function(response){
+                    $http.delete(API).then(function(response){
                         alert("Todas las películas se han eliminado correctamente.");
                         $scope.data = "";
                         console.log("DELETE ALL Response: " + response.status + " " + response.data);
@@ -63,8 +63,8 @@ app.controller("MainCtrl", ["$scope", "$http", function ($scope,$http){
                 };
                 
                 $scope.busqueda = function() {
-                    console.log($scope.url + "?" + $scope.atributo + "=" + $scope.valor);
-                    $http.get($scope.url + "?" + $scope.atributo + "=" + $scope.valor).then(function(response) {
+                    console.log(API + "?" + $scope.atributo + "=" + $scope.valor);
+                    $http.get(API + "?" + $scope.atributo + "=" + $scope.valor).then(function(response) {
                         if(response.data.length == 0) {
                            alert("No se ha encontrado ninguna película.");
                         }else if(response.data.length == 1){
@@ -78,8 +78,8 @@ app.controller("MainCtrl", ["$scope", "$http", function ($scope,$http){
                 };
                 
                 $scope.paginacion = function() {
-                    console.log($scope.url + "?limit=" + $scope.limit + "&offset=" + $scope.offset);
-                    $http.get($scope.url + "?limit=" + $scope.limit + "&offset=" + $scope.offset).then(function(response) {
+                    console.log(API + "?limit=" + $scope.limit + "&offset=" + $scope.offset);
+                    $http.get(API + "?limit=" + $scope.limit + "&offset=" + $scope.offset).then(function(response) {
                         alert("Paginación realizada correctamente.");
                         $scope.earningsInterStats = response.data;
                         console.log("Paginación Response: " + response.status + " " + JSON.stringify(response.data,null,2));
@@ -88,20 +88,20 @@ app.controller("MainCtrl", ["$scope", "$http", function ($scope,$http){
                 
                 $scope.paginaAnterior = function() {
                     $scope.offset = $scope.offset - $scope.limit;
-                    $http.get($scope.url + "?limit=" + $scope.limit + "&offset=" + $scope.offset).then(function(response) {
+                    $http.get(API + "?limit=" + $scope.limit + "&offset=" + $scope.offset).then(function(response) {
                         $scope.earningsInterStats = response.data;
                     });
                 };
         
                 $scope.paginaSiguiente = function() {
                     $scope.offset = $scope.offset + $scope.limit;
-                    $http.get($scope.url + "?limit=" + $scope.limit + "&offset=" + $scope.offset).then(function(response) {
+                    $http.get(API + "?limit=" + $scope.limit + "&offset=" + $scope.offset).then(function(response) {
                         $scope.earningsInterStats = response.data;
                         $scope.error = "";
                     });
                 };
                 
-                $scope.updateEarningInterStat = function(){
+                /*$scope.updateEarningInterStat = function(){
                     var newEarningInterStat = $scope.newEarningInterStat;
                     console.log("Updating earning inter stat: " + JSON.stringify(newEarningInterStat, null, 2));
                     $http.put($scope.url+"/"+newEarningInterStat.title, newEarningInterStat).then(function(response) {
@@ -116,5 +116,5 @@ app.controller("MainCtrl", ["$scope", "$http", function ($scope,$http){
                             alert("Error: La película " + JSON.stringify(newEarningInterStat.title,null,2) + " no existe.");
                         }
                     });
-                };
+                };*/
 }]);
