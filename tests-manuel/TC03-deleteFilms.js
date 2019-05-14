@@ -1,6 +1,6 @@
 describe('Test if all films are deleted', function() {
     it('delete all', function() {
-        browser.get("https://sos1819-07.herokuapp.com/ui/v1/subsidies-stats/");
+        browser.get("https://sos1819-07.herokuapp.com/#!/ui/v1/subsidies-stats");
 
         element
             .all(by.repeater("film in films"))

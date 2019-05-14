@@ -1,6 +1,6 @@
 describe("Check if a new earning inter stat can be created",function () {
     it("List should grow after the earning inter stat creation", function (){
-        browser.get('https://sos1819-07.herokuapp.com/ui/v1/earnings-inter-stats/');
+        browser.get('https://sos1819-07.herokuapp.com/#!/ui/v1/earnings-inter-stats');
         element
             .all(by.repeater("earningInterStat in earningsInterStats"))
             .then( function (initialEarningsInterStats) {

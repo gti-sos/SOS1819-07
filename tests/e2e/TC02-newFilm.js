@@ -1,6 +1,6 @@
 describe("Check if a new contact can be created",function () {
     it("List should grow after the contact creation", function (){
-        browser.get("https://sos1819-07.herokuapp.com/ui/v1/takingstats/");
+        browser.get("https://sos1819-07.herokuapp.com/#!/ui/v1/takingstats");
         element
             .all(by.repeater("taking in takingstats"))
             .then( function (initialTakings) {
