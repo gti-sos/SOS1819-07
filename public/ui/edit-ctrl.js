@@ -17,7 +17,7 @@
                 console.log("Updating earning inter stat with title: " + title);
                 $http.put(API+"/"+title,$scope.updatedEarningInterStat).then(function (response){
                         console.log("PUT Response: " + response.status + " " + response.data);
-                        $location.path("/");
+                        $location.path("/earning");
                 });
             };
     }]);    
