@@ -1,8 +1,9 @@
 var express = require("express");
 var bodyParser = require("body-parser");
-var app = express();
 var takingstatsApi = require("./takingstats-api");
-app.use("/", express.static(__dirname + "/public/"));
+var cors = require("cors");
+
+var app = express();
 
 var allowCrossDomain = function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
@@ -21,6 +22,10 @@ var allowCrossDomain = function(req, res, next) {
 app.use(allowCrossDomain);
 
 app.use(bodyParser.json());
+app.use(cors());
+
+app.use("/", express.static(__dirname + "/public/"));
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json({ limit: '10mb' }));
 app.use(allowCrossDomain);
