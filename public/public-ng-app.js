@@ -29,6 +29,10 @@ angular
             .when("/editaa/:title",{
                 controller:"EditCtrl3",
                 templateUrl:"./ui/v1/earnings-inter-stats/editEarningsInterStats.html"
+            })
+            .when("/graphic-takings",{
+                controller:"GraficaCtrl",
+                templateUrl:"./ui/v1/takingstats/grafica.html"
             });
     });
 
