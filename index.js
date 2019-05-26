@@ -1,6 +1,8 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var takingstatsApi = require("./takingstats-api");
+var path = require("path");
+var request = require("request");
 var cors = require("cors");
 
 var app = express();
@@ -25,6 +27,39 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.use("/", express.static(__dirname + "/public/"));
+
+//--------------------------------------------------------------------------------------------------------------
+//PROXY 1 ZOILO
+
+var paths='/ui/v1/earnings-inter-stats/proxyApi2';
+var remoteAPI = 'https://sos1819-06.herokuapp.com/api/v1/uefa-country-rankings';
+
+app.use(paths, function(req, res) {
+  console.log('piped: ' + remoteAPI);
+  req.pipe(request(remoteAPI)).pipe(res);
+});
+
+//PROXY 2 ZOILO
+
+var paths2='/ui/v1/earnings-inter-stats/proxyApiExterna1';
+var remoteAPI2 = 'https://www.api-football.com/demo/api/v2/leagues';
+
+app.use(paths2, function(req, res) {
+  console.log('piped: ' + remoteAPI2);
+  req.pipe(request(remoteAPI2)).pipe(res);
+});
+
+//PROXY 3 ZOILO
+
+var paths3='/ui/v1/earnings-inter-stats/proxyApi3';
+var remoteAPI3 = 'https://sos1819-08.herokuapp.com/api/v1/tourists-by-countries';
+
+app.use(paths3, function(req, res) {
+  console.log('piped: ' + remoteAPI3);
+  req.pipe(request(remoteAPI3)).pipe(res);
+});
+
+//--------------------------------------------------------------------------------------------------------
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json({ limit: '10mb' }));
