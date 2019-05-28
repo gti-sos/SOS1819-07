@@ -46,7 +46,18 @@ angular
             })
             .when("/graphic-takings",{
                 controller:"GraficaCtrl",
-                templateUrl:"./ui/v1/takingstats/grafica.html"});
+                templateUrl:"./ui/v1/takingstats/grafica.html"
+            })
+            .when("/ui/v1/takingstats/integrations",{
+                controller:"IntegrationCtrl",
+                templateUrl:"./ui/v1/takingstats/integrations.html"
+            })
+            .when("/integrations",{
+                controller:"IntegrationsCtrl",
+                templateUrl:"./ui/v1/integrations.html"
+            });
+       
+            
     });
 
 console.log("App Initialized.");

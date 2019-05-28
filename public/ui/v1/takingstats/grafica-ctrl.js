@@ -102,56 +102,36 @@ app.controller("GraficaCtrl", ["$scope", "$http", function($scope, $http) {
             chart.draw(data, options);
         }
     });
+    
+    $http.get(API).then(function(response) {
+     let uvCharts = [];
+        response.data.forEach(function(elem) { 
+            //if(elem.arrest_count>15){ // cojo los arrestos mayores de 15
+            let name = elem.film;
+            let value = elem.money;
+                uvCharts.push({ "name": name, "value": value });
+           // }
+        });
 
-    var chart = uv.chart ('Line', graphdef);
-
-/*var graphdef = {
-	categories : ['uvCharts', 'matisse', 'bot-bot', 'SocialByWay'],
-	dataset : {
-		'uvCharts' : [
-			{ name : '2009', value : 32 },
-			{ name : '2010', value : 60 },
-			{ name : '2011', value : 97 },
-			{ name : '2012', value : 560 },
-			{ name : '2013', value : 999 }
-		],
-		
-		'matisse' : [
-			{ name : '2009', value : 58 },
-			{ name : '2010', value : 75 },
-			{ name : '2011', value : 90 },
-			{ name : '2012', value : 740 },
-			{ name : '2013', value : 890 }		
-		],
-		
-		'bot-bot' : [
-			{ name : '2009', value : 43 },
-			{ name : '2010', value : 88 },
-			{ name : '2011', value : 100 },
-			{ name : '2012', value : 420 },
-			{ name : '2013', value : 769 }	
-		],
-		
-		'SocialByWay' : [
-			{ name : '2009', value : 88 },
-			{ name : '2010', value : 120 },
-			{ name : '2011', value : 157 },
-			{ name : '2012', value : 450 },
-			{ name : '2013', value : 1024 }	
-		],
-		
-		'WaveMaker' : [
-			{ name : '2009', value : 32 },
-			{ name : '2010', value : 60 },
-			{ name : '2011', value : 97 },
-			{ name : '2012', value : 560 },
-			{ name : '2013', value : 999 }	
-		]
-	}
-};*/
+        var graphdef = {
+            categories: ['uvCharts'],
+            dataset: {
+                'uvCharts': uvCharts,
+            }
+        };
 
 
-  
+        var chart = uv.chart('Pie', graphdef, {
+            meta: {
+                caption: 'Takings by films in 2017 in Spain',
+                hlabel: 'Years',
+                vlabel: 'Number of users',
+                vsublabel: 'in thousands'
+            }
+        });
 
+
+    });
+     
 
 }]);
