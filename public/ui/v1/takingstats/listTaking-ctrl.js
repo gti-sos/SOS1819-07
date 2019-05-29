@@ -157,6 +157,10 @@ var app = angular.module("publicApp");
                         $scope.error = "";
                     });
                 };
+                
+                
+                
+                
     
     
   }]);

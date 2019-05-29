@@ -1,8 +1,11 @@
 var express = require("express");
 var bodyParser = require("body-parser");
-var app = express();
 var takingstatsApi = require("./takingstats-api");
-app.use("/", express.static(__dirname + "/public/"));
+var path = require("path");
+var request = require("request");
+var cors = require("cors");
+
+var app = express();
 
 var allowCrossDomain = function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
@@ -21,6 +24,85 @@ var allowCrossDomain = function(req, res, next) {
 app.use(allowCrossDomain);
 
 app.use(bodyParser.json());
+app.use(cors());
+
+app.use("/", express.static(__dirname + "/public/"));
+
+//--------------------------------------------------------------------------------------------------
+//PROXY 1 Dioni , grupo 2 
+
+var pathsProxy='/ui/v1/takingstats/proxy1';
+var apiRemota = 'https://sos1819-02.herokuapp.com/api/v1/companies-stats';
+
+app.use(pathsProxy, function(req, res) {
+  console.log('Proxy : ' + apiRemota);
+  req.pipe(request(apiRemota)).pipe(res);
+});
+
+//---------------------------------------------------------------------------------------------------
+//PROXY 2 Dioni , grupo 9
+var pathsProxy2="/ui/v1/takingstats/proxy2";
+var apiRemota2 = "https://sos1819-03.herokuapp.com/api/v1/companies";
+
+app.use(pathsProxy2, function(req, res) {
+  console.log('Proxy : ' + apiRemota2);
+  req.pipe(request(apiRemota2)).pipe(res);
+});
+
+//---------------------------------------------------------------------------------------------------
+//PROXY 3 Dioni , estadísticas age of empires 2
+var pathsProxy3 = "/ui/v1/takingstats/proxy3";
+var apiRemota3 = "https://age-of-empires-2-api.herokuapp.com/api/v1/units" ;
+
+app.use(pathsProxy3, function(req, res) {
+  console.log('Proxy : ' + apiRemota3);
+  req.pipe(request(apiRemota3)).pipe(res);
+});
+
+//---------------------------------------------------------------------------------------------------
+//PROXY 4 Dioni , estadísticas del battlefield 4 de personas que están online en distintas plataformas
+var pathsProxy4 = "/ui/v1/takingstats/proxy4";
+var apiRemota4 = "http://nflarrest.com/api/v1/crime" ;
+
+app.use(pathsProxy4, function(req, res) {
+  console.log('Proxy : ' + apiRemota4);
+  req.pipe(request(apiRemota4)).pipe(res);
+});
+
+
+//--------------------------------------------------------------------------------------------------------------
+//PROXY 1 ZOILO
+
+var paths='/ui/v1/earnings-inter-stats/proxyApi2';
+var remoteAPI = 'https://sos1819-06.herokuapp.com/api/v1/uefa-country-rankings';
+
+app.use(paths, function(req, res) {
+  console.log('piped: ' + remoteAPI);
+  req.pipe(request(remoteAPI)).pipe(res);
+});
+
+//PROXY 2 ZOILO
+
+var paths2='/ui/v1/earnings-inter-stats/proxyApiExterna1';
+var remoteAPI2 = 'https://www.api-football.com/demo/api/v2/leagues';
+
+app.use(paths2, function(req, res) {
+  console.log('piped: ' + remoteAPI2);
+  req.pipe(request(remoteAPI2)).pipe(res);
+});
+
+//PROXY 3 ZOILO
+
+var paths3='/ui/v1/earnings-inter-stats/proxyApi3';
+var remoteAPI3 = 'https://sos1819-08.herokuapp.com/api/v1/tourists-by-countries';
+
+app.use(paths3, function(req, res) {
+  console.log('piped: ' + remoteAPI3);
+  req.pipe(request(remoteAPI3)).pipe(res);
+});
+
+//--------------------------------------------------------------------------------------------------------
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json({ limit: '10mb' }));
 app.use(allowCrossDomain);
