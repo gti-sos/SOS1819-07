@@ -65,10 +65,10 @@ app.controller("AnalyticsCtrlEIS", ["$scope", "$http", function($scope, $http) {
                 var data = google.visualization.arrayToDataTable([
                     ['Country', 'Recaudación'],
                     [response.data[0].country, response.data[0].earning],
-                    ['Canada', response.data[1].earning],
-                    ['Russia', response.data[2].earning],
-                    ['Australia', response.data[3].earning],
-                    ['Brazil', response.data[4].earning]
+                    [response.data[1].country, response.data[1].earning],
+                    [response.data[2].country, response.data[2].earning],
+                    [response.data[3].country, response.data[3].earning],
+                    [response.data[4].country, response.data[4].earning]
                 ]);
 
                 var options = {};
