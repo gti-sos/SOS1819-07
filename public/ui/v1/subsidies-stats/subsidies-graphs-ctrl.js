@@ -36,6 +36,23 @@ app.controller("SubsidiesGraphCtrl", ["$scope", "$http", function($scope, $http)
         
     } );
     
+    var mySeries = [];
+    for (var i = 0; i < chardata4.length; i++) {
+        mySeries.push([chardata4[i]]);
+        i++;
+    }
+    
+    var mySeries2 = [];
+    for (var i = 0; i < chardata3.length; i++) {
+        mySeries2.push([chardata3[i]]);
+        i++;
+    }
+    
+    console.log(chardata4);
+    console.log(chardata3);
+    console.log(mySeries);
+    console.log(mySeries2);
+    
     Highcharts.chart('container', {
     chart: {
         type: 'pyramid'
@@ -59,16 +76,23 @@ app.controller("SubsidiesGraphCtrl", ["$scope", "$http", function($scope, $http)
     legend: {
         enabled: false
     },
+    
+    tooltip: {
+  formatter: function() {
+    return 'The subsidy received for <b>' + chardata4[0] +
+      '</b> is <b>' + this.y + '</b>';
+  }
+},
+    
+    
     series: [{
-        name: 'Subsidy received',
-        data: [
-            [chardata4[0],      chardata3[0]],
-            [chardata4[1],            chardata3[1]],
-            [chardata4[2],  chardata3[2]],
-            [chardata4[3],          chardata3[3]],
-            [chardata4[4],             chardata3[4]]
-        ]
-    }]
+    data: chardata4,
+    name: "films"
+},
+{   
+    data: chardata3,
+    name: "subsidies receives"
+}]
 });
         
 
