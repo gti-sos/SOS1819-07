@@ -52,9 +52,16 @@ angular
                 controller:"IntegrationCtrl",
                 templateUrl:"./ui/v1/takingstats/integrations.html"
             })
+            .when("/ui/v1/subsidies-stats/integrations",{
+                controller:"integrationsManuelCtrl",
+                templateUrl:"./ui/v1/subsidies-stats/integrations-manuel.html"
+            })
             .when("/integrations",{
                 controller:"IntegrationsCtrl",
                 templateUrl:"./ui/v1/integrations.html"
+            }).when("/ui/v1/subsidies-stats/subsidies-graphs",{
+                controller:"SubsidiesGraphCtrl",
+                templateUrl:"./ui/v1/subsidies-stats/subsidies-graphs.html"
             });
        
             
