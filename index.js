@@ -101,6 +101,17 @@ app.use(paths3, function(req, res) {
   req.pipe(request(remoteAPI3)).pipe(res);
 });
 
+//PROXY 4
+
+var paths4='/ui/v1/earnings-inter-stats/proxyApiExterna3';
+var remoteAPI4 = 'http://apiv3.iucnredlist.org/api/v3/region/list?token=9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee';
+
+app.use(paths4, function(req, res) {
+  console.log('piped: ' + remoteAPI4);
+  req.pipe(request(remoteAPI4)).pipe(res);
+});
+
+
 //--------------------------------------------------------------------------------------------------------
 
 //PROXY 1 Manuel

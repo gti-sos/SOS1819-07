@@ -1,4 +1,4 @@
-/* global angular anychart Highcharts */
+/* global angular anychart Highcharts google */
 
 angular
     .module("publicApp")
@@ -12,6 +12,7 @@ angular
         var api3 = "/ui/v1/earnings-inter-stats/proxyApi3";
         var apiExterna1 = "/ui/v1/earnings-inter-stats/proxyApiExterna1";
         var apiExterna2 = "https://api.coindesk.com/v1/bpi/currentprice.json";
+        var apiExterna3 = "/ui/v1/earnings-inter-stats/proxyApiExterna3";
 
         // Highcharts, integración 1
 
@@ -217,6 +218,39 @@ angular
                     // initiate chart drawing
                     chart.draw();
                 });
+            });
+        });
+        
+        // Googlecharts, integración 5 (api externa 3)
+
+        $http.get(apiExterna3).then(function(response1) {
+            $http.get(apiPropia).then(function(response2) {
+                google.charts.load('current', { packages: ['wordtree'] });
+                google.charts.setOnLoadCallback(drawChart);
+
+                function drawChart() {
+                    var data = google.visualization.arrayToDataTable(
+                        [
+                            ['Phrases'],
+                            [response1.data.results[0].name],
+                            [response2.data[2].title],
+                            [response1.data.results[1].name],
+                            [response2.data[1].title],
+                            [response1.data.results[2].name],
+                            [response2.data[0].title],
+                        ]
+                    );
+
+                    var options = {
+                        wordtree: {
+                            format: 'implicit',
+                            word: 'cats'
+                        }
+                    };
+
+                    var chart = new google.visualization.WordTree(document.getElementById('wordtree_basic'));
+                    chart.draw(data, options);
+                }
             });
         });
 
