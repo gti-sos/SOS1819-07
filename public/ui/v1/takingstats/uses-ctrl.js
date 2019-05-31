@@ -1,14 +1,15 @@
 var app = angular.module("publicApp");
 
 
-app.controller("IntegrationCtrl", ["$scope", "$http", function($scope, $http) {
-    console.log("IntegrationCtrl initicialized!");
+app.controller("UsesCtrl", ["$scope", "$http", function($scope, $http) {
+    console.log("UsesCtrl initicialized!");
 
     var myApi = "https://sos1819-07.herokuapp.com/api/v1/takingstats";
     var api1 = "/ui/v1/takingstats/proxy1";
     var api2 = "/ui/v1/takingstats/proxy2";
     var api3 = "/ui/v1/takingstats/proxy3";
     var api4 = "/ui/v1/takingstats/proxy4";
+    var api5 = "/ui/v1/takingstats/proxy5";
 
     var datoAux = [];
     var datoAux2 = [];
@@ -86,88 +87,88 @@ app.controller("IntegrationCtrl", ["$scope", "$http", function($scope, $http) {
         for (i = 0; i < response.data.length; i++) {
             if (response.data[i].country && response.data[i].totalpopulation && !isNaN(response.data[i].totalpopulation))
                 datoAux3.push(response.data[i].country);
-                datoAux4.push(response.data[i].numberOfCompanies);
-                
+            datoAux4.push(response.data[i].numberOfCompanies);
+
         }
-   
-    
-       Highcharts.chart('bi', {
 
-    title: {
-        text: 'Number of Employees in some countries in 2016-2017'
-    },
 
-    yAxis: {
-        title: {
-            text: 'Number of Employees'
-        }
-    },
-    legend: {
-        layout: 'vertical',
-        align: 'right',
-        verticalAlign: 'middle'
-    },
+        Highcharts.chart('bi', {
 
-    plotOptions: {
-        series: {
-            label: {
-                connectorAllowed: false
+            title: {
+                text: 'Number of Employees in some countries in 2016-2017'
             },
-            pointStart: 2014
-        }
-    },
 
-    series: [{
-        name: "France",
-        data: [null, null, datoAux4[0], datoAux4[1],null]
-    }, {
-        name: "Georgia",
-        data: [null, null, null, datoAux4[2],null]
-    }, {
-        name: 'Germany',
-        data: [null, null, null, datoAux4[3],null]
-    }, {
-        name: 'India',
-        data: [null, null, null, datoAux4[4],null]
-    }, {
-        name: 'Norway',
-        data: [null, null, null, datoAux4[5],null]
-    }, {
-        name: 'Spain',
-        data: [null, null, datoAux4[6], datoAux4[7],null]
-    }, {
-        name: 'Sweden',
-        data: [null, null, null, datoAux4[8],null]
-    }],
-
-    responsive: {
-        rules: [{
-            condition: {
-                maxWidth: 500
-            },
-            chartOptions: {
-                legend: {
-                    layout: 'horizontal',
-                    align: 'center',
-                    verticalAlign: 'bottom'
+            yAxis: {
+                title: {
+                    text: 'Number of Employees'
                 }
-            }
-        }]
-    }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle'
+            },
 
-});
+            plotOptions: {
+                series: {
+                    label: {
+                        connectorAllowed: false
+                    },
+                    pointStart: 2014
+                }
+            },
+
+            series: [{
+                name: "France",
+                data: [null, null, datoAux4[0], datoAux4[1], null]
+            }, {
+                name: "Georgia",
+                data: [null, null, null, datoAux4[2], null]
+            }, {
+                name: 'Germany',
+                data: [null, null, null, datoAux4[3], null]
+            }, {
+                name: 'India',
+                data: [null, null, null, datoAux4[4], null]
+            }, {
+                name: 'Norway',
+                data: [null, null, null, datoAux4[5], null]
+            }, {
+                name: 'Spain',
+                data: [null, null, datoAux4[6], datoAux4[7], null]
+            }, {
+                name: 'Sweden',
+                data: [null, null, null, datoAux4[8], null]
+            }],
+
+            responsive: {
+                rules: [{
+                    condition: {
+                        maxWidth: 500
+                    },
+                    chartOptions: {
+                        legend: {
+                            layout: 'horizontal',
+                            align: 'center',
+                            verticalAlign: 'bottom'
+                        }
+                    }
+                }]
+            }
+
+        });
     });
 
     //donut,bar,line
     //age of empire
-  
+
     $http.get(api3).then(function(response) {
         let uvCharts = [];
 
         response.data.units.map(function(elem) {
             let name = elem.name;
             let value = elem.build_time;
-            if (name && value && !isNaN(value)) // compruebo que hay name y build time y que el name no es un número
+            if (name && value && !isNaN(value)) // compruebo que hay name y build time y que el value es un numero
                 uvCharts.push({ "name": name, "value": value });
         });
 
@@ -191,12 +192,12 @@ app.controller("IntegrationCtrl", ["$scope", "$http", function($scope, $http) {
     });
 
     //BAR , LINE , DONUT , PIE
-     $http.get(api4).then(function(response) {
-     let uvCharts = [];
-        response.data.forEach(function(elem) { 
-            if(elem.arrest_count>15){ // cojo los arrestos mayores de 15
-            let name = elem.Category;
-            let value = elem.arrest_count;
+    $http.get(api4).then(function(response) {
+        let uvCharts = [];
+        response.data.forEach(function(elem) {
+            if (elem.arrest_count > 15) { // cojo los arrestos mayores de 15
+                let name = elem.Category;
+                let value = elem.arrest_count;
                 uvCharts.push({ "name": name, "value": value });
             }
         });
@@ -220,5 +221,6 @@ app.controller("IntegrationCtrl", ["$scope", "$http", function($scope, $http) {
 
 
     });
-     
+
+   
 }]);

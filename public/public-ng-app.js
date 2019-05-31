@@ -44,17 +44,25 @@ angular
                controller : "IntegrationGrupalCtrl",
                templateUrl: "./ui/v1/integrations-grupal.html"   
             })
-            .when("/graphic-takings",{
+            .when("/graphic-takings",{ //dioni
                 controller:"GraficaCtrl",
                 templateUrl:"./ui/v1/takingstats/grafica.html"
             })
-            .when("/ui/v1/takingstats/integrations",{
-                controller:"IntegrationCtrl",
-                templateUrl:"./ui/v1/takingstats/integrations.html"
+            .when("/ui/v1/takingstats/uses",{ //dioni
+                controller:"UsesCtrl",
+                templateUrl:"./ui/v1/takingstats/uses.html"
+            })
+            .when("/ui/v1/takingstats/external-integrations",{ //dioni
+                controller:"ExternalIntegrationsCtrl",
+                templateUrl:"./ui/v1/takingstats/externalIntegrations.html"
             })
             .when("/integrations",{
                 controller:"IntegrationsCtrl",
                 templateUrl:"./ui/v1/integrations.html"
+            })
+            .when("/about",{
+                controller:"AboutCtrl",
+                templateUrl:"./ui/v1/about.html"
             });
        
             
