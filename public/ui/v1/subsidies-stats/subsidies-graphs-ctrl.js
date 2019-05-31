@@ -37,60 +37,38 @@ app.controller("SubsidiesGraphCtrl", ["$scope", "$http", function($scope, $http)
     } );
     
     Highcharts.chart('container', {
-
-    title: {
-        text: 'subsidies received VS film budget'
+    chart: {
+        type: 'pyramid'
     },
-
-    yAxis: {
-        title: {
-            text: 'MONEEEEEEEEy'
+    title: {
+        text: 'Subsidies pyramid',
+        x: -50
+    },
+    plotOptions: {
+        series: {
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b> ({point.y:,.0f})',
+                color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black',
+                softConnector: true
+            },
+            center: ['40%', '50%'],
+            width: '80%'
         }
     },
-    xAxis: [{
-                categories: [chardata4[0], chardata4[1], chardata4[2], chardata4[3], chardata4[4]]
-            }],
-            
     legend: {
-        layout: 'vertical',
-        align: 'right',
-        verticalAlign: 'middle'
+        enabled: false
     },
-
-    
-
-    
-
     series: [{
-        name: 'subsidies received',
-        data: [chardata3[0], chardata3[1], chardata3[2], chardata3[3], chardata3[4]] 
-        
-    }, 
-    
-    {
-        name: 'film budget',
-        data: [chardata1[0], chardata1[1], chardata1[2], chardata1[3], chardata1[4]] 
-        
-    }
-    
-    
-    ],
-
-    responsive: {
-        rules: [{
-            condition: {
-                maxWidth: 500
-            },
-            chartOptions: {
-                legend: {
-                    layout: 'horizontal',
-                    align: 'center',
-                    verticalAlign: 'bottom'
-                }
-            }
-        }]
-    }
-
+        name: 'Subsidy received',
+        data: [
+            [chardata4[0],      chardata3[0]],
+            [chardata4[1],            chardata3[1]],
+            [chardata4[2],  chardata3[2]],
+            [chardata4[3],          chardata3[3]],
+            [chardata4[4],             chardata3[4]]
+        ]
+    }]
 });
         
 

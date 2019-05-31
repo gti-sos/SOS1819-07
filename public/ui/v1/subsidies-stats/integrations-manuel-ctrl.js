@@ -8,22 +8,25 @@ app.controller("integrationsManuelCtrl", ["$scope", "$http", function($scope, $h
     
     var apiG11 = "/ui/v1/subsidies-stats/proxyApiG11";
     
+    var apiGB = "/ui/v1/subsidies-stats/GHIBLI";
+    
     $http.get(apiG11).then(function(response) {
         
     var data = response.data;
     
     var chardata1 = data.map( function (item)  { 
         
-        var newItem = item.year;
+        var newItem = item.country;
         
         return newItem;
         
     } );
     
     
+    
     var chardata3 = data.map( function (item)  { 
         
-        var newItem = item.educationExpensePub;
+        var newItem = item.educationExpense;
         
         return newItem;
         
@@ -38,44 +41,38 @@ app.controller("integrationsManuelCtrl", ["$scope", "$http", function($scope, $h
     } );
     
     Highcharts.chart('container', {
-
-    title: {
-        text: 'subsidies received VS film budget'
+    chart: {
+        type: 'funnel'
     },
-
-    yAxis: {
-        title: {
-            text: 'MONEEEEEEEEy'
+    title: {
+        text: 'expenses in education funnel'
+    },
+    plotOptions: {
+        series: {
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b> ({point.y:,.0f})',
+                softConnector: true
+            },
+            center: ['40%', '50%'],
+            neckWidth: '30%',
+            neckHeight: '25%',
+            width: '80%'
         }
     },
-    xAxis: [{
-                categories: [chardata4[0], chardata4[1], chardata4[2], chardata4[3], chardata4[4]]
-            }],
-            
     legend: {
-        layout: 'vertical',
-        align: 'right',
-        verticalAlign: 'middle'
+        enabled: false
     },
-
-    
-
-    
-
     series: [{
-        name: 'subsidies received',
-        data: [chardata3[0], chardata3[1], chardata3[2], chardata3[3], chardata3[4]] 
-        
-    }, 
-    
-    {
-        name: 'film budget',
-        data: [chardata1[0], chardata1[1], chardata1[2], chardata1[3], chardata1[4]] 
-        
-    }
-    
-    
-    ],
+        name: 'expenses in education',
+        data: [
+            [chardata1[0], chardata3[0]],
+            [chardata1[1], chardata3[1]],
+            [chardata1[2], chardata3[2]],
+            [chardata1[3], chardata3[3]],
+            [chardata1[4], chardata3[4]]
+        ]
+    }],
 
     responsive: {
         rules: [{
@@ -83,18 +80,70 @@ app.controller("integrationsManuelCtrl", ["$scope", "$http", function($scope, $h
                 maxWidth: 500
             },
             chartOptions: {
-                legend: {
-                    layout: 'horizontal',
-                    align: 'center',
-                    verticalAlign: 'bottom'
+                plotOptions: {
+                    series: {
+                        dataLabels: {
+                            inside: true
+                        },
+                        center: ['50%', '50%'],
+                        width: '100%'
+                    }
                 }
             }
         }]
     }
-
 });
         
 
+    });
+    
+    $http.get(apiGB).then(function (response) {
+        
+    var data = response.data;
+    
+    var chardata1 = data.map( function (item)  { 
+        
+        var newItem = item.title;
+        
+        return newItem;
+        
+    } );
+    
+    var chardata2 = data.map( function (item)  { 
+        
+        var newItem = item.rt_score;
+        
+        return newItem;
+        
+    } );
+        
+    var defData = [{
+    "film": chardata1[0],
+    "RTscore": chardata2[0],
+  }, {
+    "film": chardata1[1],
+    "RTscore": chardata2[1],
+  },
+   {
+    "film": chardata1[2],
+    "RTscore": chardata2[2],
+  },
+  {
+    "film": chardata1[3],
+    "RTscore": chardata2[3],
+  },
+];
+var chart = new Taucharts.Chart({
+  data: defData,
+  type: 'horizontal-bar',
+  x: 'RTscore',
+  y: 'film'
+});
+chart.renderTo('#bar');
+   
+
+
+        
     });
     
 }]);
