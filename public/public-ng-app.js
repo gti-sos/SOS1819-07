@@ -56,6 +56,10 @@ angular
                 controller:"ExternalIntegrationsCtrl",
                 templateUrl:"./ui/v1/takingstats/externalIntegrations.html"
             })
+            .when("/ui/v1/subsidies-stats/integrations",{
+                controller:"integrationsManuelCtrl",
+                templateUrl:"./ui/v1/subsidies-stats/integrations-manuel.html"
+            })
             .when("/integrations",{
                 controller:"IntegrationsCtrl",
                 templateUrl:"./ui/v1/integrations.html"
@@ -63,6 +67,9 @@ angular
             .when("/about",{
                 controller:"AboutCtrl",
                 templateUrl:"./ui/v1/about.html"
+            }).when("/ui/v1/subsidies-stats/subsidies-graphs",{
+                controller:"SubsidiesGraphCtrl",
+                templateUrl:"./ui/v1/subsidies-stats/subsidies-graphs.html"
             });
        
             

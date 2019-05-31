@@ -134,6 +134,28 @@ app.use(paths4, function(req, res) {
 
 //--------------------------------------------------------------------------------------------------------
 
+//PROXY 1 Manuel (G11)
+
+var pathsG11 ='/ui/v1/subsidies-stats/proxyApiG11';
+var APIG11 = 'https://sos1819-11.herokuapp.com/api/v2/public-expenditure-educations/';
+
+app.use(pathsG11, function(req, res) {
+  console.log('piped: ' + APIG11);
+  req.pipe(request(APIG11)).pipe(res);
+});
+
+//PROXY 2 Manuel (GHIBLI)
+
+var pathGB ='/ui/v1/subsidies-stats/GHIBLI';
+var APIGB = 'https://ghibliapi.herokuapp.com/films/';
+
+app.use(pathGB, function(req, res) {
+  console.log('piped: ' + APIGB);
+  req.pipe(request(APIGB)).pipe(res);
+});
+
+//--------------------------------------------------------------------------------------------------------
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json({ limit: '10mb' }));
 app.use(allowCrossDomain);

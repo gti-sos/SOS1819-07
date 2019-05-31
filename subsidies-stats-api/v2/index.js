@@ -285,8 +285,8 @@ app.put(path, (req, res) => {
             res.sendStatus(404);
 
         }
-        else if (req.body.hasOwnProperty("country") == false || req.body.hasOwnProperty("year") == false || req.body.hasOwnProperty("subsidyReceibed") == false ||
-            req.body.hasOwnProperty("subsidyBudgetProject") == false || req.body.hasOwnProperty("subsidyPercentage") == false ||
+        else if (!req.body.country || !req.body.year || !req.body.subsidyReceibed ||
+            !req.body.subsidyBudgetProject || !req.body.subsidyPercentage ||
             Object.keys(UpdatedFilm).length != 6 ||
             req.body.film != film) {
 
