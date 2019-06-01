@@ -207,7 +207,7 @@ app.post(path, (req, res) => {
 
         }
         else {
-            subsidiesStats.insert(newFilm);
+            subsidiesStats.insertOne(newFilm);
             res.sendStatus(201);
         }
     });
