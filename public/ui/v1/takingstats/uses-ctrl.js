@@ -4,12 +4,11 @@ var app = angular.module("publicApp");
 app.controller("UsesCtrl", ["$scope", "$http", function($scope, $http) {
     console.log("UsesCtrl initicialized!");
 
-    var myApi = "https://sos1819-07.herokuapp.com/api/v1/takingstats";
+
     var api1 = "/ui/v1/takingstats/proxy1";
     var api2 = "/ui/v1/takingstats/proxy2";
     var api3 = "/ui/v1/takingstats/proxy3";
     var api4 = "/ui/v1/takingstats/proxy4";
-    var api5 = "/ui/v1/takingstats/proxy5";
 
     var datoAux = [];
     var datoAux2 = [];
@@ -191,7 +190,6 @@ app.controller("UsesCtrl", ["$scope", "$http", function($scope, $http) {
 
     });
 
-    //BAR , LINE , DONUT , PIE
     $http.get(api4).then(function(response) {
         let uvCharts = [];
         response.data.forEach(function(elem) {
@@ -222,5 +220,6 @@ app.controller("UsesCtrl", ["$scope", "$http", function($scope, $http) {
 
     });
 
+    
    
 }]);

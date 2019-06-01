@@ -53,17 +53,21 @@
                 </td>
             </tr>
             <tr>
-                <td><input name="limit" class="form-control" type="number" min="0" max="10" ng-model="limit" ng-init="limit=0" /></td>
-                <td><input name="offset" class="form-control" type="number" min="0" max="10" ng-model="offset" ng-init="offset=0" /></td>
+                <td><h7>Resultados a salir:</h7>
+                    <input name="limit" class="form-control" type="number" min="0" max="10" ng-model="limit" ng-init="limit=0" /></td>
+                <td><h7>A partir de:</h7>
+                    <input name="offset" class="form-control" type="number" min="0" max="10" ng-model="offset" ng-init="offset=0" /></td>
                 <td><button class="btn btn-primary" ng-click="paginacion()">Paginar</button></td>
                 <td><button class="btn btn-primary" ng-click="paginaAnterior()">Anterior</button></td>
                 <td><button class="btn btn-primary" ng-click="paginaSiguiente()">Siguiente</button></td>
-                <td><a href="#!/graphic-takings"><button class="btn btn-primary" ng-click="grafica()">API's graphs</button></td>
+                <td><a href="#!/integrations"><button class="btn btn-primary" ng-click="grafica()">Gráficos</button></td>
             </tr>
 
         </tbody>
     </table>
     </div>
+    </br>
+    <h5>Escoja campo de búsqueda</h5>
     <div>
        
         <select class="form-control" ng-model="valor">
@@ -80,7 +84,6 @@
         </br>
     </div>
     <div>
-        <button class="btn btn-primary" ng-click="send()">Obtener películas</button>
         <button class="btn btn-danger" ng-click="deletedata(country, year, film, distributor, money, rank, spectator)">Borrar todo</button>
         <button class="btn btn-primary" ng-click="loadData()">Cargar películas</button>
 

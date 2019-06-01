@@ -90,6 +90,32 @@ app.use(pathsProxy6, function(req, res) {
 });
 
 
+
+//---------------------------------------------------------------------------------------------------
+//PROXY 7 Dioni , estadísticas del show de televisión tv-maze
+var pathsProxy7 = "/ui/v1/takingstats/proxy7";
+var apiRemota7 = "http://api.tvmaze.com/seasons/1/episodes" ;
+
+app.use(pathsProxy7, function(req, res) {
+  console.log('Proxy : ' + apiRemota7);
+  req.pipe(request(apiRemota7)).pipe(res);
+});
+
+//---------------------------------------------------------------------------------------------------
+//PROXY 8 Dioni , estadísticas de vehículos brasileños
+var pathsProxy8 = "/ui/v1/takingstats/proxy8";
+var apiRemota8 = "https://parallelum.com.br/fipe/api/v1/carros/marcas" ;
+
+app.use(pathsProxy8, function(req, res) {
+  console.log('Proxy : ' + apiRemota8);
+  req.pipe(request(apiRemota8)).pipe(res);
+});
+
+
+
+
+
+
 //--------------------------------------------------------------------------------------------------------------
 //PROXY 1 ZOILO
 

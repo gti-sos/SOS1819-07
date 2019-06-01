@@ -7,11 +7,14 @@ app.controller("ExternalIntegrationsCtrl", ["$scope", "$http", function($scope, 
     var myApi = "https://sos1819-07.herokuapp.com/api/v1/takingstats";
     var api5 = "/ui/v1/takingstats/proxy5";
     var api6 = "/ui/v1/takingstats/proxy6";
-   
+    var api7 = "/ui/v1/takingstats/proxy7";
+    var api8 = "/ui/v1/takingstats/proxy8";
+
+    //amcharts
     //API de star wars
     $http.get(api5).then(function(response) {
         $http.get(myApi).then(function(response2) {
-            
+
             am4core.ready(function() {
 
                 // Themes begin
@@ -85,10 +88,79 @@ app.controller("ExternalIntegrationsCtrl", ["$scope", "$http", function($scope, 
 
         });
     });
-    
+    //amcharts
     $http.get(api6).then(function(response) {
         $http.get(myApi).then(function(response2) {
-            
+
+
+            am4core.ready(function() {
+
+                // Themes begin
+                am4core.useTheme(am4themes_animated);
+                // Themes end
+
+                // Create chart instance
+                var chart = am4core.create("bi", am4charts.PieChart);
+
+                // Add data
+                chart.data = [
+                    { "country": response.data.Results[0].Make_Name, "litres": response2.data[0].money },
+                    { "country": response.data.Results[1].Make_Name, "litres": response2.data[1].money },
+                    { "country": response.data.Results[2].Make_Name, "litres": response2.data[2].money },
+                    { "country": response.data.Results[3].Make_Name, "litres": response2.data[3].money },
+                    { "country": response.data.Results[4].Make_Name, "litres": response2.data[4].money }
+                ];
+
+                // Add and configure Series
+                var pieSeries = chart.series.push(new am4charts.PieSeries());
+                pieSeries.dataFields.value = "litres";
+                pieSeries.dataFields.category = "country";
+                pieSeries.slices.template.stroke = am4core.color("#fff");
+                pieSeries.slices.template.strokeWidth = 2;
+                pieSeries.slices.template.strokeOpacity = 1;
+
+                // This creates initial animation
+                pieSeries.hiddenState.properties.opacity = 1;
+                pieSeries.hiddenState.properties.endAngle = -90;
+                pieSeries.hiddenState.properties.startAngle = -90;
+
+            }); // end am4core.ready()
+        });
+    });
+
+    //morris.js
+    $http.get(api7).then(function(response) {
+        $http.get(myApi).then(function(response2) {
+            Morris.Bar({
+                element: 'bar-example',
+                data: [
+                    { y: response.data[0].name, a: response2.data[0].rank },
+                    { y: response.data[1].name, a: response2.data[1].rank },
+                    { y: response.data[2].name, a: response2.data[2].rank },
+                    { y: response.data[3].name, a: response2.data[3].rank },
+
+                ],
+                xkey: 'y',
+                ykeys: ['a'],
+                labels: ['Series A']
+            });
+        });
+    });
+
+    //morris.js
+    $http.get(api8).then(function(response) {
+        $http.get(myApi).then(function(response2) {
+            Morris.Donut({
+                element: 'donut-example',
+                data: [
+                    { label: response.data[0].nome, value: response2.data[0].money },
+                    { label: response.data[1].nome, value: response2.data[1].money },
+                    { label: response.data[2].nome, value: response2.data[2].money },
+                    { label: response.data[3].nome, value: response2.data[3].money },
+                    { label: response.data[4].nome, value: response2.data[4].money }
+                ]
+            });
+
         });
     });
 }]);
