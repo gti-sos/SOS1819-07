@@ -80,11 +80,11 @@ path = BASE_PATH + "/subsidies-stats";
 app.get(path, (req, res) => {
     
     var country = req.query.country;
-    var year = req.query.year;
+    var year = parseInt(req.query.year);
     var film = req.query.film;
-    var subsidyReceibed = req.query.subsidyReceibed;
-    var subsidyBudgetProject = req.query.subsidyBudgetProject;
-    var subsidyPercentage = req.query.subsidyPercentage;
+    var subsidyReceibed = parseFloat(req.query.subsidyReceibed);
+    var subsidyBudgetProject = parseFloat(req.query.subsidyBudgetProject);
+    var subsidyPercentage = parseFloat(req.query.subsidyPercentage);
     var limit = req.query.limit;
     var from = req.query.from;
     
