@@ -78,8 +78,8 @@ app.controller("SubsidiesGraphCtrl", ["$scope", "$http", function($scope, $http)
     },
     
     tooltip: {
-  formatter: function() {
-    return 'The subsidy received for <b>' + chardata4[0] +
+  formatter: function(i) {
+    return 'The subsidy received for <b>' + this.x +
       '</b> is <b>' + this.y + '</b>';
   }
 },
