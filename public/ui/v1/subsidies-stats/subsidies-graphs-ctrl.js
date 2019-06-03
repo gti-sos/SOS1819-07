@@ -36,22 +36,7 @@ app.controller("SubsidiesGraphCtrl", ["$scope", "$http", function($scope, $http)
         
     } );
     
-    var mySeries = [];
-    for (var i = 0; i < chardata4.length; i++) {
-        mySeries.push([chardata4[i]]);
-        i++;
-    }
-    
-    var mySeries2 = [];
-    for (var i = 0; i < chardata3.length; i++) {
-        mySeries2.push([chardata3[i]]);
-        i++;
-    }
-    
-    console.log(chardata4);
-    console.log(chardata3);
-    console.log(mySeries);
-    console.log(mySeries2);
+   
     
     Highcharts.chart('container', {
     chart: {
@@ -64,23 +49,22 @@ app.controller("SubsidiesGraphCtrl", ["$scope", "$http", function($scope, $http)
     plotOptions: {
         series: {
             dataLabels: {
-                enabled: true,
-                format: '<b>{point.name}</b> ({point.y:,.0f})',
+                enabled: false,
+                format: '<b>{chardata4[this.point.index]}</b> ({chardata4[this.point.index]:,.0f})',
                 color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black',
                 softConnector: true
             },
             center: ['40%', '50%'],
             width: '80%'
         }
-    },
-    legend: {
-        enabled: false
-    },
+    
+},
     
     tooltip: {
   formatter: function(i) {
-    return 'The subsidy received for <b>' + this.x +
+    return 'The value for <b>' + chardata4[this.point.index] +
       '</b> is <b>' + this.y + '</b>';
+      
   }
 },
     

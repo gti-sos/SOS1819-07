@@ -1,6 +1,14 @@
+<h4>Use of SOS API group 11</h4>
+<br>
 <div id="container"></div>
+<h4>Use of external API studio Ghibli</h4>
+<br>
 <div id="bar"></div>
+<h4>Use of SOS API group 12</h4>
+<br>
 <div id="container2"></div>
+<h4>Use of external API Breaking Bad quotes</h4>
+<br>
 <div>
     
     <table class="table">
@@ -34,7 +42,8 @@
     
     
 </div>
-
+<h4>Use of external API draw a card</h4>
+<br>
 <div>
     
     <table class="table">
@@ -70,4 +79,42 @@
     
     
 </div>
+<h4>Integration of my API with IMBD API</h4>
+<br>
+<div>
+    
+    <table class="table">
+        <thead>
+                
+                <tr>
+                    
+                    <th>Film</th>
+                    <th>Director</th>
+                    <th>Actors</th>
+                    
+                </tr>
+                
+        </thead>
         
+        <tbody>
+            
+            <tr ng-repeat = "data in data" >
+            
+                
+                <th>{{ data.film }}</th>
+                <th>{{ data.Director }}</th>
+                <th>{{ data.Actors }}</th>
+                    
+                
+                
+                
+            </tr>
+            
+        </tbody>
+        
+        
+    </table>
+    
+    
+</div>
+<div><a href="/#!/integrations"><button class="btn btn-primary" ng-click="back()">Back</button></div>

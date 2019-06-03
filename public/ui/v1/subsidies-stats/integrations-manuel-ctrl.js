@@ -18,7 +18,7 @@ app.controller("integrationsManuelCtrl", ["$scope", "$http", function($scope, $h
     
     var API = "https://sos1819-07.herokuapp.com/api/v2/subsidies-stats";
     
-    var apiFA = "/ui/v1/subsidies-stats/FA/";
+    var apiIMDB = "https://www.omdbapi.com/?i=";
     
     //USO API G11
     $http.get(apiG11).then(function(response) {
@@ -262,16 +262,34 @@ chart.renderTo('#bar');
     };
     
     //INTEGRACIÓN API subsidies-stats con API filmaffinity
+    
+    
+    var ID = ["tt3896102", "tt6101820", "tt5176252", "tt5187886", "tt6060156"];
+    var APIKEY = "9ef01c31";
     $http.get(API).then(function (response){
-        var ID = "/446901";
         
-        $http.get(apiFA).then(function(response){
+        $scope.infos = [];
+        
+        $scope.films = response.data;
+        
+        console.log(response.data.film);
+        
+        
+    
+        
+        for(var i = 0;i<ID.length;i++){
+         
+        $http.get(apiIMDB+ID[i]+"&apikey="+APIKEY).then(function(response){
             
-            console.log(response.data);
+            $scope.infos.push(response.data);
+            
+            $scope.data = angular.merge({}, $scope.films, $scope.infos);
             
         });
         
         
+        
+        }
         
     });
     
