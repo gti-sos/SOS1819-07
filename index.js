@@ -134,6 +134,9 @@ app.use(pathGB, function(req, res) {
   req.pipe(request(APIGB)).pipe(res);
 });
 
+
+
+
 //--------------------------------------------------------------------------------------------------------
 
 app.use(bodyParser.urlencoded({ extended: false }));

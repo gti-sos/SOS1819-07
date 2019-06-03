@@ -80,7 +80,7 @@ path = BASE_PATH + "/subsidies-stats";
 app.get(path, (req, res) => {
     
     var country = req.query.country;
-    var year = parseInt(req.query.year);
+    var year = parseInt(req.query.year, 10);
     var film = req.query.film;
     var subsidyReceibed = parseFloat(req.query.subsidyReceibed);
     var subsidyBudgetProject = parseFloat(req.query.subsidyBudgetProject);
@@ -207,7 +207,7 @@ app.post(path, (req, res) => {
 
         }
         else {
-            subsidiesStats.insert(newFilm);
+            subsidiesStats.insertOne(newFilm);
             res.sendStatus(201);
         }
     });

@@ -1,3 +1,73 @@
 <div id="container"></div>
 <div id="bar"></div>
+<div id="container2"></div>
+<div>
+    
+    <table class="table">
+        <thead>
+                
+                <tr>
+                    
+                    <th>author</th>
+                    <th>quote</th>
+                    <ht><buttom class="btn btn-primary" ng-click="refresh()">MORE QUOTES</buttom></ht>
+                    
+                </tr>
+                
+        </thead>
+        
+        <tbody>
+            
+            <tr ng-repeat = "quote in quotes">
+            
+                
+                <th>{{ quote.author }}</th>
+                <th>{{ quote.quote }}</th>
+                
+                
+            </tr>
+            
+        </tbody>
+        
+        
+    </table>
+    
+    
+</div>
+
+<div>
+    
+    <table class="table">
+        <thead>
+                
+                <tr>
+                    
+                    <th>Suit</th>
+                    <th>Value</th>
+                    <th>Picture</th>
+                    <ht><buttom class="btn btn-primary" ng-click="refresh2()">Draw another card</buttom></ht>
+                    
+                </tr>
+                
+        </thead>
+        
+        <tbody>
+            
+            <tr ng-repeat = "card in cards">
+            
+                
+                <th>{{ card.suit }}</th>
+                <th>{{ card.value }}</th>
+                <th><img src="{{ card.images.png }}"></img></th>
+                
+                
+            </tr>
+            
+        </tbody>
+        
+        
+    </table>
+    
+    
+</div>
         
