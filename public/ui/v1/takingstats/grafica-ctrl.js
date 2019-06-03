@@ -9,16 +9,12 @@ app.controller("GraficaCtrl", ["$scope", "$http", function($scope, $http) {
 
     var API = "https://sos1819-07.herokuapp.com/api/v1/takingStats";
 
-
     $http.get(API).then(function(response) {
         var i;
         for (i = 0; i < response.data.length; i++) {
             datoAux.push(response.data[i].film);
             datoAux2.push(response.data[i].money);
         }
-        console.log(datoAux);
-        console.log(datoAux2);
-
 
         Highcharts.chart('container', {
             chart: {
@@ -28,7 +24,7 @@ app.controller("GraficaCtrl", ["$scope", "$http", function($scope, $http) {
                 text: "Takings stats in Spain at 2017"
             },
             xAxis: {
-                categories: [datoAux[0], datoAux[1], datoAux[2], datoAux[3], datoAux[4]],
+                categories: datoAux,
                 title: {
                     text: null
                 }
@@ -69,7 +65,7 @@ app.controller("GraficaCtrl", ["$scope", "$http", function($scope, $http) {
             },
             series: [{
                 name: 'Year 2017',
-                data: [datoAux2[0], datoAux2[1], datoAux2[2], datoAux2[3], datoAux2[4]]
+                data: datoAux2
             }]
         });
 

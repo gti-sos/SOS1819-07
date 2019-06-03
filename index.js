@@ -60,7 +60,7 @@ app.use(pathsProxy3, function(req, res) {
 });
 
 //---------------------------------------------------------------------------------------------------
-//PROXY 4 Dioni , estadísticas del battlefield 4 de personas que están online en distintas plataformas
+//PROXY 4 Dioni , estadísticas de arrestos de la nfl
 var pathsProxy4 = "/ui/v1/takingstats/proxy4";
 var apiRemota4 = "http://nflarrest.com/api/v1/crime" ;
 
@@ -68,6 +68,52 @@ app.use(pathsProxy4, function(req, res) {
   console.log('Proxy : ' + apiRemota4);
   req.pipe(request(apiRemota4)).pipe(res);
 });
+
+//---------------------------------------------------------------------------------------------------
+//PROXY 5 Dioni , estadísticas de star wars
+var pathsProxy5 = "/ui/v1/takingstats/proxy5";
+var apiRemota5 = "https://swapi.co/api/people/?format=json" ;
+
+app.use(pathsProxy5, function(req, res) {
+  console.log('Proxy : ' + apiRemota5);
+  req.pipe(request(apiRemota5)).pipe(res);
+});
+
+//---------------------------------------------------------------------------------------------------
+//PROXY 6 Dioni , estadísticas de marcas de coche en eeuu
+var pathsProxy6 = "/ui/v1/takingstats/proxy6";
+var apiRemota6 = "https://vpic.nhtsa.dot.gov/api/vehicles/getallmakes?format=json" ;
+
+app.use(pathsProxy6, function(req, res) {
+  console.log('Proxy : ' + apiRemota6);
+  req.pipe(request(apiRemota6)).pipe(res);
+});
+
+
+
+//---------------------------------------------------------------------------------------------------
+//PROXY 7 Dioni , estadísticas del show de televisión tv-maze
+var pathsProxy7 = "/ui/v1/takingstats/proxy7";
+var apiRemota7 = "http://api.tvmaze.com/seasons/1/episodes" ;
+
+app.use(pathsProxy7, function(req, res) {
+  console.log('Proxy : ' + apiRemota7);
+  req.pipe(request(apiRemota7)).pipe(res);
+});
+
+//---------------------------------------------------------------------------------------------------
+//PROXY 8 Dioni , estadísticas de vehículos brasileños
+var pathsProxy8 = "/ui/v1/takingstats/proxy8";
+var apiRemota8 = "https://parallelum.com.br/fipe/api/v1/carros/marcas" ;
+
+app.use(pathsProxy8, function(req, res) {
+  console.log('Proxy : ' + apiRemota8);
+  req.pipe(request(apiRemota8)).pipe(res);
+});
+
+
+
+
 
 
 //--------------------------------------------------------------------------------------------------------------
