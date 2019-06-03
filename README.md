@@ -10,3 +10,5 @@
     - [https://sos1819-07.herokuapp.com/api/v1/subsidies-stats/docs](https://sos1819-07.herokuapp.com/api/v1/subsidies-stats/docs) (developed by [Manuel Salas Ortiz](https://github.com/manolitor))
     - [https://sos1819-07.herokuapp.com/api/v1/takingstats/docs](https://sos1819-07.herokuapp.com/api/v1/takingstats/docs) (developed by [Dionisio Gálvez Camacho](https://github.com/diogalcam))
     - [https://sos1819-07.herokuapp.com/api/v1/earnings-inter-stats/docs](https://sos1819-07.herokuapp.com/api/v1/earnings-inter-stats/docs) (developed by [Zoilo Gómez Gordón](https://github.com/zoilo95))
+    - 
+-  **Docker**: docker run -e MSG=’funciona’ -e PORT=8081 -p 8081:8081 -d diogalcam/sos1819-07
